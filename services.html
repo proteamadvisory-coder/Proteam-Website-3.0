@@ -1,0 +1,1097 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Services — Proteam Advisory</title>
+<meta name="description" content="End-to-end Software Asset Management services: licence optimisation, audit defence, baselining, managed services, maturity assessment, and licensing helpdesk." />
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300..900;1,9..144,300..900&family=Geist:wght@300..700&family=Geist+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="styles.css">
+
+<style>
+  /* SERVICES OVERVIEW */
+  .svc-intro {
+    background: var(--paper);
+    padding: 100px 0;
+  }
+  .svc-intro-grid {
+    display: grid;
+    grid-template-columns: 1fr 1.2fr;
+    gap: 80px;
+    align-items: start;
+  }
+  .svc-intro-grid .label {
+    font-size: 11px;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--amber);
+    font-weight: 600;
+    margin-bottom: 24px;
+    display: block;
+  }
+  .svc-intro-grid h2 {
+    font-family: var(--sans);
+    font-weight: 400;
+    font-size: clamp(32px, 4vw, 48px);
+    line-height: 1.1;
+    letter-spacing: -0.02em;
+    color: var(--navy);
+    font-variation-settings: "opsz" 144;
+  }
+  .svc-intro-grid h2 em { font-family: var(--serif); font-variation-settings: "opsz" 144; font-style: italic; color: var(--rust); font-weight: 300; }
+  .svc-intro-grid p {
+    font-size: 17px;
+    line-height: 1.7;
+    color: var(--navy-soft);
+    margin-bottom: 20px;
+  }
+  .free-tag {
+    display: inline-flex;
+    align-items: center;
+    gap: 12px;
+    background: var(--navy);
+    color: var(--cream);
+    padding: 16px 24px;
+    border-radius: var(--radius);
+    margin-top: 32px;
+    transition: all 0.25s ease;
+  }
+  .free-tag:hover { background: var(--amber); color: var(--navy-deep); transform: translateY(-2px); }
+  .free-tag .badge {
+    font-family: var(--sans);
+    font-style: italic;
+    color: var(--amber-bright);
+    font-size: 14px;
+  }
+  .free-tag:hover .badge { color: var(--navy-deep); }
+  .free-tag span:last-child {
+    font-size: 14px;
+    font-weight: 500;
+  }
+  @media (max-width: 960px) {
+    .svc-intro-grid { grid-template-columns: 1fr; gap: 32px; }
+  }
+
+  /* SERVICE QUICK-NAV — 4 anchor pills between hero and service list */
+  .svc-quicknav {
+    background: var(--cream);
+    border-top: 1px solid var(--line);
+    border-bottom: 1px solid var(--line);
+    padding: 28px 0;
+  }
+  .svc-quicknav-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 16px;
+  }
+  .svc-quicknav a {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    padding: 18px 20px;
+    border: 1px solid var(--line);
+    border-radius: var(--radius);
+    background: var(--paper);
+    color: var(--navy);
+    font-size: 14px;
+    font-weight: 500;
+    letter-spacing: 0.01em;
+    text-decoration: none;
+    transition: all 0.25s ease;
+    line-height: 1.3;
+  }
+  .svc-quicknav a:hover {
+    background: var(--navy);
+    color: var(--cream);
+    border-color: var(--navy);
+    transform: translateY(-2px);
+  }
+  .svc-quicknav a .num {
+    font-family: var(--serif);
+    font-style: italic;
+    font-weight: 400;
+    color: var(--amber);
+    margin-right: 10px;
+    font-size: 13px;
+  }
+  .svc-quicknav a:hover .num { color: var(--amber-bright); }
+  @media (max-width: 960px) {
+    .svc-quicknav-grid { grid-template-columns: repeat(2, 1fr); gap: 12px; }
+    .svc-quicknav a { padding: 14px 16px; font-size: 13px; }
+  }
+  @media (max-width: 520px) {
+    .svc-quicknav-grid { grid-template-columns: 1fr; }
+  }
+
+  /* SERVICE LIST — large editorial cards */
+  .svc-list {
+    background: var(--cream);
+    padding: 100px 0;
+  }
+  .svc-list-head {
+    margin-bottom: 64px;
+    max-width: 760px;
+  }
+  .svc-list-grid {
+    display: flex;
+    flex-direction: column;
+    gap: 0;
+    border-top: 1px solid var(--line);
+  }
+  .svc-row {
+    border-bottom: 1px solid var(--line);
+    padding: 56px 0;
+    display: grid;
+    grid-template-columns: 60px 1fr 320px;
+    gap: 40px;
+    align-items: start;
+    transition: padding 0.4s ease, background 0.4s ease;
+  }
+  .svc-row:hover {
+    background: var(--paper);
+    padding-left: 16px;
+    padding-right: 16px;
+  }
+  .svc-num {
+    font-family: var(--sans);
+    font-style: italic;
+    font-weight: 400;
+    font-size: 24px;
+    color: var(--amber);
+    line-height: 1;
+    padding-top: 4px;
+  }
+  .svc-content h3 {
+    font-family: var(--sans);
+    font-weight: 400;
+    font-size: clamp(28px, 3vw, 38px);
+    line-height: 1.1;
+    letter-spacing: -0.02em;
+    color: var(--navy);
+    margin-bottom: 16px;
+    font-variation-settings: "opsz" 144;
+  }
+  .svc-content p {
+    font-size: 16px;
+    line-height: 1.65;
+    color: var(--navy-soft);
+    max-width: 600px;
+    margin-bottom: 20px;
+  }
+  .svc-tags {
+    display: flex;
+    gap: 8px;
+    flex-wrap: wrap;
+    margin-top: 16px;
+  }
+  .svc-tag {
+    font-size: 11px;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--navy);
+    background: var(--cream-warm);
+    padding: 6px 12px;
+    border-radius: var(--radius-sm);
+    font-weight: 500;
+  }
+  .svc-row:hover .svc-tag { background: var(--cream); }
+  .svc-action {
+    text-align: right;
+  }
+  .svc-action .stat {
+    font-family: var(--sans);
+    font-weight: 300;
+    font-size: 48px;
+    line-height: 1;
+    color: var(--rust);
+    margin-bottom: 8px;
+    letter-spacing: -0.03em;
+    font-variation-settings: "opsz" 144;
+  }
+  .svc-action .stat-label {
+    font-size: 12px;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--muted);
+    margin-bottom: 24px;
+  }
+  .svc-cta {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    font-size: 13px;
+    font-weight: 500;
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
+    color: var(--navy);
+    padding-bottom: 4px;
+    border-bottom: 1px solid var(--navy);
+    transition: all 0.3s ease;
+  }
+  .svc-cta:hover { color: var(--amber); border-color: var(--amber); transform: translateX(4px); }
+  .svc-cta svg { width: 14px; transition: transform 0.3s ease; }
+  .svc-cta:hover svg { transform: translateX(4px); }
+  @media (max-width: 960px) {
+    .svc-row { grid-template-columns: 1fr; gap: 16px; padding: 40px 0; }
+    .svc-action { text-align: left; }
+  }
+
+  /* Service group divider */
+  .svc-group-label {
+    margin-top: 56px;
+    margin-bottom: 0;
+    padding-bottom: 20px;
+    border-bottom: 2px solid var(--navy);
+    display: flex;
+    align-items: baseline;
+    justify-content: space-between;
+    gap: 24px;
+  }
+  .svc-group-label:first-of-type { margin-top: 0; }
+  .svc-group-label .title {
+    font-family: var(--sans);
+    font-weight: 400;
+    font-size: 28px;
+    line-height: 1.1;
+    letter-spacing: -0.015em;
+    color: var(--navy);
+    font-variation-settings: "opsz" 144;
+  }
+  .svc-group-label .title em { font-family: var(--serif); font-variation-settings: "opsz" 144; font-style: italic; color: var(--rust); font-weight: 300; }
+  .svc-group-label .meta {
+    font-family: var(--sans);
+    font-style: italic;
+    font-size: 14px;
+    color: var(--amber);
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
+    flex-shrink: 0;
+    font-variation-settings: "opsz" 144;
+  }
+
+  /* PROCESS */
+  .process {
+    background: var(--paper);
+    padding: 110px 0;
+  }
+  .process-head { max-width: 760px; margin-bottom: 56px; }
+  .process-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 24px;
+    position: relative;
+  }
+  .process-step {
+    position: relative;
+    padding: 40px 28px 32px;
+    background: var(--cream);
+    border: 1px solid var(--line);
+    border-radius: var(--radius);
+    transition: all 0.3s ease;
+  }
+  .process-step:hover {
+    background: var(--paper);
+    transform: translateY(-4px);
+    box-shadow: 0 16px 32px -12px rgba(11,31,58,0.12);
+  }
+  .process-step .step-num {
+    position: absolute;
+    top: -20px;
+    left: 28px;
+    width: 40px;
+    height: 40px;
+    background: var(--navy);
+    color: var(--amber-bright);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+    font-family: var(--sans);
+    font-style: italic;
+    font-size: 18px;
+    font-weight: 400;
+  }
+  .process-step h4 {
+    font-family: var(--sans);
+    font-weight: 500;
+    font-size: 22px;
+    line-height: 1.15;
+    letter-spacing: -0.015em;
+    color: var(--navy);
+    margin: 16px 0 12px;
+    font-variation-settings: "opsz" 144;
+  }
+  .process-step p {
+    font-size: 14px;
+    line-height: 1.6;
+    color: var(--navy-soft);
+  }
+  @media (max-width: 960px) {
+    .process-grid { grid-template-columns: repeat(2, 1fr); }
+  }
+  @media (max-width: 600px) {
+    .process-grid { grid-template-columns: 1fr; }
+  }
+</style>
+<style>
+  /* --- logo lockup --- */
+  .logo-lockup { display:flex; flex-direction:column; line-height:1; gap:2px; }
+  .logo-advisory { font-family:var(--sans); font-size:11px; font-weight:300; letter-spacing:0.18em; text-transform:none; color:var(--muted); padding-left:1px; }
+  /* Ensure all content is visible regardless of scroll observer */
+.reveal, .reveal-stagger, .reveal-stagger > * { opacity: 1 !important; transform: none !important; }
+</style>
+</head>
+<body>
+
+
+<!-- HEADER -->
+<header>
+  <div class="container nav">
+    <a href="index.html" class="logo">
+      <span class="logo-lockup">
+        <span class="logo-text"><span class="logo-cap">P</span>roTeam</span>
+        <span class="logo-advisory">Advisory Solutions LLP</span>
+      </span>
+    </a>
+    <ul class="nav-links">
+      <li><a href="index.html">Home</a></li>
+      <li class="has-mega">
+        <a href="services.html" class="active">Services <svg class="caret" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 9l6 6 6-6"/></svg></a>
+        <div class="mega-menu" role="menu" aria-label="Services">
+          <div class="mega-grid">
+            <div class="mega-col">
+              <a href="services.html#itam" class="mega-head">IT Asset Management</a>
+              <ul>
+                <li><a href="service-sam-maturity.html">SAM Maturity Assessment</a></li>
+                <li><a href="service-sam-baselining.html">SAM Baselining &amp; Cost Optimization</a></li>
+                <li><a href="service-audit-defence.html">Audit Defense &amp; Negotiation Support</a></li>
+                <li><a href="service-ham-maturity.html">Hardware Asset Management</a></li>
+                <li><a href="service-itam-managed.html">Managed Services</a></li>
+              </ul>
+            </div>
+            <div class="mega-col">
+              <a href="services.html#finops" class="mega-head">Cloud FinOps</a>
+              <ul>
+                <li><a href="service-cloud-finops.html">FinOps Advisory &amp; Strategy</a></li>
+                <li><a href="service-finops-optimization.html">Cloud Spend Optimisation</a></li>
+                <li><a href="service-finops-managed.html">Managed FinOps Services</a></li>
+              </ul>
+            </div>
+            <div class="mega-col">
+              <a href="services.html#platform-strategy" class="mega-head">Platform Strategy &amp; Advisory</a>
+              <ul>
+                <li><a href="service-platform-strategy.html">Platform Strategy &amp; Advisory</a></li>
+                <li><a href="service-implementation-integration.html">Implementation &amp; Integration</a></li>
+              </ul>
+            </div>
+            <div class="mega-col">
+              <a href="services.html#ai-transformation" class="mega-head">AI Transformation Services</a>
+              <ul>
+                <li><a href="service-ai-spend.html">AI Spend Management</a></li>
+                <li><a href="service-ai-adoption.html">AI Adoption &amp; Value Delivery</a></li>
+                <li><a href="service-ai-usage-analytics.html">AI Usage Analytics</a></li>
+                <li><a href="service-ai-vendor-negotiation.html">AI Vendor Negotiation</a></li>
+                <li><a href="service-ai-governance-advisory.html">AI Governance Advisory</a></li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </li>
+
+      <li><a href="case-studies.html">Case Studies</a></li>
+            <li class="has-mega has-about-dropdown">
+        <a href="about.html">About <svg class="caret" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 9l6 6 6-6"/></svg></a>
+        <div class="mega-menu" role="menu" aria-label="About">
+          <div class="mega-grid mega-grid--about">
+            <div class="mega-col">
+              <a href="our-story.html" class="mega-head">Our Story</a>
+              <ul>
+                <li><a href="our-story.html">Who We Are</a></li>
+                <li><a href="our-story.html#team">Team / Leaders</a></li>
+              </ul>
+            </div>
+            <div class="mega-col">
+              <a href="achievements.html" class="mega-head">By the Numbers</a>
+              <ul>
+                <li><a href="achievements.html">Achievements &amp; Stats</a></li>
+              </ul>
+            </div>
+            <div class="mega-col">
+              <a href="gallery.html" class="mega-head">Gallery</a>
+              <ul>
+                <li><a href="gallery.html">Culture &amp; Events</a></li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </li>
+      <li><a href="insights.html">Insights</a></li>
+            <li><a href="careers.html">Careers</a></li>
+      <li><a href="contact.html">Contact</a></li>
+    </ul>
+    <a href="contact.html" class="nav-cta">Free Consultation</a>
+    <button class="menu-toggle" id="menuToggle" aria-label="Toggle menu" aria-expanded="false">
+      <span class="bar"></span>
+      <span class="bar"></span>
+      <span class="bar"></span>
+    </button>
+  </div>
+</header>
+
+<!-- MOBILE NAV -->
+<nav class="mobile-nav" id="mobileNav" aria-label="Mobile navigation">
+  <ul class="mobile-nav-links">
+    <li><a href="index.html">Home <span>&rarr;</span></a></li>
+    <li class="has-sub">
+      <button class="sub-toggle" type="button" aria-expanded="false" aria-controls="m-svc-sub">
+        Services
+        <svg class="caret" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 9l6 6 6-6"/></svg>
+      </button>
+      <ul id="m-svc-sub" class="sub-menu">
+        <li class="has-sub-2">
+          <button class="sub-toggle-2" type="button" aria-expanded="false" aria-controls="m-itam-sub">
+            IT Asset Management
+            <svg class="caret" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 9l6 6 6-6"/></svg>
+          </button>
+          <ul id="m-itam-sub" class="sub-menu-2">
+            <li><a href="service-sam-maturity.html">SAM Maturity Assessment</a></li>
+            <li><a href="service-sam-baselining.html">SAM Baselining &amp; Cost Optimization</a></li>
+            <li><a href="service-audit-defence.html">Audit Defense &amp; Negotiation Support</a></li>
+            <li><a href="service-ham-maturity.html">Hardware Asset Management</a></li>
+            <li><a href="service-itam-managed.html">Managed Services</a></li>
+          </ul>
+        </li>
+        <li class="has-sub-2">
+          <button class="sub-toggle-2" type="button" aria-expanded="false" aria-controls="m-finops-sub">
+            Cloud FinOps
+            <svg class="caret" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 9l6 6 6-6"/></svg>
+          </button>
+          <ul id="m-finops-sub" class="sub-menu-2">
+            <li><a href="service-cloud-finops.html">FinOps Advisory &amp; Strategy</a></li>
+            <li><a href="service-finops-optimization.html">Cloud Spend Optimisation</a></li>
+            <li><a href="service-finops-managed.html">Managed FinOps Services</a></li>
+          </ul>
+        </li>
+        <li class="has-sub-2">
+          <button class="sub-toggle-2" type="button" aria-expanded="false" aria-controls="m-platform-sub">
+            Platform Strategy &amp; Advisory
+            <svg class="caret" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 9l6 6 6-6"/></svg>
+          </button>
+          <ul id="m-platform-sub" class="sub-menu-2">
+            <li><a href="service-platform-strategy.html">Platform Strategy &amp; Advisory</a></li>
+            <li><a href="service-implementation-integration.html">Implementation &amp; Integration</a></li>
+          </ul>
+        </li>
+        <li class="has-sub-2">
+          <button class="sub-toggle-2" type="button" aria-expanded="false" aria-controls="m-ai-sub">
+            AI Transformation Services
+            <svg class="caret" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 9l6 6 6-6"/></svg>
+          </button>
+          <ul id="m-ai-sub" class="sub-menu-2">
+            <li><a href="service-ai-spend.html">AI Spend Management</a></li>
+            <li><a href="service-ai-adoption.html">AI Adoption &amp; Value Delivery</a></li>
+            <li><a href="service-ai-usage-analytics.html">AI Usage Analytics</a></li>
+            <li><a href="service-ai-vendor-negotiation.html">AI Vendor Negotiation</a></li>
+            <li><a href="service-ai-governance-advisory.html">AI Governance Advisory</a></li>
+          </ul>
+        </li>
+      </ul>
+    </li>
+
+    <li><a href="case-studies.html">Case Studies <span>&rarr;</span></a></li>
+        <li class="has-sub">
+      <button class="sub-toggle" type="button" aria-expanded="false" aria-controls="m-about-sub">
+        About
+        <svg class="caret" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 9l6 6 6-6"/></svg>
+      </button>
+      <ul id="m-about-sub" class="sub-menu">
+        <li><a href="our-story.html">Our Story</a></li>
+        <li><a href="achievements.html">By the Numbers</a></li>
+        <li><a href="our-story.html#team">Team / Leaders</a></li>
+        <li><a href="gallery.html">Gallery</a></li>
+      </ul>
+    </li>
+    <li><a href="insights.html">Insights <span>&rarr;</span></a></li>
+        <li><a href="careers.html">Careers <span>&rarr;</span></a></li>
+    <li><a href="contact.html">Contact <span>&rarr;</span></a></li>
+  </ul>
+  <a href="contact.html" class="mobile-nav-cta">Book Free Consultation &rarr;</a>
+  <div class="mobile-nav-contact">
+    <a href="tel:+919676889797">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07 19.5 19.5 0 01-6-6 19.79 19.79 0 01-3.07-8.67A2 2 0 014.11 2h3a2 2 0 012 1.72 12.84 12.84 0 00.7 2.81 2 2 0 01-.45 2.11L8.09 9.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45 12.84 12.84 0 002.81.7A2 2 0 0122 16.92z"/></svg>
+      +91 9676 889 797
+    </a>
+    <a href="mailto:vpatel@proteamadvisory.com">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+      vpatel@proteamadvisory.com
+    </a>
+  </div>
+</nav>
+
+<!-- PAGE HERO -->
+<section class="page-hero">
+  <div class="container">
+    <div class="breadcrumb">
+      <a href="index.html">Home</a>
+      <span class="sep">/</span>
+      <span class="current">Services</span>
+    </div>
+    <div class="page-hero-grid">
+      <div>
+        <div class="page-hero-eyebrow">What we do</div>
+        <h1>Four disciplines. <em>One specialist team.</em></h1>
+      </div>
+      <p class="page-hero-lede">
+        From traditional licensing through SaaS, cloud and AI &mdash; Proteam is the SAM partner for the full enterprise software estate. IT Asset Management, Cloud FinOps, Platform Strategy &amp; Advisory, and AI Transformation Services. Engage one practice. Engage all fifteen. The discipline is the same.
+      </p>
+    </div>
+  </div>
+</section>
+
+<!-- SERVICE QUICK-NAV (4 anchor links to category sections) -->
+<section class="svc-quicknav" aria-label="Service categories">
+  <div class="container">
+    <div class="svc-quicknav-grid">
+      <a href="#itam"></span>IT Asset Management</a>
+      <a href="#finops"></span>Cloud FinOps</a>
+      <a href="#platform-strategy"></span>Platform Strategy &amp; Advisory</a>
+      <a href="#ai-transformation"></span>AI Transformation Services</a>
+    </div>
+  </div>
+</section>
+
+<!-- SERVICE LIST -->
+<section class="svc-list">
+  <div class="container">
+    <div class="svc-list-head reveal">
+      <div class="section-eyebrow">All services</div>
+      <h2 class="section-title">Pick the one you need. <em>Or all of them.</em></h2>
+    </div>
+
+    <div class="svc-list-grid">
+
+      <!-- GROUP 1: IT ASSET MANAGEMENT -->
+      <div class="svc-group-label reveal" id="itam">
+        <div class="title">IT Asset Management. <em>20 years of heritage.</em></div>
+      </div>
+
+      <a href="service-sam-maturity.html" class="svc-row reveal" id="itam-sam-maturity">
+        <div class="svc-num">— 01</div>
+        <div class="svc-content">
+          <h3>SAM Maturity Assessment</h3>
+          <p>A strategic transformation engagement &mdash; not a one-off scorecard. We assess your SAM estate across five operating dimensions, benchmark against your industry, then run the transformation that moves you up the maturity curve over a 12&ndash;18 month horizon.</p>
+          <div class="svc-tags">
+            <span class="svc-tag">Maturity benchmarking</span>
+            <span class="svc-tag">Operating model</span>
+            <span class="svc-tag">Transformation roadmap</span>
+          </div>
+        </div>
+        <div class="svc-action">
+          <div class="stat">6</div>
+          <div class="stat-label">Maturity levels</div>
+          <span class="svc-cta">Read more <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 5l7 7-7 7"/></svg></span>
+        </div>
+      </a>
+
+      <a href="service-sam-baselining.html" class="svc-row reveal" id="itam-baselining">
+        <div class="svc-num">— 02</div>
+        <div class="svc-content">
+          <h3>SAM Baselining &amp; Cost Optimization</h3>
+          <p>Cut annual software spend by 15&ndash;20% beyond what your team has already negotiated. We baseline your estate vendor by vendor, reconcile entitlements against deployment, optimise licence cost continuously, and run ongoing managed services that keep the estate continuously compliant and continuously optimising.</p>
+          <div class="svc-tags">
+            <span class="svc-tag">Licence optimisation</span>
+            <span class="svc-tag">Forensic baselining</span>
+            <span class="svc-tag">Monthly reporting</span>
+          </div>
+        </div>
+        <div class="svc-action">
+          <div class="stat">15&ndash;20%</div>
+          <div class="stat-label">Avg. annual saving</div>
+          <span class="svc-cta">Read more <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 5l7 7-7 7"/></svg></span>
+        </div>
+      </a>
+
+      <a href="service-audit-defence.html" class="svc-row reveal" id="itam-audit-defense">
+        <div class="svc-num">— 03</div>
+        <div class="svc-content">
+          <h3>Audit Defense &amp; Negotiation Support</h3>
+          <p>When a software vendor sends an audit notice, the clock starts ticking. We've defended thousands of audits &mdash; IBM, Oracle, Microsoft, SAP, and more &mdash; neutralising risk, challenging methodology, and negotiating directly with auditors so your team can keep running the business.</p>
+          <div class="svc-tags">
+            <span class="svc-tag">Vendor negotiation</span>
+            <span class="svc-tag">Methodology challenge</span>
+            <span class="svc-tag">Exposure reduction</span>
+          </div>
+        </div>
+        <div class="svc-action">
+          <div class="stat">$40M+</div>
+          <div class="stat-label">Single-engagement saving</div>
+          <span class="svc-cta">Read more <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 5l7 7-7 7"/></svg></span>
+        </div>
+      </a>
+
+      <a href="service-ham-maturity.html" class="svc-row reveal" id="itam-ham">
+        <div class="svc-num">— 04</div>
+        <div class="svc-content">
+          <h3>Hardware Asset Management</h3>
+          <p>Where does your hardware asset management practice sit today &mdash; and where should it be in 18 months? We assess people, process, and tooling across the full hardware lifecycle, benchmark against industry peers, and design a modernisation roadmap that integrates HAM with your wider ITAM and procurement functions.</p>
+          <div class="svc-tags">
+            <span class="svc-tag">Capability benchmarking</span>
+            <span class="svc-tag">Roadmap design</span>
+            <span class="svc-tag">Lifecycle policy</span>
+          </div>
+        </div>
+        <div class="svc-action">
+          <div class="stat">5</div>
+          <div class="stat-label">Capability dimensions</div>
+          <span class="svc-cta">Read more <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 5l7 7-7 7"/></svg></span>
+        </div>
+      </a>
+
+      <a href="service-itam-managed.html" class="svc-row reveal" id="itam-managed">
+        <div class="svc-num">— 05</div>
+        <div class="svc-content">
+          <h3>Managed Services</h3>
+          <p>SLA-backed service desk and specialist operations across your SAM, HAM, and FinOps estate. Rapid onboarding, ISO-aligned processes, and progressive automation — from assessment to execution.</p>
+          <div class="svc-tags">
+            <span class="svc-tag">Managed operations</span>
+            <span class="svc-tag">Estate-wide</span>
+          </div>
+        </div>
+        <div class="svc-action">
+          <div class="stat">20%</div>
+          <div class="stat-label">Avg. Annual Savings</div>
+          <span class="svc-cta">Read more <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 5l7 7-7 7"/></svg></span>
+        </div>
+      </a>
+
+      <!-- GROUP 3: CLOUD FINOPS -->
+      <div class="svc-group-label reveal" id="finops">
+        <div class="title">Cloud FinOps. <em>Think &rarr; Optimise &rarr; Operate.</em></div>
+      </div>
+
+      <a href="service-cloud-finops.html" class="svc-row reveal" id="finops-advisory">
+        <div class="svc-num">— 06</div>
+        <div class="svc-content">
+          <h3>FinOps Advisory &amp; Strategy</h3>
+          <p>Design the financial operating model behind cloud transformation. We align engineering, finance, procurement and leadership around visibility, accountability, forecasting and optimisation governance &mdash; assessed across six capability dimensions, sequenced over a 12&ndash;18 month transformation roadmap.</p>
+          <div class="svc-tags">
+            <span class="svc-tag">Operating model</span>
+            <span class="svc-tag">Capability assessment</span>
+            <span class="svc-tag">Governance design</span>
+          </div>
+        </div>
+        <div class="svc-action">
+          <div class="stat">4&ndash;6 wks</div>
+          <div class="stat-label">Assessment timeline</div>
+          <span class="svc-cta">Read more <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 5l7 7-7 7"/></svg></span>
+        </div>
+      </a>
+
+      <a href="service-finops-optimization.html" class="svc-row reveal" id="finops-optimization">
+        <div class="svc-num">— 07</div>
+        <div class="svc-content">
+          <h3>Cloud Spend Optimisation</h3>
+          <p>Turn cloud optimisation into a continuous operating function. Waste elimination, commitment optimisation, workload efficiency, automation governance and AI-powered intelligence &mdash; four principles, six layers, run monthly not quarterly.</p>
+          <div class="svc-tags">
+            <span class="svc-tag">Continuous optimisation</span>
+            <span class="svc-tag">Automation &amp; governance</span>
+            <span class="svc-tag">AI-enhanced visibility</span>
+          </div>
+        </div>
+        <div class="svc-action">
+          <div class="stat">20&ndash;35%</div>
+          <div class="stat-label">Avg. optimisation opportunity</div>
+          <span class="svc-cta">Read more <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 5l7 7-7 7"/></svg></span>
+        </div>
+      </a>
+
+      <a href="service-finops-managed.html" class="svc-row reveal" id="finops-managed">
+        <div class="svc-num">— 08</div>
+        <div class="svc-content">
+          <h3>Managed FinOps Services</h3>
+          <p>Your embedded FinOps operating function. Daily spend monitoring, weekly optimisation reviews, monthly executive governance and quarterly strategy review &mdash; six operating-desk modules running across AWS, Azure and GCP without you needing to build a large internal team.</p>
+          <div class="svc-tags">
+            <span class="svc-tag">Embedded operating model</span>
+            <span class="svc-tag">Daily &rarr; quarterly cadence</span>
+            <span class="svc-tag">Multi-cloud governance</span>
+          </div>
+        </div>
+        <div class="svc-action">
+          <div class="stat">Daily</div>
+          <div class="stat-label">Continuous oversight cadence</div>
+          <span class="svc-cta">Read more <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 5l7 7-7 7"/></svg></span>
+        </div>
+      </a>
+
+      <!-- GROUP 4: PLATFORM STRATEGY & ADVISORY -->
+      <div class="svc-group-label reveal" id="platform-strategy">
+        <div class="title">Platform Strategy &amp; Advisory. <em>Enable the right platform before you scale.</em></div>
+      </div>
+
+      <a href="service-platform-strategy.html" class="svc-row reveal" id="platform-strategy-advisory">
+        <div class="svc-num">— 09</div>
+        <div class="svc-content">
+          <h3>Platform Strategy &amp; Advisory</h3>
+          <p>Strategic enablement before tool deployment. We assess existing platforms &mdash; ServiceNow, Snow, Flexera, Xensam, USU, Zylo &mdash; evaluate estate complexity, and define the right architecture for long-term SAM operations. Advisory-first, platform-neutral, governance-led.</p>
+          <div class="svc-tags">
+            <span class="svc-tag">Platform assessment</span>
+            <span class="svc-tag">Estate intelligence</span>
+            <span class="svc-tag">Tooling rationalisation</span>
+          </div>
+        </div>
+        <div class="svc-action">
+          <div class="stat">7+</div>
+          <div class="stat-label">Platforms evaluated</div>
+          <span class="svc-cta">Read more <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 5l7 7-7 7"/></svg></span>
+        </div>
+      </a>
+
+      <a href="service-implementation-integration.html" class="svc-row reveal" id="implementation-integration">
+        <div class="svc-num">— 10</div>
+        <div class="svc-content">
+          <h3>Implementation &amp; Integration Services</h3>
+          <p>We implement and integrate the ITAM tools that follow your platform strategy — ServiceNow SAM Pro &amp; HAM Pro, Flexera One, Snow Software, Zylo, and USU SmartTrack. Connector design, entitlement load, publisher pack tuning, ITSM integration, and operating model hand-back. Vendor-independent. Outcome-led.</p>
+          <div class="svc-tags">
+            <span class="svc-tag">ServiceNow</span>
+            <span class="svc-tag">Flexera</span>
+            <span class="svc-tag">Snow · Zylo · SmartTrack</span>
+          </div>
+        </div>
+        <div class="svc-action">
+          <div class="stat">150+</div>
+          <div class="stat-label">Platforms deployed</div>
+          <span class="svc-cta">Read more <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 5l7 7-7 7"/></svg></span>
+        </div>
+      </a>
+
+      <!-- GROUP 5: AI TRANSFORMATION SERVICES -->
+      <div class="svc-group-label reveal" id="ai-transformation">
+        <div class="title">AI Transformation Services. <em>From spend to value.</em></div>
+      </div>
+
+      <a href="service-ai-spend.html" class="svc-row reveal" id="ai-spend">
+        <div class="svc-num">— 11</div>
+        <div class="svc-content">
+          <h3>AI Spend Management</h3>
+          <p>Enterprise AI spend has gone from rounding error to board-level line item in 24 months. We bring SAM discipline to the new generation of vendors &mdash; forensic estate discovery, contract risk review, dormant-licence harvesting, consumption optimisation, vendor consolidation, and the governance framework to keep it controlled.</p>
+          <div class="svc-tags">
+            <span class="svc-tag">Estate discovery</span>
+            <span class="svc-tag">Dormant-licence harvest</span>
+            <span class="svc-tag">Vendor consolidation</span>
+          </div>
+        </div>
+        <div class="svc-action">
+          <div class="stat">20&ndash;35%</div>
+          <div class="stat-label">Year-one AI spend reduction</div>
+          <span class="svc-cta">Read more <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 5l7 7-7 7"/></svg></span>
+        </div>
+      </a>
+
+      <a href="service-ai-adoption.html" class="svc-row reveal" id="ai-adoption">
+        <div class="svc-num">— 12</div>
+        <div class="svc-content">
+          <h3>AI Adoption &amp; Value Delivery</h3>
+          <p>Buying AI is the easy part. Turning it into measurable productivity gain is a change-management problem disguised as a technology rollout. We assess adoption, prioritise use cases, design the value measurement framework, embed change management, and stand up the governance that makes the renewal conversation defensible.</p>
+          <div class="svc-tags">
+            <span class="svc-tag">Use-case prioritisation</span>
+            <span class="svc-tag">Value measurement</span>
+            <span class="svc-tag">Change &amp; governance</span>
+          </div>
+        </div>
+        <div class="svc-action">
+          <div class="stat">60%+</div>
+          <div class="stat-label">Year-one daily active usage target</div>
+          <span class="svc-cta">Read more <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 5l7 7-7 7"/></svg></span>
+        </div>
+      </a>
+
+
+      <a href="service-ai-usage-analytics.html" class="svc-row reveal" id="ai-usage-analytics">
+        <div class="svc-num">— 13</div>
+        <div class="svc-content">
+          <h3>Usage Analytics &amp; Chargeback</h3>
+          <p>Knowing you spend £2M on AI is the start. Knowing which department spent it, on what, and whether it generated value — that's the conversation that changes behaviour. We build the attribution pipeline, chargeback model, and reporting layer that connects AI consumption to cost centres.</p>
+          <div class="svc-tags">
+            <span class="svc-tag">Usage analytics</span>
+            <span class="svc-tag">Chargeback</span>
+            <span class="svc-tag">Cost allocation</span>
+          </div>
+        </div>
+        <div class="svc-action">
+          <div class="stat">3–5×</div>
+          <div class="stat-label">Reduction in low-value AI usage when departments own the cost</div>
+          <span class="svc-cta">Read more <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 5l7 7-7 7"/></svg></span>
+        </div>
+      </a>
+
+      <a href="service-ai-vendor-negotiation.html" class="svc-row reveal" id="ai-vendor-negotiation">
+        <div class="svc-num">— 14</div>
+        <div class="svc-content">
+          <h3>AI Vendor Negotiation</h3>
+          <p>Emerging AI contract models are structurally complex &mdash; novel pricing constructs, untested clause frameworks, and commercial mechanics most procurement teams haven't seen before. We provide the specialist advisory layer your team needs to engage with confidence and secure defensible commercial terms.</p>
+          <div class="svc-tags">
+            <span class="svc-tag">Vendor negotiation</span>
+            <span class="svc-tag">Contract strategy</span>
+            <span class="svc-tag">AI licensing</span>
+          </div>
+        </div>
+        <div class="svc-action">
+          <div class="stat">18&ndash;40%</div>
+          <div class="stat-label">Avg. cost reduction on AI contracts</div>
+          <span class="svc-cta">Read more <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 5l7 7-7 7"/></svg></span>
+        </div>
+      </a>
+
+      <a href="service-ai-governance-advisory.html" class="svc-row reveal" id="ai-governance-advisory">
+        <div class="svc-num">— 15</div>
+        <div class="svc-content">
+          <h3>AI Governance Advisory</h3>
+          <p>Regulators are moving faster than most enterprise AI programmes. EU AI Act obligations, data sovereignty constraints, and IP exposure from generative models demand structured governance &mdash; before your next audit, not after. We build the frameworks that let you deploy AI with confidence.</p>
+          <div class="svc-tags">
+            <span class="svc-tag">AI governance</span>
+            <span class="svc-tag">Policy &amp; risk</span>
+            <span class="svc-tag">Compliance framework</span>
+          </div>
+        </div>
+        <div class="svc-action">
+          <div class="stat">40+</div>
+          <div class="stat-label">AI governance & compliance risks identified across ecosystems.</div>
+          <span class="svc-cta">Read more <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 5l7 7-7 7"/></svg></span>
+        </div>
+      </a>
+
+    </div>
+  </div>
+</section>
+
+<!-- PROCESS -->
+<section class="process">
+  <div class="container">
+    <div class="process-head reveal">
+      <div class="section-eyebrow">How we engage</div>
+      <h2 class="section-title">A four-step engagement model. <em>No surprises.</em></h2>
+      <p class="section-lede">Whether you hire us for one audit defence or sign a multi-year managed services contract, the engagement model stays consistent.</p>
+    </div>
+
+    <div class="process-grid reveal-stagger">
+      <div class="process-step">
+        <div class="step-num">1</div>
+        <h4>Discover</h4>
+        <p>Free no-obligation consultation. We understand your environment, vendor exposure, current SAM maturity, and the specific outcomes you're aiming for.</p>
+      </div>
+      <div class="process-step">
+        <div class="step-num">2</div>
+        <h4>Assess</h4>
+        <p>Deep-dive analysis of contracts, entitlements, deployment data, and consumption reports. We surface the risks and opportunities that matter most.</p>
+      </div>
+      <div class="process-step">
+        <div class="step-num">3</div>
+        <h4>Execute</h4>
+        <p>We do the work — whether that's audit defence negotiation, contract restructuring, optimisation roadmap delivery, or ongoing managed services.</p>
+      </div>
+      <div class="process-step">
+        <div class="step-num">4</div>
+        <h4>Sustain</h4>
+        <p>We hand over (or stay engaged for) the ongoing operating model that keeps savings recurring and risk continuously managed.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CTA -->
+<section class="cta">
+  <div class="container">
+    <div class="cta-inner">
+      <div class="reveal">
+        <div class="section-eyebrow" style="color: var(--amber-bright);">Get started</div>
+        <h2>Not sure which service <em>you actually need</em>?</h2>
+        <p>Most clients aren't, the first time we speak. The free consultation is designed to figure that out — together. We'll ask about your vendors, your contract cycles, and your audit history. Then we'll tell you honestly what we'd do in your shoes.</p>
+        <div class="cta-actions">
+          <a href="contact.html" class="btn-amber">Book free consultation</a>
+          <a href="case-studies.html" class="btn-line">See client outcomes</a>
+        </div>
+      </div>
+      <div class="cta-detail reveal">
+        <h4>Most-asked-about services</h4>
+        <ul class="cta-list">
+          <li><a href="service-audit-defence.html" style="color: inherit; border-bottom: 1px solid rgba(240,242,245,0.3);">"We just received an audit notice"</a></li>
+          <li><a href="service-sam-baselining.html" style="color: inherit; border-bottom: 1px solid rgba(240,242,245,0.3);">"Microsoft / Oracle / SAP renewal coming up"</a></li>
+          <li><a href="service-ai-spend.html" style="color: inherit; border-bottom: 1px solid rgba(240,242,245,0.3);">"AI spend is climbing — Copilot, ChatGPT, more"</a></li>
+          <li><a href="service-ham-maturity.html" style="color: inherit; border-bottom: 1px solid rgba(240,242,245,0.3);">"Hardware estate visibility is fragmented"</a></li>
+          <li><a href="service-cloud-finops.html" style="color: inherit; border-bottom: 1px solid rgba(240,242,245,0.3);">"Cloud bill is climbing — AWS / Azure / GCP"</a></li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="container">
+    <div class="foot-grid">
+      <div class="foot-brand">
+        <a href="index.html" class="logo" style="color: var(--cream);">
+          <span class="logo-lockup">
+            <span class="logo-text" style="color:var(--cream);"><span class="logo-cap">P</span>roTeam</span>
+            <span class="logo-advisory" style="color:rgba(240,242,245,0.7);">Advisory Solutions LLP</span>
+          </span>
+        </a>
+        <h3>SAM specialists. Nothing else.</h3>
+        <p>An independent Software Asset Management consultancy serving enterprises across India, the UK, the US, and the Middle East.</p>
+
+        <div class="foot-social">
+          <div class="foot-social-label">Follow us on</div>
+          <div class="foot-social-icons">
+            <a href="https://in.linkedin.com/company/proteam-advisory" aria-label="LinkedIn" target="_blank" rel="noopener">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"/><rect x="2" y="9" width="4" height="12"/><circle cx="4" cy="4" r="2"/></svg>
+            </a>
+            <a href="https://x.com/proteamadv" aria-label="X (Twitter)" target="_blank" rel="noopener">
+              <svg viewBox="0 0 24 24" fill="currentColor"><path d="M17.53 3H21l-7.39 8.45L22.5 21h-6.83l-5.34-6.99L3.5 21H0l7.91-9.04L0.5 3h7l4.83 6.4L17.53 3zm-2.39 16h2.06L7.05 4.85H4.83L15.14 19z"/></svg>
+            </a>
+            <a href="https://www.instagram.com/proteamadvisory/" aria-label="Instagram" target="_blank" rel="noopener">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="20" rx="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/></svg>
+            </a>
+            <a href="https://www.youtube.com/channel/UCaajUe2N_6AFw3dvPmH1b7A" aria-label="YouTube" target="_blank" rel="noopener">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M22.54 6.42a2.78 2.78 0 0 0-1.94-2C18.88 4 12 4 12 4s-6.88 0-8.6.46a2.78 2.78 0 0 0-1.94 2A29 29 0 0 0 1 11.75a29 29 0 0 0 .46 5.33A2.78 2.78 0 0 0 3.4 19c1.72.46 8.6.46 8.6.46s6.88 0 8.6-.46a2.78 2.78 0 0 0 1.94-2 29 29 0 0 0 .46-5.25 29 29 0 0 0-.46-5.33z"/><polygon points="9.75 15.02 15.5 11.75 9.75 8.48 9.75 15.02" fill="currentColor"/></svg>
+            </a>
+          </div>
+        </div>
+      </div>
+
+      <div class="foot-col">
+        <h5>Services</h5>
+        <ul>
+          <li><a href="services.html#itam">IT Asset Management</a></li>
+          <li><a href="services.html#finops">Cloud FinOps</a></li>
+          <li><a href="service-platform-strategy.html">Platform Strategy &amp; Advisory</a></li>
+          <li><a href="service-implementation-integration.html">Implementation &amp; Integration</a></li>
+          <li><a href="services.html#ai-transformation">AI Transformation Services</a></li>
+        </ul>
+      </div>
+
+      <div class="foot-col">
+        <h5>About</h5>
+        <ul>
+          <li><a href="our-story.html">Our Story</a></li>
+          <li><a href="our-story.html#team">Team &amp; Leaders</a></li>
+          <li><a href="achievements.html">Achievements &amp; Stats</a></li>
+          <li><a href="gallery.html">Culture &amp; Gallery</a></li>
+        </ul>
+      </div>
+
+      <div class="foot-col">
+        <h5>Company</h5>
+        <ul>
+          <li><a href="case-studies.html">Case Studies</a></li>
+          <li><a href="insights.html">Insights</a></li>
+          <li><a href="careers.html">Careers</a></li>
+          <li><a href="contact.html">Contact</a></li>
+        </ul>
+      </div>
+
+      <div class="foot-col">
+        <h5>Get in touch</h5>
+        <address>
+          Suite #309&ndash;312<br>
+          KTC Illumination Towers<br>
+          Madhapur, Hyderabad<br>
+          Telangana, India<br><br>
+          <a href="tel:+919676889797">+91 9676 889 797</a><br>
+          <a href="mailto:vpatel@proteamadvisory.com">vpatel@proteamadvisory.com</a>
+        </address>
+      </div>
+    </div>
+
+    <div class="foot-bot">
+      <div>&copy; 2026 Proteam Advisory. All rights reserved.</div>
+      <div style="display:flex; gap:24px; flex-wrap:wrap;">
+        <a href="privacy.html">Privacy</a>
+        <a href="terms.html">Terms of Use</a>
+        <a href="cookies.html">Cookies</a>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<script>
+  // ---- Scroll reveal ----
+  const obs = new IntersectionObserver((entries) => {
+    entries.forEach(e => {
+      if (e.isIntersecting) { e.target.classList.add("in"); obs.unobserve(e.target); }
+    });
+  }, { threshold: 0.1, rootMargin: "0px 0px -50px 0px" });
+  document.querySelectorAll(".reveal, .reveal-stagger").forEach(el => obs.observe(el));
+
+  // ---- Smooth scroll ----
+  document.querySelectorAll("a[href^='#']").forEach(link => {
+    link.addEventListener("click", e => {
+      const id = link.getAttribute("href");
+      if (id.length > 1) { const tgt = document.querySelector(id); if (tgt) { e.preventDefault(); tgt.scrollIntoView({ behavior: "smooth", block: "start" }); } }
+    });
+  });
+
+    // ---- Mobile menu (with accordion sub-menus) ----
+  (function() {
+    const toggle = document.getElementById('menuToggle');
+    const mobileNav = document.getElementById('mobileNav');
+    if (!toggle || !mobileNav) return;
+    const body = document.body;
+
+    function openMenu() {
+      mobileNav.classList.add('is-open');
+      toggle.classList.add('open');
+      toggle.setAttribute('aria-expanded', 'true');
+      body.style.overflow = 'hidden';
+    }
+    function closeMenu() {
+      mobileNav.classList.remove('is-open');
+      toggle.classList.remove('open');
+      toggle.setAttribute('aria-expanded', 'false');
+      body.style.overflow = '';
+    }
+    toggle.addEventListener('click', () => mobileNav.classList.contains('is-open') ? closeMenu() : openMenu());
+
+    // Close on actual link clicks only (not on sub-menu toggle buttons)
+    mobileNav.querySelectorAll('a').forEach(link => link.addEventListener('click', closeMenu));
+    document.addEventListener('keydown', e => { if (e.key === 'Escape' && mobileNav.classList.contains('is-open')) closeMenu(); });
+
+    // Accordion behavior for nested sub-menus
+    mobileNav.querySelectorAll('.sub-toggle, .sub-toggle-2').forEach(btn => {
+      btn.addEventListener('click', () => {
+        const id = btn.getAttribute('aria-controls');
+        const target = id ? document.getElementById(id) : btn.nextElementSibling;
+        if (!target) return;
+        const expanded = btn.getAttribute('aria-expanded') === 'true';
+        btn.setAttribute('aria-expanded', String(!expanded));
+        target.classList.toggle('is-open', !expanded);
+      });
+    });
+  })();
+</script>
+
+<script src="sammy-chatbot.js"></script>
+<script>
+/* Desktop mega-menu: JS hover with close-delay */
+(function () {
+  var CLOSE_DELAY = 150;
+  document.querySelectorAll(".nav-links .has-mega").forEach(function (li) {
+    var timer = null;
+    function openMenu() { clearTimeout(timer); li.classList.add("mega-open"); }
+    function scheduleClose() { timer = setTimeout(function () { li.classList.remove("mega-open"); }, CLOSE_DELAY); }
+    li.addEventListener("mouseenter", openMenu);
+    li.addEventListener("mouseleave", scheduleClose);
+    var menu = li.querySelector(".mega-menu");
+    if (menu) {
+      menu.addEventListener("mouseenter", openMenu);
+      menu.addEventListener("mouseleave", scheduleClose);
+    }
+    document.addEventListener("keydown", function (e) { if (e.key === "Escape") li.classList.remove("mega-open"); });
+  });
+})();
+</script>
+</body>
+</html>

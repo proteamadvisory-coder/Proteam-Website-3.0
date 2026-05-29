@@ -1,0 +1,1663 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Cloud Spend Optimisation — Proteam Advisory</title>
+<meta name="description" content="Continuous cloud cost reduction at scale. Rightsizing, commitment optimisation, workload governance and AI-powered financial visibility — without slowing engineering velocity." />
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300..900;1,9..144,300..900&family=Geist:wght@300..700&family=Geist+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="styles.css">
+
+<style>
+  /* ─────────────────────────────────────────────────────────────
+     SERVICE DETAIL — CLOUD SPEND OPTIMISATION
+     Tone: operational · dashboard · alive
+     Motion: faster, layered, pulsing
+  ────────────────────────────────────────────────────────────── */
+
+  /* Faster reveal motion (~half the advisory page) */
+  .reveal { opacity: 0; transform: translateY(14px); transition: opacity 0.45s ease, transform 0.45s cubic-bezier(.2,.7,.2,1); }
+  .reveal.in { opacity: 1; transform: translateY(0); }
+  .reveal-stagger > * { opacity: 0; transform: translateY(14px); transition: opacity 0.45s ease, transform 0.45s cubic-bezier(.2,.7,.2,1); }
+  .reveal-stagger.in > *:nth-child(1) { opacity:1; transform:none; transition-delay: 0.02s; }
+  .reveal-stagger.in > *:nth-child(2) { opacity:1; transform:none; transition-delay: 0.06s; }
+  .reveal-stagger.in > *:nth-child(3) { opacity:1; transform:none; transition-delay: 0.10s; }
+  .reveal-stagger.in > *:nth-child(4) { opacity:1; transform:none; transition-delay: 0.14s; }
+  .reveal-stagger.in > *:nth-child(5) { opacity:1; transform:none; transition-delay: 0.18s; }
+  .reveal-stagger.in > *:nth-child(6) { opacity:1; transform:none; transition-delay: 0.22s; }
+
+  /* ──────────────── HERO ──────────────── */
+  .svc-detail-hero .stat-row {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 32px;
+    margin-top: 56px;
+    padding-top: 40px;
+    border-top: 1px solid var(--line);
+  }
+  .svc-detail-hero .stat-row .stat-num {
+    font-family: var(--sans);
+    font-weight: 300;
+    font-size: 48px;
+    line-height: 1;
+    color: var(--amber);
+    letter-spacing: -0.03em;
+    margin-bottom: 10px;
+    font-variation-settings: "opsz" 144;
+    display: flex;
+    align-items: baseline;
+    gap: 8px;
+  }
+  .svc-detail-hero .stat-row .stat-num .live-dot {
+    width: 8px; height: 8px;
+    border-radius: 50%;
+    background: var(--yellow);
+    display: inline-block;
+    animation: livePulse 2s ease-in-out infinite;
+    box-shadow: 0 0 0 0 rgba(253,222,85,0.7);
+  }
+  @keyframes livePulse {
+    0%, 100% { transform: scale(1); box-shadow: 0 0 0 0 rgba(253,222,85,0.6); }
+    50%      { transform: scale(1.15); box-shadow: 0 0 0 6px rgba(253,222,85,0); }
+  }
+  .svc-detail-hero .stat-row .stat-lbl {
+    font-size: 13px;
+    line-height: 1.5;
+    color: var(--navy-soft);
+  }
+  @media (max-width: 768px) {
+    .svc-detail-hero .stat-row { grid-template-columns: 1fr; gap: 24px; }
+  }
+
+  /* ──────────────── PROBLEM ──────────────── */
+  .svc-overview { background: var(--paper); padding: 110px 0; position: relative; overflow: hidden; }
+  .svc-overview-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 80px;
+    align-items: start;
+  }
+  .svc-overview-grid h2 {
+    font-family: var(--sans);
+    font-weight: 400;
+    font-size: clamp(32px, 4vw, 48px);
+    line-height: 1.1;
+    letter-spacing: -0.02em;
+    color: var(--navy);
+    margin-bottom: 24px;
+    font-variation-settings: "opsz" 144;
+  }
+  .svc-overview-grid h2 em {
+    font-family: var(--serif);
+    font-variation-settings: "opsz" 144;
+    font-style: italic;
+    color: var(--amber);
+    font-weight: 300;
+  }
+  .svc-overview-grid p {
+    font-size: 17px;
+    line-height: 1.7;
+    color: var(--navy-soft);
+    margin-bottom: 18px;
+  }
+  .svc-overview-grid p strong { color: var(--navy); font-weight: 600; }
+  .key-line {
+    margin-top: 28px;
+    padding: 24px 30px;
+    border-left: 2px solid var(--amber);
+    background: var(--cream);
+    border-radius: 0 var(--radius) var(--radius) 0;
+    font-family: var(--serif);
+    font-size: 21px;
+    line-height: 1.35;
+    color: var(--navy);
+    font-weight: 400;
+    font-variation-settings: "opsz" 144;
+  }
+  .key-line em { font-style: italic; color: var(--amber); }
+  @media (max-width: 960px) { .svc-overview-grid { grid-template-columns: 1fr; gap: 32px; } }
+
+  /* ──────────────── FOUR PRINCIPLES (animated 2×2) ──────────────── */
+  .principles { background: var(--cream); padding: 110px 0; position: relative; }
+  .principles-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1px;
+    background: var(--line);
+    border: 1px solid var(--line);
+    margin-top: 48px;
+    border-radius: var(--radius);
+    overflow: hidden;
+  }
+  .principle {
+    background: var(--cream);
+    padding: 44px 40px;
+    transition: background 0.3s ease;
+    position: relative;
+    overflow: hidden;
+  }
+  .principle:hover { background: var(--paper); }
+  .principle-head {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    margin-bottom: 24px;
+  }
+  .principle-glyph {
+    width: 64px;
+    height: 64px;
+    flex-shrink: 0;
+    background: var(--navy);
+    border-radius: var(--radius-sm);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    overflow: hidden;
+    box-shadow: var(--shadow-sm);
+  }
+  .principle-num {
+    font-family: var(--mono);
+    font-size: 11px;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--amber);
+    margin-bottom: 4px;
+  }
+  .principle h4 {
+    font-family: var(--sans);
+    font-weight: 500;
+    font-size: 24px;
+    line-height: 1.15;
+    color: var(--navy);
+    letter-spacing: -0.01em;
+    font-variation-settings: "opsz" 144;
+  }
+  .principle-focus {
+    list-style: none;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    margin-bottom: 22px;
+  }
+  .principle-focus li {
+    font-family: var(--mono);
+    font-size: 11px;
+    letter-spacing: 0.05em;
+    color: var(--navy-soft);
+    background: var(--paper);
+    border: 1px solid var(--line);
+    padding: 6px 10px;
+    border-radius: 999px;
+  }
+  .principle-line {
+    font-family: var(--serif);
+    font-style: italic;
+    font-size: 15px;
+    line-height: 1.5;
+    color: var(--navy);
+    font-variation-settings: "opsz" 144;
+    padding-top: 16px;
+    border-top: 1px solid var(--line);
+  }
+
+  /* Glyph animations — CSS-only */
+  /* 01 Eliminate waste — bubbles fading away */
+  .glyph-waste { color: var(--amber-bright); }
+  .glyph-waste .b {
+    fill: currentColor;
+    animation: wasteFade 3s ease-in-out infinite;
+    transform-origin: center;
+  }
+  .glyph-waste .b1 { animation-delay: 0s; }
+  .glyph-waste .b2 { animation-delay: 0.5s; }
+  .glyph-waste .b3 { animation-delay: 1s; }
+  .glyph-waste .b4 { animation-delay: 1.5s; }
+  @keyframes wasteFade {
+    0%, 100% { opacity: 0.95; transform: scale(1); }
+    40%      { opacity: 0.95; transform: scale(1); }
+    70%      { opacity: 0; transform: scale(0.3); }
+    100%     { opacity: 0; transform: scale(0.3); }
+  }
+
+  /* 02 Buy smarter — two bars rebalancing */
+  .glyph-buy .bar {
+    fill: var(--amber-bright);
+    transform-origin: bottom center;
+  }
+  .glyph-buy .b-left  { animation: barRebL 3.4s ease-in-out infinite; }
+  .glyph-buy .b-right { animation: barRebR 3.4s ease-in-out infinite; }
+  @keyframes barRebL {
+    0%, 100% { transform: scaleY(0.45); }
+    50%      { transform: scaleY(0.95); }
+  }
+  @keyframes barRebR {
+    0%, 100% { transform: scaleY(0.95); }
+    50%      { transform: scaleY(0.45); }
+  }
+
+  /* 03 Engineer efficiently — box resizing */
+  .glyph-engineer .frame {
+    fill: none;
+    stroke: var(--amber-bright);
+    stroke-width: 2.5;
+    transform-origin: center;
+    animation: frameResize 3.6s ease-in-out infinite;
+  }
+  @keyframes frameResize {
+    0%, 100% { transform: scale(1); }
+    50%      { transform: scale(0.65); }
+  }
+  .glyph-engineer .pt {
+    fill: var(--yellow);
+    transform-origin: center;
+    animation: framePulse 3.6s ease-in-out infinite;
+  }
+  @keyframes framePulse {
+    0%, 100% { opacity: 0.5; }
+    50%      { opacity: 1; }
+  }
+
+  /* 04 Automate continuously — infinity loop traveling */
+  .glyph-auto .track {
+    fill: none;
+    stroke: rgba(104,210,232,0.25);
+    stroke-width: 3;
+  }
+  .glyph-auto .runner {
+    fill: none;
+    stroke: var(--amber-bright);
+    stroke-width: 3;
+    stroke-linecap: round;
+    stroke-dasharray: 24 200;
+    animation: loopRun 3s linear infinite;
+  }
+  @keyframes loopRun {
+    0%   { stroke-dashoffset: 0; }
+    100% { stroke-dashoffset: -224; }
+  }
+
+  @media (max-width: 768px) {
+    .principles-grid { grid-template-columns: 1fr; }
+    .principle { padding: 36px 28px; }
+  }
+
+  /* ──────────────── OPTIMIZATION LAYERS (live dashboard stack) ──────────────── */
+  .layers {
+    background: var(--navy);
+    color: var(--cream);
+    padding: 120px 0;
+    position: relative;
+    overflow: hidden;
+  }
+  .layers::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background-image:
+      linear-gradient(rgba(255,255,255,0.025) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(255,255,255,0.025) 1px, transparent 1px);
+    background-size: 60px 60px;
+    pointer-events: none;
+  }
+  .layers .container { position: relative; }
+  .layers .section-title { color: var(--cream); }
+  .layers .section-eyebrow { color: var(--amber-bright); }
+  .layers .section-eyebrow::before { background: var(--amber-bright); }
+  .layers .section-lede { color: rgba(240,242,245,0.7); }
+
+  .layer-stack {
+    margin-top: 56px;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+  }
+  .layer {
+    background: rgba(255,255,255,0.04);
+    border: 1px solid rgba(255,255,255,0.10);
+    border-radius: var(--radius);
+    padding: 22px 28px;
+    display: grid;
+    grid-template-columns: 60px 240px 1fr 180px;
+    gap: 28px;
+    align-items: center;
+    transition: all 0.3s ease;
+    position: relative;
+    overflow: hidden;
+  }
+  .layer:hover {
+    background: rgba(255,255,255,0.07);
+    border-color: rgba(104,210,232,0.35);
+    transform: translateX(6px);
+  }
+  .layer-idx {
+    font-family: var(--mono);
+    font-size: 11px;
+    letter-spacing: 0.18em;
+    color: rgba(240,242,245,0.4);
+  }
+  .layer-name {
+    font-family: var(--sans);
+    font-weight: 500;
+    font-size: 17px;
+    color: var(--cream);
+    letter-spacing: -0.005em;
+    font-variation-settings: "opsz" 144;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+  .layer-name .layer-dot {
+    width: 6px; height: 6px;
+    border-radius: 50%;
+    background: var(--yellow);
+    animation: livePulse 2.4s ease-in-out infinite;
+  }
+  .layer-desc {
+    font-size: 14px;
+    line-height: 1.55;
+    color: rgba(240,242,245,0.72);
+  }
+  /* Animated mini-waveform on the right */
+  .layer-wave {
+    height: 36px;
+    width: 180px;
+    position: relative;
+  }
+  .layer-wave svg { width: 100%; height: 100%; display: block; }
+  .layer-wave .w-path {
+    fill: none;
+    stroke: var(--amber-bright);
+    stroke-width: 1.8;
+    stroke-linecap: round;
+    stroke-dasharray: 280;
+    stroke-dashoffset: 280;
+    animation: waveDraw 3.6s ease-in-out infinite;
+  }
+  @keyframes waveDraw {
+    0%   { stroke-dashoffset: 280; }
+    50%  { stroke-dashoffset: 0; }
+    100% { stroke-dashoffset: -280; }
+  }
+  .layer:nth-child(1) .w-path { animation-delay: 0s; }
+  .layer:nth-child(2) .w-path { animation-delay: 0.3s; }
+  .layer:nth-child(3) .w-path { animation-delay: 0.6s; }
+  .layer:nth-child(4) .w-path { animation-delay: 0.9s; }
+  .layer:nth-child(5) .w-path { animation-delay: 1.2s; }
+  .layer:nth-child(6) .w-path { animation-delay: 1.5s; }
+
+  @media (max-width: 960px) {
+    .layer {
+      grid-template-columns: 50px 1fr;
+      grid-template-rows: auto auto auto;
+      gap: 8px 16px;
+    }
+    .layer-name { grid-column: 2; }
+    .layer-desc { grid-column: 1 / -1; }
+    .layer-wave { grid-column: 1 / -1; width: 100%; height: 28px; }
+  }
+
+  /* ──────────────── HOW WE WORK (continuous flow) ──────────────── */
+  .ops { background: var(--paper); padding: 110px 0; }
+  .ops-flow {
+    margin-top: 56px;
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 16px;
+    position: relative;
+  }
+  /* Continuous connector behind nodes */
+  .ops-flow::before {
+    content: '';
+    position: absolute;
+    top: 36px;
+    left: 12.5%;
+    right: 12.5%;
+    height: 2px;
+    background: var(--line);
+    z-index: 0;
+  }
+  .ops-flow::after {
+    content: '';
+    position: absolute;
+    top: 36px;
+    left: 12.5%;
+    width: 0;
+    height: 2px;
+    background: var(--amber);
+    z-index: 1;
+    animation: flowSweep 6s linear infinite;
+  }
+  @keyframes flowSweep {
+    0%   { width: 0; left: 12.5%; }
+    45%  { width: 75%; left: 12.5%; }
+    50%  { width: 75%; left: 12.5%; }
+    95%  { width: 0; left: 87.5%; }
+    100% { width: 0; left: 12.5%; }
+  }
+  .ops-node {
+    text-align: center;
+    position: relative;
+    z-index: 2;
+    background: var(--paper);
+    padding: 0 14px;
+  }
+  .ops-node-dot {
+    width: 72px;
+    height: 72px;
+    border-radius: 50%;
+    background: var(--paper);
+    border: 2px solid var(--line);
+    margin: 0 auto 24px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: var(--sans);
+    font-size: 11px;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--navy-soft);
+    font-weight: 500;
+    transition: all 0.4s ease;
+    position: relative;
+  }
+  .ops-node:hover .ops-node-dot {
+    border-color: var(--amber);
+    color: var(--amber);
+    transform: scale(1.06);
+    box-shadow: 0 0 0 8px rgba(3,174,210,0.08);
+  }
+  .ops-node-dot .pulse {
+    position: absolute;
+    inset: -4px;
+    border-radius: 50%;
+    border: 1.5px solid var(--amber);
+    opacity: 0;
+    animation: nodePulse 3s ease-in-out infinite;
+  }
+  .ops-node:nth-child(1) .pulse { animation-delay: 0s; }
+  .ops-node:nth-child(2) .pulse { animation-delay: 0.75s; }
+  .ops-node:nth-child(3) .pulse { animation-delay: 1.5s; }
+  .ops-node:nth-child(4) .pulse { animation-delay: 2.25s; }
+  @keyframes nodePulse {
+    0%   { opacity: 0.6; transform: scale(1); }
+    100% { opacity: 0; transform: scale(1.4); }
+  }
+  .ops-node h4 {
+    font-family: var(--sans);
+    font-weight: 500;
+    font-size: 20px;
+    color: var(--navy);
+    margin-bottom: 8px;
+    letter-spacing: -0.01em;
+    font-variation-settings: "opsz" 144;
+  }
+  .ops-node p {
+    font-size: 14px;
+    line-height: 1.55;
+    color: var(--navy-soft);
+  }
+  .ops-cyclic {
+    margin-top: 48px;
+    text-align: center;
+    font-family: var(--mono);
+    font-size: 11px;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--muted);
+  }
+  .ops-cyclic .cyc-dot {
+    display: inline-block;
+    width: 5px; height: 5px;
+    border-radius: 50%;
+    background: var(--yellow);
+    margin: 0 8px 2px;
+    animation: livePulse 2s ease-in-out infinite;
+    vertical-align: middle;
+  }
+  @media (max-width: 768px) {
+    .ops-flow { grid-template-columns: 1fr; gap: 32px; }
+    .ops-flow::before, .ops-flow::after { display: none; }
+  }
+
+  /* ──────────────── AI INTELLIGENCE ──────────────── */
+  .ai { background: var(--cream); padding: 110px 0; }
+  .ai-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 64px;
+    align-items: center;
+    margin-top: 56px;
+  }
+  .ai-grid h2 {
+    font-family: var(--sans);
+    font-weight: 400;
+    font-size: clamp(30px, 3.6vw, 44px);
+    line-height: 1.1;
+    letter-spacing: -0.02em;
+    color: var(--navy);
+    margin-bottom: 24px;
+    font-variation-settings: "opsz" 144;
+  }
+  .ai-grid h2 em {
+    font-family: var(--serif);
+    font-style: italic;
+    color: var(--amber);
+    font-weight: 300;
+  }
+  .ai-grid p {
+    font-size: 16px;
+    line-height: 1.7;
+    color: var(--navy-soft);
+    margin-bottom: 14px;
+  }
+  .ai-grid p strong { color: var(--navy); font-weight: 600; }
+  .ai-note {
+    margin-top: 18px;
+    padding: 14px 18px;
+    background: var(--paper);
+    border-left: 2px solid var(--amber);
+    border-radius: 0 var(--radius-sm) var(--radius-sm) 0;
+    font-size: 14px;
+    color: var(--navy-soft);
+  }
+  .ai-note strong { color: var(--amber); }
+  /* Mini dashboard widget */
+  .ai-dash {
+    background: var(--navy);
+    border-radius: var(--radius);
+    padding: 28px;
+    color: var(--cream);
+    box-shadow: var(--shadow-lg);
+    position: relative;
+    overflow: hidden;
+  }
+  .ai-dash::before {
+    content: '';
+    position: absolute;
+    top: -50%; right: -30%;
+    width: 360px; height: 360px;
+    background: radial-gradient(circle, rgba(3,174,210,0.25) 0%, transparent 70%);
+    border-radius: 50%;
+    pointer-events: none;
+  }
+  .ai-dash-head {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 22px;
+    position: relative;
+  }
+  .ai-dash-title {
+    font-family: var(--mono);
+    font-size: 11px;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: rgba(240,242,245,0.6);
+  }
+  .ai-dash-live {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    font-family: var(--mono);
+    font-size: 10px;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--yellow);
+  }
+  .ai-dash-live .live-dot {
+    width: 7px; height: 7px;
+    border-radius: 50%;
+    background: var(--yellow);
+    animation: livePulse 1.6s ease-in-out infinite;
+  }
+  .ai-tiles {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 12px;
+    position: relative;
+  }
+  .ai-tile {
+    background: rgba(255,255,255,0.06);
+    border: 1px solid rgba(255,255,255,0.10);
+    border-radius: var(--radius-sm);
+    padding: 18px;
+    transition: background 0.25s ease;
+  }
+  .ai-tile:hover { background: rgba(255,255,255,0.10); }
+  .ai-tile-lbl {
+    font-family: var(--mono);
+    font-size: 9px;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: rgba(240,242,245,0.55);
+    margin-bottom: 10px;
+  }
+  .ai-tile-val {
+    font-family: var(--sans);
+    font-weight: 300;
+    font-size: 26px;
+    color: var(--cream);
+    letter-spacing: -0.02em;
+    font-variation-settings: "opsz" 144;
+    margin-bottom: 10px;
+  }
+  .ai-tile-val .up { color: var(--amber-bright); font-size: 14px; margin-left: 4px; }
+  .ai-tile-val .down { color: var(--yellow); font-size: 14px; margin-left: 4px; }
+  /* Sparkline */
+  .spark { height: 28px; width: 100%; }
+  .spark svg { width: 100%; height: 100%; }
+  .spark path {
+    fill: none;
+    stroke: var(--amber-bright);
+    stroke-width: 1.8;
+    stroke-linecap: round;
+    stroke-dasharray: 200;
+    stroke-dashoffset: 200;
+    animation: sparkDraw 4s ease-in-out infinite;
+  }
+  .spark.yellow path { stroke: var(--yellow); animation-delay: 0.6s; }
+  .spark.cyan-light path { stroke: var(--amber-bright); animation-delay: 1.2s; }
+  .spark.yellow-2 path { stroke: var(--yellow); animation-delay: 1.8s; }
+  @keyframes sparkDraw {
+    0%   { stroke-dashoffset: 200; }
+    50%  { stroke-dashoffset: 0; }
+    100% { stroke-dashoffset: -200; }
+  }
+  @media (max-width: 960px) { .ai-grid { grid-template-columns: 1fr; gap: 40px; } }
+
+  /* ──────────────── PROOF (animated counters + bar diagram) ──────────────── */
+  .proof { background: var(--paper); padding: 110px 0; }
+  .proof-grid {
+    display: grid;
+    grid-template-columns: 1fr 1.1fr;
+    gap: 64px;
+    margin-top: 56px;
+    align-items: start;
+  }
+  .proof-quote {
+    font-family: var(--sans);
+    font-weight: 400;
+    font-size: clamp(26px, 3.2vw, 36px);
+    line-height: 1.25;
+    letter-spacing: -0.015em;
+    color: var(--navy);
+    font-variation-settings: "opsz" 144;
+  }
+  .proof-quote em {
+    font-family: var(--serif);
+    font-style: italic;
+    color: var(--amber);
+    font-weight: 400;
+  }
+  .proof-narrative {
+    margin-top: 32px;
+    display: grid;
+    gap: 16px;
+  }
+  .proof-narrative .pn-item {
+    display: grid;
+    grid-template-columns: 110px 1fr;
+    gap: 20px;
+    padding-bottom: 14px;
+    border-bottom: 1px solid var(--line);
+  }
+  .proof-narrative .pn-item:last-child { border-bottom: 0; padding-bottom: 0; }
+  .proof-narrative .pn-label {
+    font-family: var(--mono);
+    font-size: 11px;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--amber);
+    padding-top: 3px;
+  }
+  .proof-narrative .pn-text {
+    font-size: 15px;
+    line-height: 1.6;
+    color: var(--navy-soft);
+  }
+  .proof-narrative .pn-text strong { color: var(--navy); font-weight: 600; }
+
+  /* Big-number metric grid with count-up */
+  .metric-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1px;
+    background: var(--line);
+    border: 1px solid var(--line);
+    border-radius: var(--radius);
+    overflow: hidden;
+    box-shadow: var(--shadow-sm);
+  }
+  .metric-cell {
+    background: var(--paper);
+    padding: 32px 28px;
+    transition: background 0.3s ease;
+    position: relative;
+  }
+  .metric-cell:hover { background: var(--cream); }
+  .metric-label {
+    font-family: var(--mono);
+    font-size: 10px;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--muted);
+    margin-bottom: 14px;
+  }
+  .metric-value {
+    font-family: var(--sans);
+    font-weight: 300;
+    font-size: 38px;
+    line-height: 1.05;
+    color: var(--amber);
+    letter-spacing: -0.025em;
+    font-variation-settings: "opsz" 144;
+  }
+  .metric-value .unit { color: var(--navy); font-size: 24px; margin-left: 2px; }
+  .metric-desc {
+    margin-top: 10px;
+    font-size: 13px;
+    line-height: 1.5;
+    color: var(--navy-soft);
+  }
+  /* The shrinking-bar diagram for anomaly response */
+  .bar-compare {
+    grid-column: 1 / -1;
+    background: var(--paper);
+    padding: 32px 28px;
+  }
+  .bar-compare:hover { background: var(--cream); }
+  .bar-compare .br-row {
+    display: grid;
+    grid-template-columns: 90px 1fr 80px;
+    align-items: center;
+    gap: 14px;
+    margin-bottom: 10px;
+  }
+  .bar-compare .br-row:last-of-type { margin-bottom: 0; }
+  .br-label {
+    font-family: var(--mono);
+    font-size: 10px;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--muted);
+  }
+  .br-track {
+    height: 10px;
+    background: var(--cream);
+    border-radius: 999px;
+    position: relative;
+    overflow: hidden;
+  }
+  .br-fill {
+    height: 100%;
+    border-radius: 999px;
+    transform-origin: left center;
+    transform: scaleX(0);
+    transition: transform 1.4s cubic-bezier(.2,.7,.2,1);
+  }
+  .br-row.before .br-fill { background: var(--navy-soft); }
+  .br-row.after  .br-fill { background: var(--amber); }
+  .bar-compare.in .br-row.before .br-fill { transform: scaleX(1); }
+  .bar-compare.in .br-row.after .br-fill  { transform: scaleX(0.107); /* 36h ≈ 10.7% of 14d */ transition-delay: 0.5s; }
+  .br-val {
+    font-family: var(--sans);
+    font-weight: 500;
+    font-size: 15px;
+    color: var(--navy);
+    text-align: right;
+    letter-spacing: -0.01em;
+  }
+  .br-row.after .br-val { color: var(--amber); }
+
+  @media (max-width: 960px) {
+    .proof-grid { grid-template-columns: 1fr; gap: 40px; }
+    .metric-grid { grid-template-columns: 1fr; }
+    .bar-compare .br-row { grid-template-columns: 80px 1fr 70px; gap: 10px; }
+  }
+
+  /* ──────────────── ADJACENT SERVICES ──────────────── */
+  .other-svc { background: var(--cream); padding: 110px 0; }
+  .other-svc-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 24px;
+    margin-top: 48px;
+  }
+  .other-svc-card {
+    background: var(--paper);
+    border: 1px solid var(--line);
+    padding: 40px 36px;
+    border-radius: var(--radius);
+    transition: all 0.3s ease;
+    display: flex;
+    flex-direction: column;
+    text-decoration: none;
+  }
+  .other-svc-card:hover {
+    background: var(--navy);
+    color: var(--cream);
+    transform: translateY(-4px);
+    box-shadow: var(--shadow-md);
+  }
+  .other-svc-card .num {
+    font-family: var(--sans);
+    font-style: italic;
+    color: var(--amber);
+    font-size: 14px;
+    margin-bottom: 16px;
+  }
+  .other-svc-card:hover .num { color: var(--amber-bright); }
+  .other-svc-card h4 {
+    font-family: var(--sans);
+    font-weight: 500;
+    font-size: 24px;
+    line-height: 1.15;
+    margin-bottom: 12px;
+    letter-spacing: -0.01em;
+    color: var(--navy);
+    transition: color 0.3s;
+    font-variation-settings: "opsz" 144;
+  }
+  .other-svc-card:hover h4 { color: var(--cream); }
+  .other-svc-card p {
+    font-size: 15px;
+    line-height: 1.6;
+    color: var(--navy-soft);
+    margin-bottom: 20px;
+    flex: 1;
+    transition: color 0.3s;
+  }
+  .other-svc-card:hover p { color: rgba(240,242,245,0.75); }
+  .other-svc-card .lnk {
+    font-size: 12px;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    font-weight: 600;
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    color: var(--navy);
+    transition: color 0.3s;
+  }
+  .other-svc-card:hover .lnk { color: var(--amber-bright); }
+  @media (max-width: 768px) { .other-svc-grid { grid-template-columns: 1fr; } }
+
+  /* Respect reduced motion */
+  @media (prefers-reduced-motion: reduce) {
+    *, *::before, *::after {
+      animation-duration: 0.001ms !important;
+      animation-iteration-count: 1 !important;
+      transition-duration: 0.001ms !important;
+    }
+  }
+</style>
+</head>
+<body>
+
+<!-- HEADER -->
+<header>
+  <div class="container nav">
+    <a href="index.html" class="logo">
+      <span class="logo-lockup">
+        <span class="logo-text"><span class="logo-cap">P</span>roTeam</span>
+        <span class="logo-advisory">Advisory Solutions LLP</span>
+      </span>
+    </a>
+    <ul class="nav-links">
+      <li><a href="index.html">Home</a></li>
+      <li class="has-mega">
+        <a href="services.html" class="active">Services <svg class="caret" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 9l6 6 6-6"/></svg></a>
+        <div class="mega-menu" role="menu" aria-label="Services">
+          <div class="mega-grid">
+            <div class="mega-col">
+              <a href="services.html#itam" class="mega-head">IT Asset Management</a>
+              <ul>
+                <li><a href="service-sam-maturity.html">SAM Maturity Assessment</a></li>
+                <li><a href="service-sam-baselining.html">SAM Baselining &amp; Cost Optimization</a></li>
+                <li><a href="service-audit-defence.html">Audit Defense &amp; Negotiation Support</a></li>
+                <li><a href="service-ham-maturity.html">Hardware Asset Management</a></li>
+                <li><a href="service-itam-managed.html">Managed Services</a></li>
+              </ul>
+            </div>
+            <div class="mega-col">
+              <a href="services.html#finops" class="mega-head">Cloud FinOps</a>
+              <ul>
+                <li><a href="service-cloud-finops.html">FinOps Advisory &amp; Strategy</a></li>
+                <li><a href="service-finops-optimization.html">Cloud Spend Optimisation</a></li>
+                <li><a href="service-finops-managed.html">Managed FinOps Services</a></li>
+              </ul>
+            </div>
+            <div class="mega-col">
+              <a href="services.html#platform-strategy" class="mega-head">Platform Strategy &amp; Advisory</a>
+              <ul>
+                <li><a href="service-platform-strategy.html">Platform Strategy &amp; Advisory</a></li>
+                <li><a href="service-implementation-integration.html">Implementation &amp; Integration</a></li>
+              </ul>
+            </div>
+            <div class="mega-col">
+              <a href="services.html#ai-transformation" class="mega-head">AI Transformation Services</a>
+              <ul>
+                <li><a href="service-ai-spend.html">AI Spend Management</a></li>
+                <li><a href="service-ai-adoption.html">AI Adoption &amp; Value Delivery</a></li>
+                <li><a href="service-ai-usage-analytics.html">AI Usage Analytics</a></li>
+                <li><a href="service-ai-vendor-negotiation.html">AI Vendor Negotiation</a></li>
+                <li><a href="service-ai-governance-advisory.html">AI Governance Advisory</a></li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </li>
+
+      <li><a href="case-studies.html">Case Studies</a></li>
+            <li class="has-mega has-about-dropdown">
+        <a href="about.html">About <svg class="caret" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 9l6 6 6-6"/></svg></a>
+        <div class="mega-menu" role="menu" aria-label="About">
+          <div class="mega-grid mega-grid--about">
+            <div class="mega-col">
+              <a href="our-story.html" class="mega-head">Our Story</a>
+              <ul>
+                <li><a href="our-story.html">Who We Are</a></li>
+                <li><a href="our-story.html#team">Team / Leaders</a></li>
+              </ul>
+            </div>
+            <div class="mega-col">
+              <a href="achievements.html" class="mega-head">By the Numbers</a>
+              <ul>
+                <li><a href="achievements.html">Achievements &amp; Stats</a></li>
+              </ul>
+            </div>
+            <div class="mega-col">
+              <a href="gallery.html" class="mega-head">Gallery</a>
+              <ul>
+                <li><a href="gallery.html">Culture &amp; Events</a></li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </li>
+      <li><a href="insights.html">Insights</a></li>
+            <li><a href="careers.html">Careers</a></li>
+      <li><a href="contact.html">Contact</a></li>
+    </ul>
+    <a href="contact.html" class="nav-cta">Free Consultation</a>
+    <button class="menu-toggle" id="menuToggle" aria-label="Toggle menu" aria-expanded="false">
+      <span class="bar"></span>
+      <span class="bar"></span>
+      <span class="bar"></span>
+    </button>
+  </div>
+</header>
+
+<!-- MOBILE NAV -->
+<nav class="mobile-nav" id="mobileNav" aria-label="Mobile navigation">
+  <ul class="mobile-nav-links">
+    <li><a href="index.html">Home <span>&rarr;</span></a></li>
+    <li class="has-sub">
+      <button class="sub-toggle" type="button" aria-expanded="false" aria-controls="m-svc-sub">
+        Services
+        <svg class="caret" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 9l6 6 6-6"/></svg>
+      </button>
+      <ul id="m-svc-sub" class="sub-menu">
+        <li class="has-sub-2">
+          <button class="sub-toggle-2" type="button" aria-expanded="false" aria-controls="m-itam-sub">
+            IT Asset Management
+            <svg class="caret" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 9l6 6 6-6"/></svg>
+          </button>
+          <ul id="m-itam-sub" class="sub-menu-2">
+            <li><a href="service-sam-maturity.html">SAM Maturity Assessment</a></li>
+            <li><a href="service-sam-baselining.html">SAM Baselining &amp; Cost Optimization</a></li>
+            <li><a href="service-audit-defence.html">Audit Defense &amp; Negotiation Support</a></li>
+            <li><a href="service-ham-maturity.html">Hardware Asset Management</a></li>
+            <li><a href="service-itam-managed.html">Managed Services</a></li>
+          </ul>
+        </li>
+        <li class="has-sub-2">
+          <button class="sub-toggle-2" type="button" aria-expanded="false" aria-controls="m-finops-sub">
+            Cloud FinOps
+            <svg class="caret" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 9l6 6 6-6"/></svg>
+          </button>
+          <ul id="m-finops-sub" class="sub-menu-2">
+            <li><a href="service-cloud-finops.html">FinOps Advisory &amp; Strategy</a></li>
+            <li><a href="service-finops-optimization.html">Cloud Spend Optimisation</a></li>
+            <li><a href="service-finops-managed.html">Managed FinOps Services</a></li>
+          </ul>
+        </li>
+        <li class="has-sub-2">
+          <button class="sub-toggle-2" type="button" aria-expanded="false" aria-controls="m-platform-sub">
+            Platform Strategy &amp; Advisory
+            <svg class="caret" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 9l6 6 6-6"/></svg>
+          </button>
+          <ul id="m-platform-sub" class="sub-menu-2">
+            <li><a href="service-platform-strategy.html">Platform Strategy &amp; Advisory</a></li>
+            <li><a href="service-implementation-integration.html">Implementation &amp; Integration</a></li>
+          </ul>
+        </li>
+        <li class="has-sub-2">
+          <button class="sub-toggle-2" type="button" aria-expanded="false" aria-controls="m-ai-sub">
+            AI Transformation Services
+            <svg class="caret" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 9l6 6 6-6"/></svg>
+          </button>
+          <ul id="m-ai-sub" class="sub-menu-2">
+            <li><a href="service-ai-spend.html">AI Spend Management</a></li>
+            <li><a href="service-ai-adoption.html">AI Adoption &amp; Value Delivery</a></li>
+            <li><a href="service-ai-usage-analytics.html">AI Usage Analytics</a></li>
+            <li><a href="service-ai-vendor-negotiation.html">AI Vendor Negotiation</a></li>
+            <li><a href="service-ai-governance-advisory.html">AI Governance Advisory</a></li>
+          </ul>
+        </li>
+      </ul>
+    </li>
+
+    <li><a href="case-studies.html">Case Studies <span>&rarr;</span></a></li>
+        <li class="has-sub">
+      <button class="sub-toggle" type="button" aria-expanded="false" aria-controls="m-about-sub">
+        About
+        <svg class="caret" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 9l6 6 6-6"/></svg>
+      </button>
+      <ul id="m-about-sub" class="sub-menu">
+        <li><a href="our-story.html">Our Story</a></li>
+        <li><a href="achievements.html">By the Numbers</a></li>
+        <li><a href="our-story.html#team">Team / Leaders</a></li>
+        <li><a href="gallery.html">Gallery</a></li>
+      </ul>
+    </li>
+    <li><a href="insights.html">Insights <span>&rarr;</span></a></li>
+        <li><a href="careers.html">Careers <span>&rarr;</span></a></li>
+    <li><a href="contact.html">Contact <span>&rarr;</span></a></li>
+  </ul>
+  <a href="contact.html" class="mobile-nav-cta">Book Free Consultation &rarr;</a>
+  <div class="mobile-nav-contact">
+    <a href="tel:+919676889797">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07 19.5 19.5 0 01-6-6 19.79 19.79 0 01-3.07-8.67A2 2 0 014.11 2h3a2 2 0 012 1.72 12.84 12.84 0 00.7 2.81 2 2 0 01-.45 2.11L8.09 9.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45 12.84 12.84 0 002.81.7A2 2 0 0122 16.92z"/></svg>
+      +91 9676 889 797
+    </a>
+    <a href="mailto:vpatel@proteamadvisory.com">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+      vpatel@proteamadvisory.com
+    </a>
+  </div>
+</nav>
+
+<!-- PAGE HERO -->
+<section class="page-hero svc-detail-hero">
+  <div class="container">
+    <div class="breadcrumb">
+      <a href="index.html">Home</a>
+      <span class="sep">/</span>
+      <a href="services.html">Services</a>
+      <span class="sep">/</span>
+      <span class="current">Cloud Spend Optimisation</span>
+    </div>
+    <div class="page-hero-grid">
+      <div>
+        <div class="page-hero-eyebrow">Cloud FinOps · Optimisation</div>
+        <h1>Cloud spend <em>optimisation</em>.</h1>
+      </div>
+      <p class="page-hero-lede">
+        Continuously reduce cloud spend through rightsizing, commitment optimisation, workload governance, automation and AI-powered visibility &mdash; without disrupting engineering velocity.
+      </p>
+    </div>
+
+    <div class="stat-row reveal">
+      <div>
+        <div class="stat-num"><span class="count" data-to="20">0</span>–<span class="count" data-to="35">0</span>%<span class="live-dot" aria-hidden="true"></span></div>
+        <div class="stat-lbl">Average optimisation opportunity identified across cloud estates.</div>
+      </div>
+      <div>
+        <div class="stat-num"><span class="count" data-to="92">0</span>%+<span class="live-dot" aria-hidden="true"></span></div>
+        <div class="stat-lbl">Commitment utilisation target &mdash; RI, Savings Plans, CUDs.</div>
+      </div>
+      <div>
+        <div class="stat-num">Monthly<span class="live-dot" aria-hidden="true"></span></div>
+        <div class="stat-lbl">AI-powered optimisation dashboards, narrative reporting, executive view.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PROBLEM -->
+<section class="svc-overview">
+  <div class="container">
+    <div class="svc-overview-grid">
+      <div class="reveal">
+        <div class="section-eyebrow">The problem we solve</div>
+        <h2>Most cloud waste isn't hidden. <em>It's ignored.</em></h2>
+      </div>
+      <div class="reveal">
+        <p>Organisations already have billing dashboards, CSP recommendations and optimisation reports. <strong>The findings sit there.</strong></p>
+        <p>Zombie resources stay live. Oversized workloads persist. RI and Savings Plan portfolios drift. Environments run 24/7 for no reason. Engineering doesn't own cost. Optimisation backlogs never get executed.</p>
+        <div class="key-line">
+          Cloud optimisation fails when it becomes a reporting exercise <em>instead of an operational discipline.</em>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FOUR PRINCIPLES -->
+<section class="principles">
+  <div class="container">
+    <div class="reveal" style="max-width: 720px;">
+      <div class="section-eyebrow">The four optimisation principles</div>
+      <h2 class="section-title">A continuous optimisation engine. <em>Not a quarterly clean-up.</em></h2>
+      <p class="section-lede">Four principles, run continuously &mdash; not a six-month project that ends.</p>
+    </div>
+
+    <div class="principles-grid reveal-stagger">
+      <!-- 01 Eliminate waste -->
+      <div class="principle">
+        <div class="principle-head">
+          <div class="principle-glyph">
+            <svg class="glyph-waste" viewBox="0 0 64 64" width="40" height="40" aria-hidden="true">
+              <circle class="b b1" cx="20" cy="22" r="6"/>
+              <circle class="b b2" cx="44" cy="20" r="5"/>
+              <circle class="b b3" cx="24" cy="44" r="4"/>
+              <circle class="b b4" cx="42" cy="42" r="7"/>
+            </svg>
+          </div>
+          <div>
+            <div class="principle-num">— Principle 01</div>
+            <h4>Eliminate waste</h4>
+          </div>
+        </div>
+        <ul class="principle-focus">
+          <li>idle compute</li>
+          <li>unattached storage</li>
+          <li>zombie resources</li>
+          <li>duplicate environments</li>
+          <li>orphaned snapshots</li>
+          <li>unused licences</li>
+        </ul>
+        <p class="principle-line">"The fastest savings come from resources nobody realised still existed."</p>
+      </div>
+
+      <!-- 02 Buy smarter -->
+      <div class="principle">
+        <div class="principle-head">
+          <div class="principle-glyph">
+            <svg class="glyph-buy" viewBox="0 0 64 64" width="40" height="40" aria-hidden="true">
+              <rect class="bar b-left"  x="14" y="14" width="14" height="40" rx="2"/>
+              <rect class="bar b-right" x="36" y="14" width="14" height="40" rx="2"/>
+            </svg>
+          </div>
+          <div>
+            <div class="principle-num">— Principle 02</div>
+            <h4>Buy smarter</h4>
+          </div>
+        </div>
+        <ul class="principle-focus">
+          <li>RI optimisation</li>
+          <li>Savings Plans</li>
+          <li>portfolio balancing</li>
+          <li>BYOL strategy</li>
+          <li>rate negotiation</li>
+        </ul>
+        <p class="principle-line">"Commitment strategy should reduce cost exposure &mdash; not create it."</p>
+      </div>
+
+      <!-- 03 Engineer efficiently -->
+      <div class="principle">
+        <div class="principle-head">
+          <div class="principle-glyph">
+            <svg class="glyph-engineer" viewBox="0 0 64 64" width="40" height="40" aria-hidden="true">
+              <rect class="frame" x="14" y="14" width="36" height="36" rx="3"/>
+              <circle class="pt" cx="14" cy="14" r="2.5"/>
+              <circle class="pt" cx="50" cy="14" r="2.5"/>
+              <circle class="pt" cx="14" cy="50" r="2.5"/>
+              <circle class="pt" cx="50" cy="50" r="2.5"/>
+            </svg>
+          </div>
+          <div>
+            <div class="principle-num">— Principle 03</div>
+            <h4>Engineer efficiently</h4>
+          </div>
+        </div>
+        <ul class="principle-focus">
+          <li>rightsizing</li>
+          <li>autoscaling</li>
+          <li>Kubernetes optimisation</li>
+          <li>storage tiering</li>
+          <li>architecture efficiency</li>
+          <li>workload scheduling</li>
+        </ul>
+        <p class="principle-line">"Sustainable optimisation happens inside engineering decisions &mdash; not outside them."</p>
+      </div>
+
+      <!-- 04 Automate continuously -->
+      <div class="principle">
+        <div class="principle-head">
+          <div class="principle-glyph">
+            <svg class="glyph-auto" viewBox="0 0 80 64" width="48" height="36" aria-hidden="true">
+              <path class="track"  d="M 22 32 A 14 14 0 1 1 36 32 A 14 14 0 1 0 58 32 A 14 14 0 1 1 36 32 A 14 14 0 1 0 22 32 Z" />
+              <path class="runner" d="M 22 32 A 14 14 0 1 1 36 32 A 14 14 0 1 0 58 32 A 14 14 0 1 1 36 32 A 14 14 0 1 0 22 32 Z" />
+            </svg>
+          </div>
+          <div>
+            <div class="principle-num">— Principle 04</div>
+            <h4>Automate continuously</h4>
+          </div>
+        </div>
+        <ul class="principle-focus">
+          <li>scheduled shutdowns</li>
+          <li>policy enforcement</li>
+          <li>auto-remediation</li>
+          <li>anomaly detection</li>
+          <li>budget alerts</li>
+          <li>automated governance</li>
+        </ul>
+        <p class="principle-line">"Optimisation should continue even when nobody is watching the dashboard."</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- OPTIMIZATION LAYERS -->
+<section class="layers">
+  <div class="container">
+    <div class="reveal" style="max-width: 720px;">
+      <div class="section-eyebrow">Optimisation layers</div>
+      <h2 class="section-title">Six layers. <em>One operational stack.</em></h2>
+      <p class="section-lede">Optimisation runs as a stack &mdash; each layer feeding the next. Visibility flows up. Automation flows down.</p>
+    </div>
+
+    <div class="layer-stack reveal-stagger">
+      <div class="layer">
+        <div class="layer-idx">L1</div>
+        <div class="layer-name"><span class="layer-dot"></span>Visibility &amp; allocation</div>
+        <div class="layer-desc">Tagging governance, cost allocation, unit economics. The data layer everything else depends on.</div>
+        <div class="layer-wave"><svg viewBox="0 0 180 36" preserveAspectRatio="none" aria-hidden="true"><path class="w-path" d="M 0 18 Q 15 8, 30 18 T 60 18 T 90 18 T 120 18 T 150 18 T 180 18"/></svg></div>
+      </div>
+      <div class="layer">
+        <div class="layer-idx">L2</div>
+        <div class="layer-name"><span class="layer-dot"></span>Waste detection</div>
+        <div class="layer-desc">Idle infrastructure, zombie resources, oversized environments &mdash; identified and prioritised for cleanup.</div>
+        <div class="layer-wave"><svg viewBox="0 0 180 36" preserveAspectRatio="none" aria-hidden="true"><path class="w-path" d="M 0 20 Q 18 6, 36 20 T 72 22 T 108 14 T 144 22 T 180 18"/></svg></div>
+      </div>
+      <div class="layer">
+        <div class="layer-idx">L3</div>
+        <div class="layer-name"><span class="layer-dot"></span>Commitment optimisation</div>
+        <div class="layer-desc">RI and Savings Plan coverage planning. Utilisation balancing. Portfolio rebalanced as consumption shifts.</div>
+        <div class="layer-wave"><svg viewBox="0 0 180 36" preserveAspectRatio="none" aria-hidden="true"><path class="w-path" d="M 0 22 L 24 12 L 48 24 L 72 8 L 96 22 L 120 14 L 144 24 L 180 16"/></svg></div>
+      </div>
+      <div class="layer">
+        <div class="layer-idx">L4</div>
+        <div class="layer-name"><span class="layer-dot"></span>Workload efficiency</div>
+        <div class="layer-desc">Rightsizing recommendations, architecture review, Kubernetes optimisation, storage tiering decisions.</div>
+        <div class="layer-wave"><svg viewBox="0 0 180 36" preserveAspectRatio="none" aria-hidden="true"><path class="w-path" d="M 0 18 Q 22 4, 44 18 T 88 22 T 132 14 T 180 18"/></svg></div>
+      </div>
+      <div class="layer">
+        <div class="layer-idx">L5</div>
+        <div class="layer-name"><span class="layer-dot"></span>Automation &amp; governance</div>
+        <div class="layer-desc">Policy-driven enforcement, scheduled shutdowns, auto-remediation. Optimisation that keeps running.</div>
+        <div class="layer-wave"><svg viewBox="0 0 180 36" preserveAspectRatio="none" aria-hidden="true"><path class="w-path" d="M 0 18 L 20 18 L 30 8 L 50 8 L 60 18 L 80 18 L 90 28 L 110 28 L 120 18 L 180 18"/></svg></div>
+      </div>
+      <div class="layer">
+        <div class="layer-idx">L6</div>
+        <div class="layer-name"><span class="layer-dot"></span>Executive intelligence</div>
+        <div class="layer-desc">AI-powered dashboards, forecasting, variance analysis. The narrative finance and leadership can act on.</div>
+        <div class="layer-wave"><svg viewBox="0 0 180 36" preserveAspectRatio="none" aria-hidden="true"><path class="w-path" d="M 0 26 Q 30 4, 60 22 T 120 14 T 180 8"/></svg></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- HOW WE WORK -->
+<section class="ops">
+  <div class="container">
+    <div class="reveal" style="max-width: 720px;">
+      <div class="section-eyebrow">How we work</div>
+      <h2 class="section-title">A continuous loop. <em>Not a one-time project.</em></h2>
+      <p class="section-lede">Detect, prioritise, execute, govern &mdash; running monthly, not quarterly. Optimisation velocity tracked like engineering velocity.</p>
+    </div>
+
+    <div class="ops-flow reveal-stagger">
+      <div class="ops-node">
+        <div class="ops-node-dot">01 <span class="pulse"></span></div>
+        <h4>Detect</h4>
+        <p>Continuous spend analysis across cloud environments. Anomalies surfaced, savings backlog built.</p>
+      </div>
+      <div class="ops-node">
+        <div class="ops-node-dot">02 <span class="pulse"></span></div>
+        <h4>Prioritise</h4>
+        <p>Rank opportunities by savings potential, engineering effort and operational risk. Remediation lifecycle managed.</p>
+      </div>
+      <div class="ops-node">
+        <div class="ops-node-dot">03 <span class="pulse"></span></div>
+        <h4>Execute</h4>
+        <p>Coordinate with platform and engineering teams. Implementation owned, not handed off as a recommendation.</p>
+      </div>
+      <div class="ops-node">
+        <div class="ops-node-dot">04 <span class="pulse"></span></div>
+        <h4>Govern</h4>
+        <p>Track realised savings, optimisation velocity, compliance. Monthly cadence. Feeds back into Detect.</p>
+      </div>
+    </div>
+
+    <div class="ops-cyclic reveal">
+      Continuous <span class="cyc-dot"></span> Detect <span class="cyc-dot"></span> Prioritise <span class="cyc-dot"></span> Execute <span class="cyc-dot"></span> Govern <span class="cyc-dot"></span> Detect &hellip;
+    </div>
+  </div>
+</section>
+
+<!-- PROOF -->
+<section class="proof">
+  <div class="container">
+    <div class="reveal" style="max-width: 720px;">
+      <div class="section-eyebrow">Proof / results</div>
+      <h2 class="section-title">A <em>recent engagement</em>.</h2>
+      <p class="section-lede">Metrics-heavy on purpose. The page sells continuous optimisation; the proof has to look like it.</p>
+    </div>
+
+    <div class="proof-grid">
+      <div class="reveal">
+        <div class="proof-quote">
+          "Cloud growth had outpaced governance. <em>The recommendations were already there.</em> Nobody was executing them."
+        </div>
+        <div class="proof-narrative">
+          <div class="pn-item">
+            <div class="pn-label">Before</div>
+            <div class="pn-text">Cloud growth outpaced governance. Recommendation backlog sat in dashboards untouched.</div>
+          </div>
+          <div class="pn-item">
+            <div class="pn-label">Problem</div>
+            <div class="pn-text">Unused infrastructure. Poor commitment management. Reactive optimisation only at budget cycle.</div>
+          </div>
+          <div class="pn-item">
+            <div class="pn-label">Intervention</div>
+            <div class="pn-text">Optimisation programme stood up. Automation policies deployed. Monthly governance cadence established.</div>
+          </div>
+          <div class="pn-item">
+            <div class="pn-label">Outcome</div>
+            <div class="pn-text"><strong>Waste reduced. Forecasting improved. Engineering accountability stabilised.</strong></div>
+          </div>
+        </div>
+      </div>
+
+      <div class="metric-grid reveal-stagger">
+        <div class="metric-cell">
+          <div class="metric-label">Annualised savings identified</div>
+          <div class="metric-value">$<span class="count" data-to="3.2" data-decimals="1">0</span><span class="unit">M</span></div>
+          <div class="metric-desc">Sustainable annual run-rate, validated by finance.</div>
+        </div>
+        <div class="metric-cell">
+          <div class="metric-label">AWS spend reduction</div>
+          <div class="metric-value"><span class="count" data-to="31">0</span>%</div>
+          <div class="metric-desc">Achieved over the first twelve months of the programme.</div>
+        </div>
+        <div class="metric-cell">
+          <div class="metric-label">RI / SP utilisation</div>
+          <div class="metric-value"><span class="count" data-to="94">0</span>%</div>
+          <div class="metric-desc">Commitment portfolio rebalanced and held above target.</div>
+        </div>
+        <div class="metric-cell">
+          <div class="metric-label">Idle infrastructure</div>
+          <div class="metric-value">−<span class="count" data-to="63">0</span>%</div>
+          <div class="metric-desc">Decommissioned through automation policy, not manual cleanup.</div>
+        </div>
+
+        <!-- Anomaly response — the shrinking-bar diagram -->
+        <div class="metric-cell bar-compare reveal" id="barCompare">
+          <div class="metric-label">Anomaly response time</div>
+          <div class="br-row before">
+            <span class="br-label">Before</span>
+            <div class="br-track"><div class="br-fill"></div></div>
+            <span class="br-val">14 days</span>
+          </div>
+          <div class="br-row after">
+            <span class="br-label">After</span>
+            <div class="br-track"><div class="br-fill"></div></div>
+            <span class="br-val">36 hours</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ADJACENT SERVICES -->
+<section class="other-svc">
+  <div class="container">
+    <div class="reveal" style="max-width: 720px;">
+      <div class="section-eyebrow">Adjacent services</div>
+      <h2 class="section-title">Think <em>&rarr; Optimise &rarr; Operate</em>.</h2>
+      <p class="section-lede">Optimisation sits between governance design and ongoing oversight. Most enterprises need a mix.</p>
+    </div>
+
+    <div class="other-svc-grid">
+      <a href="service-cloud-finops.html" class="other-svc-card reveal">
+        <div class="num">— Think</div>
+        <h4>FinOps Advisory &amp; Strategy</h4>
+        <p>When the operating model itself needs redesign. Capability assessment, governance architecture and transformation roadmap before tactical execution.</p>
+        <span class="lnk">See page <svg width="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 5l7 7-7 7"/></svg></span>
+      </a>
+      <a href="service-finops-managed.html" class="other-svc-card reveal">
+        <div class="num">— Operate</div>
+        <h4>Managed FinOps Services</h4>
+        <p>Ongoing optimisation oversight and governance operations &mdash; once the model is in place and the engine is running.</p>
+        <span class="lnk">See page <svg width="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 5l7 7-7 7"/></svg></span>
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- CTA -->
+<section class="cta">
+  <div class="container">
+    <div class="cta-inner">
+      <div class="reveal">
+        <div class="section-eyebrow" style="color: var(--amber-bright);">Ready to talk</div>
+        <h2>Want to know how much cloud waste is <em>operationally recoverable</em>?</h2>
+        <p>A consultation focused on current optimisation maturity, commitment strategy, engineering accountability, automation readiness and waste visibility &mdash; with an indicative savings range, optimisation priorities and an implementation complexity estimate.</p>
+        <div class="cta-actions">
+          <a href="contact.html" class="btn-amber">Book an optimisation call</a>
+          <a href="service-cloud-finops.html" class="btn-line">See FinOps Advisory</a>
+        </div>
+      </div>
+      <div class="cta-detail reveal">
+        <h4>What you'll get</h4>
+        <ul class="cta-list">
+          <li>45-minute call with a senior optimisation specialist.</li>
+          <li>Indicative savings range against your current estate.</li>
+          <li>Optimisation priorities and implementation complexity.</li>
+          <li>Governance recommendations sized to your operating model.</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="container">
+    <div class="foot-grid">
+      <div class="foot-brand">
+        <a href="index.html" class="logo" style="color: var(--cream);">
+          <span class="logo-lockup">
+            <span class="logo-text" style="color:var(--cream);"><span class="logo-cap">P</span>roTeam</span>
+            <span class="logo-advisory" style="color:rgba(240,242,245,0.7);">Advisory Solutions LLP</span>
+          </span>
+        </a>
+        <h3>SAM specialists. Nothing else.</h3>
+        <p>An independent Software Asset Management consultancy serving enterprises across India, the UK, the US, and the Middle East.</p>
+
+        <div class="foot-social">
+          <div class="foot-social-label">Follow us on</div>
+          <div class="foot-social-icons">
+            <a href="https://in.linkedin.com/company/proteam-advisory" aria-label="LinkedIn" target="_blank" rel="noopener">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"/><rect x="2" y="9" width="4" height="12"/><circle cx="4" cy="4" r="2"/></svg>
+            </a>
+            <a href="https://x.com/proteamadv" aria-label="X (Twitter)" target="_blank" rel="noopener">
+              <svg viewBox="0 0 24 24" fill="currentColor"><path d="M17.53 3H21l-7.39 8.45L22.5 21h-6.83l-5.34-6.99L3.5 21H0l7.91-9.04L0.5 3h7l4.83 6.4L17.53 3zm-2.39 16h2.06L7.05 4.85H4.83L15.14 19z"/></svg>
+            </a>
+            <a href="https://www.instagram.com/proteamadvisory/" aria-label="Instagram" target="_blank" rel="noopener">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="20" rx="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/></svg>
+            </a>
+            <a href="https://www.youtube.com/channel/UCaajUe2N_6AFw3dvPmH1b7A" aria-label="YouTube" target="_blank" rel="noopener">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M22.54 6.42a2.78 2.78 0 0 0-1.94-2C18.88 4 12 4 12 4s-6.88 0-8.6.46a2.78 2.78 0 0 0-1.94 2A29 29 0 0 0 1 11.75a29 29 0 0 0 .46 5.33A2.78 2.78 0 0 0 3.4 19c1.72.46 8.6.46 8.6.46s6.88 0 8.6-.46a2.78 2.78 0 0 0 1.94-2 29 29 0 0 0 .46-5.25 29 29 0 0 0-.46-5.33z"/><polygon points="9.75 15.02 15.5 11.75 9.75 8.48 9.75 15.02" fill="currentColor"/></svg>
+            </a>
+          </div>
+        </div>
+      </div>
+
+      <div class="foot-col">
+        <h5>Services</h5>
+        <ul>
+          <li><a href="services.html#itam">IT Asset Management</a></li>
+          <li><a href="services.html#finops">Cloud FinOps</a></li>
+          <li><a href="services.html#platform-strategy">Platform Strategy &amp; Advisory</a></li>
+          <li><a href="services.html#ai-transformation">AI Transformation Services</a></li>
+        </ul>
+      </div>
+
+      <div class="foot-col">
+        <h5>About</h5>
+        <ul>
+          <li><a href="our-story.html">Our Story</a></li>
+          <li><a href="our-story.html#team">Team &amp; Leaders</a></li>
+          <li><a href="achievements.html">Achievements &amp; Stats</a></li>
+          <li><a href="gallery.html">Culture &amp; Gallery</a></li>
+        </ul>
+      </div>
+
+      <div class="foot-col">
+        <h5>Company</h5>
+        <ul>
+          <li><a href="case-studies.html">Case Studies</a></li>
+          <li><a href="insights.html">Insights</a></li>
+          <li><a href="careers.html">Careers</a></li>
+          <li><a href="contact.html">Contact</a></li>
+        </ul>
+      </div>
+
+      <div class="foot-col">
+        <h5>Get in touch</h5>
+        <address>
+          Suite #309&ndash;312<br>
+          KTC Illumination Towers<br>
+          Madhapur, Hyderabad<br>
+          Telangana, India<br><br>
+          <a href="tel:+919676889797">+91 9676 889 797</a><br>
+          <a href="mailto:vpatel@proteamadvisory.com">vpatel@proteamadvisory.com</a>
+        </address>
+      </div>
+    </div>
+
+    <div class="foot-bot">
+      <div>&copy; 2026 Proteam Advisory. All rights reserved.</div>
+      <div style="display:flex; gap:24px; flex-wrap:wrap;">
+        <a href="privacy.html">Privacy</a>
+        <a href="terms.html">Terms of Use</a>
+        <a href="cookies.html">Cookies</a>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<script>
+  // ---- Scroll reveal ----
+  const obs = new IntersectionObserver((entries) => {
+    entries.forEach(e => {
+      if (e.isIntersecting) { e.target.classList.add("in"); obs.unobserve(e.target); }
+    });
+  }, { threshold: 0.1, rootMargin: "0px 0px -50px 0px" });
+  document.querySelectorAll(".reveal, .reveal-stagger").forEach(el => obs.observe(el));
+
+  // ---- Count-up animation for stats ----
+  // Triggers when each .count element enters viewport. Respects prefers-reduced-motion.
+  (function() {
+    const prefersReduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    function animate(el) {
+      const target = parseFloat(el.dataset.to);
+      const decimals = parseInt(el.dataset.decimals || '0', 10);
+      if (prefersReduced) { el.textContent = target.toFixed(decimals); return; }
+      const duration = 1200;
+      const start = performance.now();
+      function step(now) {
+        const t = Math.min(1, (now - start) / duration);
+        const eased = 1 - Math.pow(1 - t, 3); // ease-out cubic
+        const value = target * eased;
+        el.textContent = value.toFixed(decimals);
+        if (t < 1) requestAnimationFrame(step);
+        else el.textContent = target.toFixed(decimals);
+      }
+      requestAnimationFrame(step);
+    }
+    const countObs = new IntersectionObserver((entries) => {
+      entries.forEach(e => {
+        if (e.isIntersecting) { animate(e.target); countObs.unobserve(e.target); }
+      });
+    }, { threshold: 0.4 });
+    document.querySelectorAll('.count').forEach(el => countObs.observe(el));
+  })();
+
+  // ---- Smooth scroll ----
+  document.querySelectorAll("a[href^='#']").forEach(link => {
+    link.addEventListener("click", e => {
+      const id = link.getAttribute("href");
+      if (id.length > 1) { const tgt = document.querySelector(id); if (tgt) { e.preventDefault(); tgt.scrollIntoView({ behavior: "smooth", block: "start" }); } }
+    });
+  });
+
+  // ---- Mobile menu (with accordion sub-menus) ----
+  (function() {
+    const toggle = document.getElementById('menuToggle');
+    const mobileNav = document.getElementById('mobileNav');
+    if (!toggle || !mobileNav) return;
+    const body = document.body;
+
+    function openMenu() {
+      mobileNav.classList.add('is-open');
+      toggle.classList.add('open');
+      toggle.setAttribute('aria-expanded', 'true');
+      body.style.overflow = 'hidden';
+    }
+    function closeMenu() {
+      mobileNav.classList.remove('is-open');
+      toggle.classList.remove('open');
+      toggle.setAttribute('aria-expanded', 'false');
+      body.style.overflow = '';
+    }
+    toggle.addEventListener('click', () => mobileNav.classList.contains('is-open') ? closeMenu() : openMenu());
+
+    mobileNav.querySelectorAll('a').forEach(link => link.addEventListener('click', closeMenu));
+    document.addEventListener('keydown', e => { if (e.key === 'Escape' && mobileNav.classList.contains('is-open')) closeMenu(); });
+
+    mobileNav.querySelectorAll('.sub-toggle, .sub-toggle-2').forEach(btn => {
+      btn.addEventListener('click', () => {
+        const id = btn.getAttribute('aria-controls');
+        const target = id ? document.getElementById(id) : btn.nextElementSibling;
+        if (!target) return;
+        const expanded = btn.getAttribute('aria-expanded') === 'true';
+        btn.setAttribute('aria-expanded', String(!expanded));
+        target.classList.toggle('is-open', !expanded);
+      });
+    });
+  })();
+</script>
+
+<script src="sammy-chatbot.js"></script>
+<script>
+/* Desktop mega-menu: JS hover with close-delay */
+(function () {
+  var CLOSE_DELAY = 150;
+  document.querySelectorAll(".nav-links .has-mega").forEach(function (li) {
+    var timer = null;
+    function openMenu() { clearTimeout(timer); li.classList.add("mega-open"); }
+    function scheduleClose() { timer = setTimeout(function () { li.classList.remove("mega-open"); }, CLOSE_DELAY); }
+    li.addEventListener("mouseenter", openMenu);
+    li.addEventListener("mouseleave", scheduleClose);
+    var menu = li.querySelector(".mega-menu");
+    if (menu) {
+      menu.addEventListener("mouseenter", openMenu);
+      menu.addEventListener("mouseleave", scheduleClose);
+    }
+    document.addEventListener("keydown", function (e) { if (e.key === "Escape") li.classList.remove("mega-open"); });
+  });
+})();
+</script>
+</body>
+</html>

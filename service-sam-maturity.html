@@ -1,0 +1,2217 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>SAM Maturity Assessment — Proteam Advisory</title>
+<meta name="description" content="A strategic SAM transformation engagement. Five-level maturity model, sticky-scroll lifecycle, and a 12–18 month transformation roadmap — designed for enterprises ready to move from reactive to intelligent." />
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300..900;1,9..144,300..900&family=Geist:wght@300..700&family=Geist+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="styles.css">
+
+<style>
+  /* ============================================================
+     SAM MATURITY ASSESSMENT & TRANSFORMATION — page-specific styles
+     Design DNA inherited from SAM Baselining page:
+       - dark/light section alternation
+       - thin-line SVG blueprint visuals
+       - ai-badge mono chips
+       - 720px max-width intro blocks
+       - calm motion, premium spacing
+     Page-specific elevation:
+       - hero ecosystem orbit (fragmented -> connected)
+       - sticky-scroll engagement lifecycle (control-center feel)
+       - 5-level interactive maturity ladder
+       - before/after transformation cards
+       - KPI outcomes dashboard
+     ============================================================ */
+
+  /* ---- AI Badge (mirrors reference page) ---- */
+  .ai-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    background: rgba(3,174,210,0.08);
+    border: 1px solid rgba(3,174,210,0.22);
+    border-radius: 20px;
+    padding: 4px 10px 4px 8px;
+    font-family: var(--mono);
+    font-size: 10px;
+    font-weight: 500;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--amber);
+    white-space: nowrap;
+  }
+  .ai-badge::before {
+    content: '';
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+    background: var(--amber-bright);
+    box-shadow: 0 0 8px var(--amber-bright);
+    animation: ai-pulse 2.4s ease-in-out infinite;
+    flex-shrink: 0;
+  }
+  @keyframes ai-pulse {
+    0%, 100% { opacity: 1; box-shadow: 0 0 8px var(--amber-bright); }
+    50%      { opacity: 0.5; box-shadow: 0 0 3px var(--amber-bright); }
+  }
+  .ai-badge-dark {
+    background: rgba(104,210,232,0.12);
+    border-color: rgba(104,210,232,0.30);
+    color: var(--amber-bright);
+  }
+
+  /* ---- Reveal motion (slow, intelligent) ---- */
+  .reveal { opacity: 0; transform: translateY(20px); transition: opacity 0.85s ease, transform 0.85s cubic-bezier(.2,.7,.2,1); }
+  .reveal.in { opacity: 1; transform: translateY(0); }
+  .reveal-stagger > * { opacity: 0; transform: translateY(20px); transition: opacity 0.85s ease, transform 0.85s cubic-bezier(.2,.7,.2,1); }
+  .reveal-stagger.in > *:nth-child(1) { opacity:1; transform:none; transition-delay: 0.06s; }
+  .reveal-stagger.in > *:nth-child(2) { opacity:1; transform:none; transition-delay: 0.14s; }
+  .reveal-stagger.in > *:nth-child(3) { opacity:1; transform:none; transition-delay: 0.22s; }
+  .reveal-stagger.in > *:nth-child(4) { opacity:1; transform:none; transition-delay: 0.30s; }
+  .reveal-stagger.in > *:nth-child(5) { opacity:1; transform:none; transition-delay: 0.38s; }
+  .reveal-stagger.in > *:nth-child(6) { opacity:1; transform:none; transition-delay: 0.46s; }
+
+  /* ============================================================
+     HERO — fragmented ecosystem orbit
+     ============================================================ */
+  .svc-detail-hero { position: relative; overflow: hidden; }
+  .hero-orbit-bg {
+    position: absolute;
+    top: 0; right: -8%;
+    width: 720px; height: 720px;
+    max-width: 55%;
+    pointer-events: none;
+    z-index: 0;
+    opacity: 0.85;
+  }
+  @media (max-width: 960px) { .hero-orbit-bg { display: none; } }
+  .hero-orbit-bg svg { width: 100%; height: 100%; }
+  /* Orbit rings rotate slowly */
+  .hero-orbit-bg .ring {
+    fill: none;
+    stroke: rgba(3,174,210,0.18);
+    stroke-width: 1;
+    stroke-dasharray: 3 5;
+    animation: heroRotate 80s linear infinite;
+    transform-origin: 360px 360px;
+  }
+  .hero-orbit-bg .ring.r2 { animation-duration: 110s; animation-direction: reverse; }
+  @keyframes heroRotate { to { transform: rotate(360deg); } }
+  /* Floating tooling nodes — gradually pulling toward centre */
+  .hero-orbit-bg .node {
+    fill: var(--amber);
+    animation: nodeBreathe 5s ease-in-out infinite;
+  }
+  .hero-orbit-bg .node.n2 { animation-delay: 0.6s; }
+  .hero-orbit-bg .node.n3 { animation-delay: 1.2s; }
+  .hero-orbit-bg .node.n4 { animation-delay: 1.8s; }
+  .hero-orbit-bg .node.n5 { animation-delay: 2.4s; }
+  .hero-orbit-bg .node.n6 { animation-delay: 3.0s; }
+  @keyframes nodeBreathe {
+    0%, 100% { opacity: 0.55; r: 3.5; }
+    50%      { opacity: 1; r: 5; }
+  }
+  /* Connector lines flowing inward */
+  .hero-orbit-bg .conn {
+    fill: none;
+    stroke: rgba(3,174,210,0.35);
+    stroke-width: 1;
+    stroke-dasharray: 4 6;
+    animation: connFlow 5s linear infinite;
+  }
+  @keyframes connFlow { to { stroke-dashoffset: -40; } }
+  /* Central core */
+  .hero-orbit-bg .core {
+    fill: var(--amber);
+    animation: coreBreathe 3.5s ease-in-out infinite;
+    transform-origin: 360px 360px;
+  }
+  .hero-orbit-bg .core-glow {
+    fill: rgba(3,174,210,0.18);
+    animation: coreBreathe 3.5s ease-in-out infinite;
+    transform-origin: 360px 360px;
+  }
+  @keyframes coreBreathe {
+    0%, 100% { opacity: 0.6; transform: scale(1); }
+    50%      { opacity: 1; transform: scale(1.15); }
+  }
+
+  /* Hero content above the orbit */
+  .svc-detail-hero .container { position: relative; z-index: 1; }
+  .svc-detail-hero .stat-row {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 32px;
+    margin-top: 56px;
+    padding-top: 40px;
+    border-top: 1px solid var(--line);
+    position: relative;
+  }
+  .svc-detail-hero .stat-row .stat-num {
+    font-family: var(--sans);
+    font-weight: 300;
+    font-size: 44px;
+    line-height: 1;
+    color: var(--amber);
+    letter-spacing: -0.03em;
+    margin-bottom: 10px;
+    font-variation-settings: "opsz" 144;
+  }
+  .svc-detail-hero .stat-row .stat-lbl {
+    font-size: 13px;
+    line-height: 1.55;
+    color: var(--navy-soft);
+  }
+  @media (max-width: 768px) {
+    .svc-detail-hero .stat-row { grid-template-columns: 1fr; gap: 24px; }
+  }
+
+  /* ============================================================
+     OVERVIEW — why most enterprises operate at low maturity
+     ============================================================ */
+  .svc-overview { background: var(--paper); padding: 120px 0; }
+  .svc-overview-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 80px;
+    align-items: start;
+  }
+  .svc-overview-grid h2 {
+    font-family: var(--sans);
+    font-weight: 400;
+    font-size: clamp(32px, 4vw, 48px);
+    line-height: 1.1;
+    letter-spacing: -0.02em;
+    color: var(--navy);
+    margin-bottom: 24px;
+    font-variation-settings: "opsz" 144;
+  }
+  .svc-overview-grid h2 em {
+    font-family: var(--serif);
+    font-style: italic;
+    color: var(--amber);
+    font-weight: 300;
+    font-variation-settings: "opsz" 144;
+  }
+  .svc-overview-grid p {
+    font-size: 17px;
+    line-height: 1.7;
+    color: var(--navy-soft);
+    margin-bottom: 18px;
+  }
+  .svc-overview-grid p strong { color: var(--navy); font-weight: 600; }
+  .overview-tag-row {
+    margin-top: 24px;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+  }
+  /* Insight cards — why-it-fails strip */
+  .overview-insights {
+    margin-top: 64px;
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 1px;
+    background: var(--line);
+    border: 1px solid var(--line);
+    border-radius: var(--radius);
+    overflow: hidden;
+  }
+  .overview-insight {
+    background: var(--paper);
+    padding: 28px 24px;
+    transition: background 0.35s ease;
+  }
+  .overview-insight:hover { background: var(--cream); }
+  .overview-insight .oi-num {
+    font-family: var(--mono);
+    font-size: 10px;
+    letter-spacing: 0.2em;
+    color: var(--amber);
+    margin-bottom: 14px;
+  }
+  .overview-insight h4 {
+    font-family: var(--sans);
+    font-weight: 500;
+    font-size: 16px;
+    line-height: 1.25;
+    color: var(--navy);
+    margin-bottom: 8px;
+    letter-spacing: -0.005em;
+    font-variation-settings: "opsz" 144;
+  }
+  .overview-insight p {
+    font-size: 13px;
+    line-height: 1.55;
+    color: var(--navy-soft);
+    margin-bottom: 0;
+  }
+  @media (max-width: 960px) {
+    .svc-overview-grid { grid-template-columns: 1fr; gap: 32px; }
+    .overview-insights { grid-template-columns: 1fr 1fr; }
+  }
+  @media (max-width: 600px) {
+    .overview-insights { grid-template-columns: 1fr; }
+  }
+
+  /* ============================================================
+     TWO PHASES — visual summary diagram (Assess & Diagnose →
+     Transform & Sustain). Sits between Overview and the sticky
+     lifecycle as the at-a-glance visual.
+     ============================================================ */
+  .twophases {
+    background: var(--navy-deep);
+    color: var(--cream);
+    padding: 130px 0;
+    position: relative;
+    overflow: hidden;
+  }
+  .twophases::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background-image:
+      linear-gradient(rgba(255,255,255,0.020) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(255,255,255,0.020) 1px, transparent 1px);
+    background-size: 48px 48px;
+    pointer-events: none;
+  }
+  .twophases .container { position: relative; z-index: 1; }
+  .twophases .section-title { color: var(--cream); }
+  .twophases .section-eyebrow { color: var(--amber-bright); }
+  .twophases .section-eyebrow::before { background: var(--amber-bright); }
+  .twophases .section-lede { color: rgba(240,242,245,0.72); max-width: 640px; }
+
+  /* Two big circles + arrow */
+  .tp-orbits {
+    margin-top: 72px;
+    display: grid;
+    grid-template-columns: 1fr 120px 1fr;
+    gap: 24px;
+    align-items: center;
+    justify-items: center;
+  }
+  .tp-circle {
+    position: relative;
+    width: clamp(220px, 22vw, 280px);
+    aspect-ratio: 1;
+    border-radius: 50%;
+    background: rgba(8, 28, 38, 0.55);
+    border: 1px solid rgba(104,210,232,0.30);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    transform: scale(0.85);
+    opacity: 0;
+    transition: opacity 0.9s ease, transform 0.9s cubic-bezier(.2,.7,.2,1);
+    box-shadow: 0 0 60px rgba(3,174,210,0.10) inset;
+  }
+  .twophases.in .tp-circle.tp-c1 { opacity: 1; transform: scale(1); transition-delay: 0.10s; }
+  .twophases.in .tp-circle.tp-c2 { opacity: 1; transform: scale(1); transition-delay: 0.55s; }
+  /* Second circle has a dashed outer ring that rotates slowly */
+  .tp-c2 {
+    background: rgba(8, 28, 38, 0.35);
+    border: 1px dashed rgba(104,210,232,0.45);
+  }
+  .tp-c2::before {
+    content: '';
+    position: absolute;
+    inset: -10px;
+    border-radius: 50%;
+    border: 1px dashed rgba(104,210,232,0.20);
+    animation: tpRingSpin 36s linear infinite;
+  }
+  .tp-c2::after {
+    /* Small dot riding the outer ring */
+    content: '';
+    position: absolute;
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    background: var(--amber-bright);
+    box-shadow: 0 0 0 4px rgba(104,210,232,0.20);
+    top: 50%;
+    right: -16px;
+    transform: translateY(-50%);
+    animation: tpRingDot 36s linear infinite;
+    transform-origin: -50% 50%;
+  }
+  @keyframes tpRingSpin { to { transform: rotate(360deg); } }
+  @keyframes tpRingDot  { to { transform: rotate(360deg) translateY(-50%); } }
+
+  .tp-icon {
+    width: 38px;
+    height: 38px;
+    color: var(--amber-bright);
+    margin-bottom: 14px;
+  }
+  .tp-icon-1 { animation: tpIconPulse 4s ease-in-out infinite; }
+  @keyframes tpIconPulse {
+    0%, 100% { opacity: 0.85; transform: scale(1); }
+    50%      { opacity: 1; transform: scale(1.08); }
+  }
+  .tp-icon-2 { animation: tpIconSpin 12s linear infinite; transform-origin: center; }
+  @keyframes tpIconSpin { to { transform: rotate(360deg); } }
+
+  .tp-circle h3 {
+    font-family: var(--sans);
+    font-weight: 600;
+    font-size: clamp(18px, 1.8vw, 22px);
+    line-height: 1.15;
+    color: var(--cream);
+    letter-spacing: -0.01em;
+    margin-bottom: 14px;
+    font-variation-settings: "opsz" 144;
+  }
+  .tp-circle .tp-when {
+    font-family: var(--mono);
+    font-size: 10px;
+    letter-spacing: 0.25em;
+    text-transform: uppercase;
+    color: var(--amber-bright);
+  }
+
+  /* Arrow between the two circles */
+  .tp-arrow {
+    width: 100%;
+    height: 28px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    opacity: 0;
+    transition: opacity 0.6s ease;
+  }
+  .twophases.in .tp-arrow { opacity: 1; transition-delay: 0.35s; }
+  .tp-arrow svg { width: 100%; height: 100%; overflow: visible; }
+  .tp-arrow .tp-arrow-line {
+    fill: none;
+    stroke: var(--amber-bright);
+    stroke-width: 1.6;
+    stroke-dasharray: 6 6;
+    stroke-dashoffset: 120;
+    animation: tpArrowDraw 1.6s ease-out 0.45s forwards, tpArrowFlow 4s linear 2.05s infinite;
+  }
+  @keyframes tpArrowDraw {
+    from { stroke-dashoffset: 120; }
+    to   { stroke-dashoffset: 0; }
+  }
+  @keyframes tpArrowFlow {
+    to { stroke-dashoffset: -48; }
+  }
+  .tp-arrow .tp-arrow-head {
+    fill: var(--amber-bright);
+    opacity: 0;
+    animation: tpArrowHead 0.4s ease-out 2.0s forwards;
+  }
+  @keyframes tpArrowHead { to { opacity: 1; } }
+
+  /* Quarter strip */
+  .tp-strip {
+    margin-top: 48px;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 4px;
+    opacity: 0;
+    transform: translateY(10px);
+    transition: opacity 0.7s ease, transform 0.7s cubic-bezier(.2,.7,.2,1);
+  }
+  .twophases.in .tp-strip { opacity: 1; transform: translateY(0); transition-delay: 0.85s; }
+  .tp-strip-cell {
+    background: rgba(8, 28, 38, 0.7);
+    border: 1px solid rgba(104,210,232,0.20);
+    border-radius: 6px;
+    padding: 18px 32px;
+    font-family: var(--sans);
+    font-weight: 500;
+    font-size: 15px;
+    color: var(--cream);
+    letter-spacing: -0.005em;
+    text-align: center;
+    font-variation-settings: "opsz" 144;
+    position: relative;
+  }
+  .tp-strip-cell.is-second {
+    /* Right cell has a chevron-tipped right edge like the screenshot */
+    clip-path: polygon(0 0, calc(100% - 22px) 0, 100% 50%, calc(100% - 22px) 100%, 0 100%);
+    padding-right: 54px;
+  }
+
+  /* Two phase detail cards */
+  .tp-cards {
+    margin-top: 26px;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 24px;
+  }
+  .tp-card {
+    background: rgba(8, 28, 38, 0.4);
+    border: 1px solid rgba(104,210,232,0.22);
+    border-radius: 8px;
+    padding: 28px 32px 30px;
+    opacity: 0;
+    transform: translateY(14px);
+    transition: opacity 0.7s ease, transform 0.7s cubic-bezier(.2,.7,.2,1);
+  }
+  .twophases.in .tp-card.tp-card-1 { opacity: 1; transform: translateY(0); transition-delay: 1.00s; }
+  .twophases.in .tp-card.tp-card-2 { opacity: 1; transform: translateY(0); transition-delay: 1.15s; }
+  .tp-card-eyebrow {
+    font-family: var(--mono);
+    font-size: 10px;
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+    color: var(--amber-bright);
+    margin-bottom: 18px;
+  }
+  .tp-card ul {
+    list-style: none;
+    display: grid;
+    gap: 12px;
+  }
+  .tp-card li {
+    display: grid;
+    grid-template-columns: 14px 1fr;
+    gap: 12px;
+    font-size: 14px;
+    line-height: 1.55;
+    color: rgba(240,242,245,0.78);
+    opacity: 0;
+    transform: translateX(-6px);
+    transition: opacity 0.5s ease, transform 0.5s ease;
+  }
+  .tp-card li::before {
+    content: '';
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+    background: var(--amber-bright);
+    margin-top: 7px;
+  }
+  /* Bullet stagger inside each card */
+  .twophases.in .tp-card-1 li:nth-child(1) { opacity: 1; transform: none; transition-delay: 1.15s; }
+  .twophases.in .tp-card-1 li:nth-child(2) { opacity: 1; transform: none; transition-delay: 1.25s; }
+  .twophases.in .tp-card-1 li:nth-child(3) { opacity: 1; transform: none; transition-delay: 1.35s; }
+  .twophases.in .tp-card-1 li:nth-child(4) { opacity: 1; transform: none; transition-delay: 1.45s; }
+  .twophases.in .tp-card-2 li:nth-child(1) { opacity: 1; transform: none; transition-delay: 1.30s; }
+  .twophases.in .tp-card-2 li:nth-child(2) { opacity: 1; transform: none; transition-delay: 1.40s; }
+  .twophases.in .tp-card-2 li:nth-child(3) { opacity: 1; transform: none; transition-delay: 1.50s; }
+  .twophases.in .tp-card-2 li:nth-child(4) { opacity: 1; transform: none; transition-delay: 1.60s; }
+
+  /* Running underneath footer line */
+  .tp-underneath {
+    margin-top: 48px;
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 18px;
+    font-family: var(--mono);
+    font-size: 11px;
+    letter-spacing: 0.20em;
+    text-transform: uppercase;
+    color: rgba(240,242,245,0.55);
+    opacity: 0;
+    transition: opacity 0.7s ease;
+  }
+  .twophases.in .tp-underneath { opacity: 1; transition-delay: 1.70s; }
+  .tp-underneath .tp-u-label { color: rgba(240,242,245,0.45); }
+  .tp-underneath .tp-u-item {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    color: var(--cream);
+    font-weight: 500;
+  }
+  .tp-underneath .tp-u-item::before {
+    content: '';
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+    background: var(--amber-bright);
+    animation: tpUnderPulse 3s ease-in-out infinite;
+  }
+  .twophases.in .tp-underneath .tp-u-item:nth-child(3)::before { animation-delay: 0.4s; }
+  .twophases.in .tp-underneath .tp-u-item:nth-child(4)::before { animation-delay: 0.8s; }
+  @keyframes tpUnderPulse {
+    0%, 100% { opacity: 0.55; transform: scale(1); }
+    50%      { opacity: 1; transform: scale(1.25); }
+  }
+
+  /* Responsive */
+  @media (max-width: 860px) {
+    .tp-orbits { grid-template-columns: 1fr; gap: 20px; }
+
+    /* Mobile: replace the wide horizontal arrow with a short vertical one
+       that sits cleanly between the two stacked circles. The original
+       horizontal SVG would overshoot into the circles if simply rotated,
+       so we hide it and draw a vertical line + arrowhead instead. */
+    .tp-arrow {
+      width: 2px;
+      height: 48px;
+      margin: 0 auto;
+      position: relative;
+      overflow: visible;
+    }
+    .tp-arrow svg { display: none; }
+    .tp-arrow::before {
+      content: '';
+      position: absolute;
+      left: 50%;
+      top: 0;
+      width: 2px;
+      height: 100%;
+      transform: translateX(-50%);
+      background-image: linear-gradient(
+        to bottom,
+        var(--amber-bright) 0,
+        var(--amber-bright) 6px,
+        transparent 6px,
+        transparent 12px
+      );
+      background-size: 2px 12px;
+      background-repeat: repeat-y;
+      opacity: 0;
+      animation: tpArrowVDraw 1.2s ease-out 0.45s forwards,
+                 tpArrowVFlow 2.4s linear 1.65s infinite;
+    }
+    .tp-arrow::after {
+      content: '';
+      position: absolute;
+      left: 50%;
+      bottom: -6px;
+      transform: translateX(-50%);
+      width: 0;
+      height: 0;
+      border-left: 6px solid transparent;
+      border-right: 6px solid transparent;
+      border-top: 8px solid var(--amber-bright);
+      opacity: 0;
+      animation: tpArrowVHead 0.4s ease-out 1.65s forwards;
+    }
+    @keyframes tpArrowVDraw {
+      from { opacity: 0; clip-path: inset(0 0 100% 0); }
+      to   { opacity: 1; clip-path: inset(0 0 0 0); }
+    }
+    @keyframes tpArrowVFlow {
+      to { background-position-y: 12px; }
+    }
+    @keyframes tpArrowVHead {
+      to { opacity: 1; }
+    }
+
+    .tp-strip { grid-template-columns: 1fr; gap: 8px; }
+    .tp-strip-cell.is-second { clip-path: none; padding-right: 32px; }
+    .tp-cards { grid-template-columns: 1fr; }
+    .tp-c2::after, .tp-c2::before { display: none; }
+  }
+
+  /* ============================================================
+     ENGAGEMENT LIFECYCLE — signature sticky-scroll storyboard
+     "Two phases. Connected, not siloed."
+     ============================================================ */
+  .lifecycle {
+    background: var(--navy-deep);
+    color: var(--cream);
+    padding: 130px 0 0;
+    position: relative;
+    overflow: hidden;
+  }
+  .lifecycle::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background-image:
+      linear-gradient(rgba(255,255,255,0.018) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(255,255,255,0.018) 1px, transparent 1px);
+    background-size: 48px 48px;
+    pointer-events: none;
+  }
+  .lifecycle .container { position: relative; z-index: 1; }
+  .lifecycle .section-title { color: var(--cream); }
+  .lifecycle .section-eyebrow { color: var(--amber-bright); }
+  .lifecycle .section-eyebrow::before { background: var(--amber-bright); }
+  .lifecycle .section-lede { color: rgba(240,242,245,0.72); }
+
+  /* Sticky-scroll layout */
+  .lifecycle-stage {
+    margin-top: 80px;
+    position: relative;
+  }
+  .lifecycle-sticky {
+    position: sticky;
+    top: 120px;
+    height: 80vh;
+    min-height: 540px;
+    max-height: 680px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  .lifecycle-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 64px;
+    align-items: center;
+    width: 100%;
+  }
+  /* Right column — scrollable list of steps; left column — sticky diagram */
+  .lifecycle-diagram-wrap {
+    position: relative;
+    aspect-ratio: 1;
+    max-width: 480px;
+    margin: 0 auto;
+    width: 100%;
+  }
+  .lifecycle-diagram-wrap svg { width: 100%; height: 100%; overflow: visible; }
+  /* Architecture nodes — light up progressively */
+  .lc-node {
+    transition: all 0.6s cubic-bezier(.2,.7,.2,1);
+    fill: rgba(255,255,255,0.06);
+    stroke: rgba(104,210,232,0.25);
+    stroke-width: 1.2;
+  }
+  .lc-node.active {
+    fill: rgba(3,174,210,0.20);
+    stroke: var(--amber-bright);
+    filter: drop-shadow(0 0 10px rgba(104,210,232,0.5));
+  }
+  .lc-node-label {
+    font-family: var(--mono);
+    font-size: 9px;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    fill: rgba(240,242,245,0.55);
+    transition: fill 0.5s ease;
+  }
+  .lc-node-label.active { fill: var(--amber-bright); }
+  .lc-link {
+    stroke: rgba(104,210,232,0.12);
+    stroke-width: 1;
+    fill: none;
+    stroke-dasharray: 4 4;
+    transition: stroke 0.6s ease;
+  }
+  .lc-link.active {
+    stroke: rgba(104,210,232,0.55);
+    animation: lcLinkFlow 3s linear infinite;
+  }
+  @keyframes lcLinkFlow { to { stroke-dashoffset: -32; } }
+  /* Phase ring — outer indicator */
+  .lc-phase-ring {
+    fill: none;
+    stroke-width: 1.5;
+    stroke: rgba(104,210,232,0.18);
+    transition: stroke 0.6s ease;
+  }
+  .lc-phase-ring.active-p1 { stroke: var(--amber-bright); }
+  .lc-phase-ring.active-p2 { stroke: var(--yellow); }
+  /* Centre intelligence layer */
+  .lc-core {
+    fill: var(--navy-deep);
+    stroke: var(--amber);
+    stroke-width: 2;
+    animation: coreBreathe 4s ease-in-out infinite;
+    transform-origin: center;
+    transform-box: fill-box;
+  }
+  .lc-core-label {
+    fill: var(--cream);
+    font-family: var(--sans);
+    font-weight: 500;
+    font-size: 12px;
+    letter-spacing: -0.005em;
+    text-anchor: middle;
+  }
+  .lc-core-eyebrow {
+    fill: var(--amber-bright);
+    font-family: var(--mono);
+    font-size: 8px;
+    letter-spacing: 0.22em;
+    text-anchor: middle;
+    text-transform: uppercase;
+  }
+
+  /* Right column — vertical step list */
+  .lifecycle-steps {
+    display: flex;
+    flex-direction: column;
+    gap: 32px;
+    padding: 80px 0;
+  }
+  .lc-phase-header {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    margin-bottom: 4px;
+  }
+  .lc-phase-tag {
+    font-family: var(--mono);
+    font-size: 10px;
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+    padding: 6px 12px;
+    border-radius: 999px;
+    border: 1px solid;
+  }
+  .lc-phase-tag.p1 { color: var(--amber-bright); border-color: rgba(104,210,232,0.35); background: rgba(104,210,232,0.06); }
+  .lc-phase-tag.p2 { color: var(--yellow); border-color: rgba(253,222,85,0.35); background: rgba(253,222,85,0.06); }
+  .lc-phase-name {
+    font-family: var(--sans);
+    font-weight: 500;
+    font-size: 22px;
+    color: var(--cream);
+    letter-spacing: -0.015em;
+    font-variation-settings: "opsz" 144;
+  }
+  .lc-phase-name em {
+    font-family: var(--serif);
+    font-style: italic;
+    color: var(--amber-bright);
+    font-weight: 400;
+  }
+  .lc-step {
+    display: grid;
+    grid-template-columns: 36px 1fr;
+    gap: 20px;
+    padding: 18px 0;
+    border-bottom: 1px solid rgba(255,255,255,0.08);
+    transition: padding 0.4s ease;
+    align-items: start;
+  }
+  .lc-step:last-of-type { border-bottom: 0; }
+  .lc-step.in-view { padding-left: 10px; }
+  .lc-step-marker {
+    width: 24px;
+    height: 24px;
+    border-radius: 50%;
+    border: 1.5px solid rgba(104,210,232,0.35);
+    background: var(--navy-deep);
+    position: relative;
+    flex-shrink: 0;
+    margin-top: 3px;
+    transition: all 0.4s ease;
+  }
+  .lc-step.in-view .lc-step-marker {
+    border-color: var(--amber-bright);
+    box-shadow: 0 0 0 4px rgba(104,210,232,0.15);
+  }
+  .lc-step.in-view .lc-step-marker::after {
+    content: '';
+    position: absolute;
+    inset: 6px;
+    border-radius: 50%;
+    background: var(--amber-bright);
+  }
+  .lc-step h5 {
+    font-family: var(--sans);
+    font-weight: 500;
+    font-size: 17px;
+    color: var(--cream);
+    margin-bottom: 6px;
+    letter-spacing: -0.005em;
+    transition: color 0.4s ease;
+    font-variation-settings: "opsz" 144;
+  }
+  .lc-step.in-view h5 { color: var(--amber-bright); }
+  .lc-step p {
+    font-size: 14px;
+    line-height: 1.6;
+    color: rgba(240,242,245,0.65);
+    transition: color 0.4s ease;
+  }
+  .lc-step.in-view p { color: rgba(240,242,245,0.85); }
+
+  /* Phase divider strip */
+  .lc-phase-divider {
+    margin: 28px 0 16px;
+    padding-top: 28px;
+    border-top: 1px dashed rgba(255,255,255,0.12);
+  }
+  .lifecycle-footer {
+    padding: 60px 0 100px;
+    border-top: 1px solid rgba(255,255,255,0.08);
+    margin-top: 80px;
+    text-align: center;
+  }
+  .lifecycle-footer p {
+    font-family: var(--serif);
+    font-style: italic;
+    font-size: 22px;
+    line-height: 1.4;
+    color: rgba(240,242,245,0.85);
+    max-width: 720px;
+    margin: 0 auto;
+    font-variation-settings: "opsz" 144;
+  }
+  .lifecycle-footer p em {
+    color: var(--amber-bright);
+    font-style: italic;
+  }
+
+  @media (max-width: 960px) {
+    .lifecycle-grid { grid-template-columns: 1fr; gap: 32px; }
+    .lifecycle-sticky { position: relative; top: 0; height: auto; min-height: 0; max-height: none; }
+    .lifecycle-diagram-wrap { max-width: 340px; }
+    .lifecycle-steps { padding: 0; }
+  }
+
+  /* ============================================================
+     SAM MATURITY FRAMEWORK — interactive 5-level ladder
+     ============================================================ */
+  .maturity { background: var(--paper); padding: 130px 0; position: relative; }
+  .maturity-ladder {
+    margin-top: 64px;
+    position: relative;
+  }
+  /* The connecting progression line behind levels */
+  .ladder-track {
+    position: absolute;
+    left: 0;
+    right: 0;
+    top: 50px;
+    height: 2px;
+    background: var(--line);
+    z-index: 0;
+  }
+  .ladder-track::after {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 0;
+    height: 100%;
+    width: 0;
+    background: linear-gradient(90deg, var(--amber) 0%, var(--amber-bright) 50%, var(--yellow) 100%);
+    transition: width 1.8s cubic-bezier(.2,.7,.2,1);
+  }
+  .maturity-ladder.in .ladder-track::after { width: 100%; }
+
+  .ladder-grid {
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    gap: 16px;
+    position: relative;
+    z-index: 1;
+  }
+  .ladder-level {
+    background: var(--paper);
+    border: 1px solid var(--line);
+    border-radius: var(--radius);
+    padding: 24px 22px;
+    transition: all 0.45s cubic-bezier(.2,.7,.2,1);
+    cursor: default;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    box-shadow: 0 1px 0 rgba(0,0,0,0.02);
+  }
+  .ladder-level:hover {
+    border-color: var(--amber);
+    transform: translateY(-6px);
+    box-shadow: 0 12px 32px rgba(8,81,94,0.10);
+  }
+  .ladder-level::before {
+    content: '';
+    position: absolute;
+    top: 50px;
+    left: -8px;
+    width: 16px; height: 16px;
+    border-radius: 50%;
+    background: var(--paper);
+    border: 2px solid var(--line);
+    z-index: 2;
+    transition: all 0.45s ease;
+  }
+  .maturity-ladder.in .ladder-level::before { border-color: var(--amber); background: var(--amber); }
+  .ladder-level:first-child::before { display: none; }
+  .ladder-num {
+    font-family: var(--mono);
+    font-size: 10px;
+    letter-spacing: 0.2em;
+    color: var(--amber);
+    margin-bottom: 10px;
+    text-transform: uppercase;
+  }
+  .ladder-level h4 {
+    font-family: var(--sans);
+    font-weight: 500;
+    font-size: 22px;
+    color: var(--navy);
+    margin-bottom: 4px;
+    letter-spacing: -0.01em;
+    font-variation-settings: "opsz" 144;
+  }
+  .ladder-level h4 em {
+    font-family: var(--serif);
+    font-style: italic;
+    color: var(--amber);
+    font-weight: 400;
+    display: block;
+    font-size: 13px;
+    margin-top: 2px;
+  }
+  .ladder-attrs {
+    list-style: none;
+    margin-top: 18px;
+    padding-top: 14px;
+    border-top: 1px dashed var(--line);
+    display: grid;
+    gap: 8px;
+  }
+  .ladder-attrs li {
+    display: grid;
+    grid-template-columns: 70px 1fr;
+    gap: 8px;
+    font-size: 11.5px;
+    line-height: 1.4;
+    color: var(--navy-soft);
+  }
+  .ladder-attrs li strong {
+    font-family: var(--mono);
+    font-size: 9px;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    color: var(--muted);
+    font-weight: 500;
+    padding-top: 1px;
+  }
+  /* Visual emphasis on the Intelligent level — the destination */
+  .ladder-level.is-intelligent {
+    background: var(--navy);
+    color: var(--cream);
+    border-color: var(--amber);
+  }
+  .ladder-level.is-intelligent h4 { color: var(--cream); }
+  .ladder-level.is-intelligent h4 em { color: var(--amber-bright); }
+  .ladder-level.is-intelligent .ladder-num { color: var(--amber-bright); }
+  .ladder-level.is-intelligent .ladder-attrs { border-top-color: rgba(255,255,255,0.15); }
+  .ladder-level.is-intelligent .ladder-attrs li { color: rgba(240,242,245,0.72); }
+  .ladder-level.is-intelligent .ladder-attrs li strong { color: var(--amber-bright); }
+  @media (max-width: 1100px) {
+    .ladder-grid { grid-template-columns: repeat(3, 1fr); }
+    .ladder-track { display: none; }
+    .ladder-level::before { display: none; }
+  }
+  @media (max-width: 700px) {
+    .ladder-grid { grid-template-columns: 1fr; }
+  }
+
+  /* ============================================================
+     STRATEGIC REMEDIATION — before/after transformation cards
+     ============================================================ */
+  .remediation { background: var(--cream); padding: 130px 0; }
+  .rem-grid {
+    margin-top: 56px;
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 20px;
+  }
+  .rem-card {
+    background: var(--paper);
+    border: 1px solid var(--line);
+    border-radius: var(--radius);
+    padding: 32px 32px 28px;
+    transition: all 0.4s cubic-bezier(.2,.7,.2,1);
+    position: relative;
+    overflow: hidden;
+  }
+  .rem-card::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0; right: 0;
+    height: 1px;
+    background: linear-gradient(90deg, transparent, var(--amber), transparent);
+    opacity: 0;
+    transition: opacity 0.4s ease;
+  }
+  .rem-card:hover {
+    border-color: var(--amber);
+    transform: translateY(-3px);
+    box-shadow: 0 14px 36px rgba(8,81,94,0.08);
+  }
+  .rem-card:hover::before { opacity: 1; }
+  .rem-head {
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+    gap: 16px;
+    margin-bottom: 18px;
+  }
+  .rem-card h4 {
+    font-family: var(--sans);
+    font-weight: 500;
+    font-size: 19px;
+    line-height: 1.2;
+    color: var(--navy);
+    letter-spacing: -0.01em;
+    font-variation-settings: "opsz" 144;
+  }
+  .rem-tag {
+    font-family: var(--mono);
+    font-size: 9px;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--amber);
+    background: rgba(3,174,210,0.07);
+    border: 1px solid rgba(3,174,210,0.2);
+    padding: 4px 8px;
+    border-radius: 4px;
+    flex-shrink: 0;
+    white-space: nowrap;
+  }
+  /* Before/After block */
+  .rem-flow {
+    display: grid;
+    grid-template-columns: 1fr 30px 1fr;
+    gap: 8px;
+    align-items: center;
+    margin: 16px 0 14px;
+  }
+  .rem-state {
+    background: var(--cream);
+    border-radius: var(--radius-sm);
+    padding: 12px 14px;
+    border: 1px solid var(--line);
+    transition: all 0.4s ease;
+  }
+  .rem-state-lbl {
+    font-family: var(--mono);
+    font-size: 9px;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--muted);
+    margin-bottom: 6px;
+  }
+  .rem-state-val {
+    font-family: var(--sans);
+    font-size: 13px;
+    font-weight: 500;
+    color: var(--navy);
+    line-height: 1.3;
+    font-variation-settings: "opsz" 144;
+  }
+  .rem-state.after {
+    background: var(--paper);
+    border-color: var(--amber);
+  }
+  .rem-state.after .rem-state-lbl { color: var(--amber); }
+  .rem-state.after .rem-state-val { color: var(--navy); font-weight: 500; }
+  .rem-arrow {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--amber);
+    position: relative;
+  }
+  .rem-arrow svg { width: 22px; height: 22px; }
+  .rem-arrow::before {
+    content: '';
+    position: absolute;
+    inset: -8px;
+    border-radius: 50%;
+    border: 1px solid rgba(3,174,210,0.2);
+    opacity: 0;
+    transform: scale(0.7);
+    transition: all 0.4s ease;
+  }
+  .rem-card:hover .rem-arrow::before { opacity: 1; transform: scale(1); }
+  .rem-impact {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    padding-top: 14px;
+    margin-top: 14px;
+    border-top: 1px dashed var(--line);
+    font-size: 13px;
+    line-height: 1.5;
+    color: var(--navy);
+  }
+  .rem-impact-num {
+    font-family: var(--sans);
+    font-weight: 500;
+    color: var(--amber);
+    letter-spacing: -0.005em;
+  }
+  @media (max-width: 768px) {
+    .rem-grid { grid-template-columns: 1fr; }
+  }
+
+  /* ============================================================
+     TRANSFORMATION OUTCOMES — KPI dashboard
+     ============================================================ */
+  .outcomes {
+    background: var(--navy);
+    color: var(--cream);
+    padding: 130px 0;
+    position: relative;
+    overflow: hidden;
+  }
+  .outcomes::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background-image:
+      linear-gradient(rgba(255,255,255,0.022) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(255,255,255,0.022) 1px, transparent 1px);
+    background-size: 60px 60px;
+    pointer-events: none;
+  }
+  .outcomes::after {
+    content: '';
+    position: absolute;
+    top: 50%;
+    right: -200px;
+    transform: translateY(-50%);
+    width: 600px;
+    height: 600px;
+    background: radial-gradient(circle, rgba(3,174,210,0.12) 0%, transparent 65%);
+    pointer-events: none;
+    border-radius: 50%;
+  }
+  .outcomes .container { position: relative; z-index: 1; }
+  .outcomes .section-title { color: var(--cream); }
+  .outcomes .section-eyebrow { color: var(--amber-bright); }
+  .outcomes .section-eyebrow::before { background: var(--amber-bright); }
+  .outcomes .section-lede { color: rgba(240,242,245,0.72); }
+
+  .outcomes-grid {
+    margin-top: 64px;
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 1px;
+    background: rgba(255,255,255,0.08);
+    border: 1px solid rgba(255,255,255,0.10);
+    border-radius: var(--radius);
+    overflow: hidden;
+  }
+  .outcomes-cell {
+    background: rgba(255,255,255,0.02);
+    padding: 32px 28px;
+    transition: background 0.35s ease;
+    position: relative;
+  }
+  .outcomes-cell:hover { background: rgba(255,255,255,0.06); }
+  .outcomes-cell .oc-lbl {
+    font-family: var(--mono);
+    font-size: 10px;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: rgba(240,242,245,0.55);
+    margin-bottom: 14px;
+  }
+  .outcomes-cell .oc-val {
+    font-family: var(--sans);
+    font-weight: 300;
+    font-size: 38px;
+    line-height: 1.05;
+    color: var(--amber-bright);
+    letter-spacing: -0.03em;
+    font-variation-settings: "opsz" 144;
+    display: flex;
+    align-items: baseline;
+    gap: 4px;
+  }
+  .outcomes-cell .oc-val .unit { font-size: 22px; color: rgba(240,242,245,0.65); }
+  .outcomes-cell .oc-desc {
+    margin-top: 12px;
+    font-size: 13px;
+    line-height: 1.55;
+    color: rgba(240,242,245,0.65);
+  }
+  /* Mini trend sparkline at the bottom of each cell */
+  .oc-spark {
+    margin-top: 16px;
+    height: 24px;
+  }
+  .oc-spark svg { width: 100%; height: 100%; display: block; }
+  .oc-spark path {
+    fill: none;
+    stroke: var(--amber-bright);
+    stroke-width: 1.5;
+    stroke-linecap: round;
+    stroke-linejoin: round;
+    stroke-dasharray: 200;
+    stroke-dashoffset: 200;
+  }
+  .outcomes-cell.in .oc-spark path {
+    animation: ocSparkDraw 1.6s ease-out forwards;
+  }
+  @keyframes ocSparkDraw {
+    to { stroke-dashoffset: 0; }
+  }
+  @media (max-width: 1000px) {
+    .outcomes-grid { grid-template-columns: 1fr 1fr; }
+  }
+  @media (max-width: 580px) {
+    .outcomes-grid { grid-template-columns: 1fr; }
+  }
+
+  /* ============================================================
+     ADJACENT SERVICES — Baselining + Audit Defense
+     ============================================================ */
+  .other-svc { background: var(--cream); padding: 120px 0; }
+  .other-svc-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 24px;
+    margin-top: 48px;
+  }
+  .other-svc-card {
+    background: var(--paper);
+    border: 1px solid var(--line);
+    padding: 40px 36px;
+    border-radius: var(--radius);
+    transition: all 0.45s cubic-bezier(.2,.7,.2,1);
+    display: flex;
+    flex-direction: column;
+    text-decoration: none;
+    position: relative;
+    overflow: hidden;
+  }
+  .other-svc-card::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: radial-gradient(circle at top right, rgba(3,174,210,0.12), transparent 60%);
+    opacity: 0;
+    transition: opacity 0.4s ease;
+    pointer-events: none;
+  }
+  .other-svc-card:hover {
+    background: var(--navy);
+    color: var(--cream);
+    transform: translateY(-6px);
+    box-shadow: 0 16px 40px rgba(8,81,94,0.18);
+  }
+  .other-svc-card:hover::before { opacity: 1; }
+  .other-svc-card .num {
+    font-family: var(--sans);
+    font-style: italic;
+    color: var(--amber);
+    font-size: 14px;
+    margin-bottom: 16px;
+  }
+  .other-svc-card:hover .num { color: var(--amber-bright); }
+  .other-svc-card h4 {
+    font-family: var(--sans);
+    font-weight: 500;
+    font-size: 24px;
+    line-height: 1.15;
+    margin-bottom: 12px;
+    letter-spacing: -0.01em;
+    color: var(--navy);
+    transition: color 0.4s;
+    font-variation-settings: "opsz" 144;
+  }
+  .other-svc-card:hover h4 { color: var(--cream); }
+  .other-svc-card p {
+    font-size: 15px;
+    line-height: 1.6;
+    color: var(--navy-soft);
+    margin-bottom: 20px;
+    flex: 1;
+    transition: color 0.4s;
+  }
+  .other-svc-card:hover p { color: rgba(240,242,245,0.75); }
+  .other-svc-card .lnk {
+    font-size: 12px;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    font-weight: 600;
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    color: var(--navy);
+    transition: color 0.4s, gap 0.4s;
+  }
+  .other-svc-card:hover .lnk { color: var(--amber-bright); gap: 14px; }
+  @media (max-width: 768px) { .other-svc-grid { grid-template-columns: 1fr; } }
+
+  /* CTA — ambient enterprise grid */
+  .cta { position: relative; overflow: hidden; }
+  .cta::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background-image:
+      linear-gradient(rgba(255,255,255,0.03) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(255,255,255,0.03) 1px, transparent 1px);
+    background-size: 56px 56px;
+    pointer-events: none;
+  }
+  .cta .container { position: relative; z-index: 1; }
+
+  /* Reduced motion */
+  @media (prefers-reduced-motion: reduce) {
+    *, *::before, *::after {
+      animation-duration: 0.001ms !important;
+      animation-iteration-count: 1 !important;
+      transition-duration: 0.001ms !important;
+    }
+    .lifecycle-sticky { position: relative; top: 0; height: auto; }
+  }
+</style>
+</head>
+<body>
+
+<!-- HEADER -->
+<header>
+  <div class="container nav">
+    <a href="index.html" class="logo">
+      <span class="logo-lockup">
+        <span class="logo-text"><span class="logo-cap">P</span>roTeam</span>
+        <span class="logo-advisory">Advisory Solutions LLP</span>
+      </span>
+    </a>
+    <ul class="nav-links">
+      <li><a href="index.html">Home</a></li>
+      <li class="has-mega">
+        <a href="services.html" class="active">Services <svg class="caret" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 9l6 6 6-6"/></svg></a>
+        <div class="mega-menu" role="menu" aria-label="Services">
+          <div class="mega-grid">
+            <div class="mega-col">
+              <a href="services.html#itam" class="mega-head">IT Asset Management</a>
+              <ul>
+                <li><a href="service-sam-maturity.html">SAM Maturity Assessment</a></li>
+                <li><a href="service-sam-baselining.html">SAM Baselining &amp; Cost Optimization</a></li>
+                <li><a href="service-audit-defence.html">Audit Defense &amp; Negotiation Support</a></li>
+                <li><a href="service-ham-maturity.html">Hardware Asset Management</a></li>
+                <li><a href="service-itam-managed.html">Managed Services</a></li>
+              </ul>
+            </div>
+            <div class="mega-col">
+              <a href="services.html#finops" class="mega-head">Cloud FinOps</a>
+              <ul>
+                <li><a href="service-cloud-finops.html">FinOps Advisory &amp; Strategy</a></li>
+                <li><a href="service-finops-optimization.html">Cloud Spend Optimisation</a></li>
+                <li><a href="service-finops-managed.html">Managed FinOps Services</a></li>
+              </ul>
+            </div>
+            <div class="mega-col">
+              <a href="services.html#platform-strategy" class="mega-head">Platform Strategy &amp; Advisory</a>
+              <ul>
+                <li><a href="service-platform-strategy.html">Platform Strategy &amp; Advisory</a></li>
+                <li><a href="service-implementation-integration.html">Implementation &amp; Integration</a></li>
+              </ul>
+            </div>
+            <div class="mega-col">
+              <a href="services.html#ai-transformation" class="mega-head">AI Transformation Services</a>
+              <ul>
+                <li><a href="service-ai-spend.html">AI Spend Management</a></li>
+                <li><a href="service-ai-adoption.html">AI Adoption &amp; Value Delivery</a></li>
+                <li><a href="service-ai-usage-analytics.html">AI Usage Analytics</a></li>
+                <li><a href="service-ai-vendor-negotiation.html">AI Vendor Negotiation</a></li>
+                <li><a href="service-ai-governance-advisory.html">AI Governance Advisory</a></li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </li>
+
+      <li><a href="case-studies.html">Case Studies</a></li>
+            <li class="has-mega has-about-dropdown">
+        <a href="about.html">About <svg class="caret" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 9l6 6 6-6"/></svg></a>
+        <div class="mega-menu" role="menu" aria-label="About">
+          <div class="mega-grid mega-grid--about">
+            <div class="mega-col">
+              <a href="our-story.html" class="mega-head">Our Story</a>
+              <ul>
+                <li><a href="our-story.html">Who We Are</a></li>
+                <li><a href="our-story.html#team">Team / Leaders</a></li>
+              </ul>
+            </div>
+            <div class="mega-col">
+              <a href="achievements.html" class="mega-head">By the Numbers</a>
+              <ul>
+                <li><a href="achievements.html">Achievements &amp; Stats</a></li>
+              </ul>
+            </div>
+            <div class="mega-col">
+              <a href="gallery.html" class="mega-head">Gallery</a>
+              <ul>
+                <li><a href="gallery.html">Culture &amp; Events</a></li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </li>
+      <li><a href="insights.html">Insights</a></li>
+            <li><a href="careers.html">Careers</a></li>
+      <li><a href="contact.html">Contact</a></li>
+    </ul>
+    <a href="contact.html" class="nav-cta">Free Consultation</a>
+    <button class="menu-toggle" id="menuToggle" aria-label="Toggle menu" aria-expanded="false">
+      <span class="bar"></span>
+      <span class="bar"></span>
+      <span class="bar"></span>
+    </button>
+  </div>
+</header>
+
+<!-- MOBILE NAV -->
+<nav class="mobile-nav" id="mobileNav" aria-label="Mobile navigation">
+  <ul class="mobile-nav-links">
+    <li><a href="index.html">Home <span>&rarr;</span></a></li>
+    <li class="has-sub">
+      <button class="sub-toggle" type="button" aria-expanded="false" aria-controls="m-svc-sub">
+        Services
+        <svg class="caret" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 9l6 6 6-6"/></svg>
+      </button>
+      <ul id="m-svc-sub" class="sub-menu">
+        <li class="has-sub-2">
+          <button class="sub-toggle-2" type="button" aria-expanded="false" aria-controls="m-itam-sub">
+            IT Asset Management
+            <svg class="caret" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 9l6 6 6-6"/></svg>
+          </button>
+          <ul id="m-itam-sub" class="sub-menu-2">
+            <li><a href="service-sam-maturity.html">SAM Maturity Assessment</a></li>
+            <li><a href="service-sam-baselining.html">SAM Baselining &amp; Cost Optimization</a></li>
+            <li><a href="service-audit-defence.html">Audit Defense &amp; Negotiation Support</a></li>
+            <li><a href="service-ham-maturity.html">Hardware Asset Management</a></li>
+            <li><a href="service-itam-managed.html">Managed Services</a></li>
+          </ul>
+        </li>
+        <li class="has-sub-2">
+          <button class="sub-toggle-2" type="button" aria-expanded="false" aria-controls="m-finops-sub">
+            Cloud FinOps
+            <svg class="caret" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 9l6 6 6-6"/></svg>
+          </button>
+          <ul id="m-finops-sub" class="sub-menu-2">
+            <li><a href="service-cloud-finops.html">FinOps Advisory &amp; Strategy</a></li>
+            <li><a href="service-finops-optimization.html">Cloud Spend Optimisation</a></li>
+            <li><a href="service-finops-managed.html">Managed FinOps Services</a></li>
+          </ul>
+        </li>
+        <li class="has-sub-2">
+          <button class="sub-toggle-2" type="button" aria-expanded="false" aria-controls="m-platform-sub">
+            Platform Strategy &amp; Advisory
+            <svg class="caret" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 9l6 6 6-6"/></svg>
+          </button>
+          <ul id="m-platform-sub" class="sub-menu-2">
+            <li><a href="service-platform-strategy.html">Platform Strategy &amp; Advisory</a></li>
+            <li><a href="service-implementation-integration.html">Implementation &amp; Integration</a></li>
+          </ul>
+        </li>
+        <li class="has-sub-2">
+          <button class="sub-toggle-2" type="button" aria-expanded="false" aria-controls="m-ai-sub">
+            AI Transformation Services
+            <svg class="caret" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 9l6 6 6-6"/></svg>
+          </button>
+          <ul id="m-ai-sub" class="sub-menu-2">
+            <li><a href="service-ai-spend.html">AI Spend Management</a></li>
+            <li><a href="service-ai-adoption.html">AI Adoption &amp; Value Delivery</a></li>
+            <li><a href="service-ai-usage-analytics.html">AI Usage Analytics</a></li>
+            <li><a href="service-ai-vendor-negotiation.html">AI Vendor Negotiation</a></li>
+            <li><a href="service-ai-governance-advisory.html">AI Governance Advisory</a></li>
+          </ul>
+        </li>
+      </ul>
+    </li>
+
+    <li><a href="case-studies.html">Case Studies <span>&rarr;</span></a></li>
+        <li class="has-sub">
+      <button class="sub-toggle" type="button" aria-expanded="false" aria-controls="m-about-sub">
+        About
+        <svg class="caret" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 9l6 6 6-6"/></svg>
+      </button>
+      <ul id="m-about-sub" class="sub-menu">
+        <li><a href="our-story.html">Our Story</a></li>
+        <li><a href="achievements.html">By the Numbers</a></li>
+        <li><a href="our-story.html#team">Team / Leaders</a></li>
+        <li><a href="gallery.html">Gallery</a></li>
+      </ul>
+    </li>
+    <li><a href="insights.html">Insights <span>&rarr;</span></a></li>
+        <li><a href="careers.html">Careers <span>&rarr;</span></a></li>
+    <li><a href="contact.html">Contact <span>&rarr;</span></a></li>
+  </ul>
+  <a href="contact.html" class="mobile-nav-cta">Book Free Consultation &rarr;</a>
+  <div class="mobile-nav-contact">
+    <a href="tel:+919676889797">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07 19.5 19.5 0 01-6-6 19.79 19.79 0 01-3.07-8.67A2 2 0 014.11 2h3a2 2 0 012 1.72 12.84 12.84 0 00.7 2.81 2 2 0 01-.45 2.11L8.09 9.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45 12.84 12.84 0 002.81.7A2 2 0 0122 16.92z"/></svg>
+      +91 9676 889 797
+    </a>
+    <a href="mailto:vpatel@proteamadvisory.com">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+      vpatel@proteamadvisory.com
+    </a>
+  </div>
+</nav>
+
+<!-- PAGE HERO — fragmented ecosystem orbit -->
+<section class="page-hero svc-detail-hero">
+  <!-- Background orbit SVG: floating tooling nodes pulling toward a connected core -->
+  <div class="hero-orbit-bg" aria-hidden="true">
+    <svg viewBox="0 0 720 720">
+      <defs>
+        <radialGradient id="coreGrad" cx="50%" cy="50%" r="50%">
+          <stop offset="0%"  stop-color="#03AED2" stop-opacity="0.55"/>
+          <stop offset="60%" stop-color="#03AED2" stop-opacity="0.08"/>
+          <stop offset="100%" stop-color="#03AED2" stop-opacity="0"/>
+        </radialGradient>
+      </defs>
+      <!-- Outer concentric rings (rotating) -->
+      <circle class="ring"    cx="360" cy="360" r="280"/>
+      <circle class="ring r2" cx="360" cy="360" r="200"/>
+      <circle class="ring"    cx="360" cy="360" r="130"/>
+      <!-- Connector lines flowing inward from each node to the core -->
+      <line class="conn" x1="120" y1="180" x2="360" y2="360"/>
+      <line class="conn" style="animation-delay:0.5s"  x1="560" y1="140" x2="360" y2="360"/>
+      <line class="conn" style="animation-delay:1.0s"  x1="640" y1="320" x2="360" y2="360"/>
+      <line class="conn" style="animation-delay:1.5s"  x1="580" y1="540" x2="360" y2="360"/>
+      <line class="conn" style="animation-delay:2.0s"  x1="200" y1="600" x2="360" y2="360"/>
+      <line class="conn" style="animation-delay:2.5s"  x1="80"  y1="420" x2="360" y2="360"/>
+      <!-- Floating tooling nodes -->
+      <circle class="node n1" cx="120" cy="180" r="4"/>
+      <circle class="node n2" cx="560" cy="140" r="4"/>
+      <circle class="node n3" cx="640" cy="320" r="4"/>
+      <circle class="node n4" cx="580" cy="540" r="4"/>
+      <circle class="node n5" cx="200" cy="600" r="4"/>
+      <circle class="node n6" cx="80"  cy="420" r="4"/>
+      <!-- Glow + core -->
+      <circle cx="360" cy="360" r="180" fill="url(#coreGrad)"/>
+      <circle class="core-glow" cx="360" cy="360" r="40"/>
+      <circle class="core"      cx="360" cy="360" r="14"/>
+      <!-- Concentric mono labels around the core (static) -->
+      <text x="360" y="270" text-anchor="middle" fill="rgba(104,210,232,0.55)" font-family="ui-monospace, monospace" font-size="9" letter-spacing="0.2em">ENTITLEMENT</text>
+      <text x="450" y="365" text-anchor="middle" fill="rgba(104,210,232,0.55)" font-family="ui-monospace, monospace" font-size="9" letter-spacing="0.2em">GOVERNANCE</text>
+      <text x="360" y="460" text-anchor="middle" fill="rgba(104,210,232,0.55)" font-family="ui-monospace, monospace" font-size="9" letter-spacing="0.2em">DATA QUALITY</text>
+      <text x="270" y="365" text-anchor="middle" fill="rgba(104,210,232,0.55)" font-family="ui-monospace, monospace" font-size="9" letter-spacing="0.2em">PROCESS</text>
+    </svg>
+  </div>
+
+  <div class="container">
+    <div class="breadcrumb">
+      <a href="index.html">Home</a>
+      <span class="sep">/</span>
+      <a href="services.html">Services</a>
+      <span class="sep">/</span>
+      <span class="current">SAM Maturity Assessment</span>
+    </div>
+    <div class="page-hero-grid">
+      <div>
+        <div class="page-hero-eyebrow">IT Asset Management · 01</div>
+        <h1>SAM maturity  <em>Assessment</em>.</h1>
+      </div>
+      <div>
+        <p class="page-hero-lede">
+          A strategic transformation engagement &mdash; not a one-off scorecard. We assess your SAM estate across five operating dimensions, benchmark you against your industry, then run the transformation that moves you up the maturity curve.
+        </p>
+        <div style="margin-top:24px; display:flex; gap:10px; flex-wrap:wrap;">
+          <span class="ai-badge">Maturity benchmarked</span>
+          <span class="ai-badge">Operating model redesigned</span>
+          <span class="ai-badge">Transformation delivered</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="stat-row reveal">
+      <div>
+        <div class="stat-num"><span class="count" data-to="5">0</span></div>
+        <div class="stat-lbl">Maturity levels &mdash; from reactive to intelligent. Where you sit today, where you should sit, what stands in between.</div>
+      </div>
+      <div>
+        <div class="stat-num"><span class="count" data-to="12">0</span>&ndash;<span class="count" data-to="18">0</span> mo</div>
+        <div class="stat-lbl">Typical transformation horizon &mdash; phased rollout with quarterly milestones, validated against a peer benchmark.</div>
+      </div>
+      <div>
+        <div class="stat-num"><span class="count" data-to="40">0</span>%+</div>
+        <div class="stat-lbl">Average audit-risk reduction observed after a 12-month maturity uplift across our engagements.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- OVERVIEW -->
+<section class="svc-overview">
+  <div class="container">
+    <div class="svc-overview-grid">
+      <div class="reveal">
+        <div class="section-eyebrow">The problem we solve</div>
+        <h2>Tooling alone <em>doesn't lift maturity</em>.</h2>
+      </div>
+      <div class="reveal">
+        <p>Most enterprises operate SAM at a maturity level well below what their software spend warrants. <strong>The tools are in place. The discipline isn't.</strong></p>
+        <p>Visibility is partial. Governance evolved organically across teams that no longer talk. Data quality is uneven. Reporting goes up the chain but doesn't drive decisions. Tooling exists but is operated reactively, between audit cycles.</p>
+        <p>Maturity work isn't a report. It's a transformation programme &mdash; people, process, tooling and data, sequenced over a 12&ndash;18 month horizon and benchmarked against the level you should be operating at.</p>
+        <div class="overview-tag-row">
+          <span class="ai-badge">People &middot; process &middot; tooling</span>
+          <span class="ai-badge">Five-dimension scoring</span>
+          <span class="ai-badge">Peer benchmarking</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="overview-insights reveal-stagger">
+      <div class="overview-insight">
+        <div class="oi-num">— 01</div>
+        <h4>Tooling without ownership</h4>
+        <p>Platforms procured, then operated reactively. No accountability for the signal they produce.</p>
+      </div>
+      <div class="overview-insight">
+        <div class="oi-num">— 02</div>
+        <h4>Governance gaps</h4>
+        <p>Decision rights unclear. Renewals approved without a position. Audit response improvised.</p>
+      </div>
+      <div class="overview-insight">
+        <div class="oi-num">— 03</div>
+        <h4>Disconnected operating model</h4>
+        <p>Procurement, IT, finance and security each run separate SAM views. None reconciled.</p>
+      </div>
+      <div class="overview-insight">
+        <div class="oi-num">— 04</div>
+        <h4>Reporting without action</h4>
+        <p>Dashboards delivered monthly. No-one held to the trend. Same risks surface every quarter.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ENGAGEMENT LIFECYCLE — visual summary (Two phases, bundled not bolted) -->
+<section class="twophases" id="twophases">
+  <div class="container">
+    <div class="reveal" style="max-width: 760px;">
+      <div class="section-eyebrow">The engagement lifecycle</div>
+      <h2 class="section-title">Two phases. <em>Bundled, not bolted.</em></h2>
+      <p class="section-lede">Maturity work is a managed journey, not a one-off report. We bundle the diagnostic with the transformation into a single engagement &mdash; with continuous advisory running underneath the entire programme.</p>
+    </div>
+
+    <!-- Two big circles + arrow -->
+    <div class="tp-orbits">
+
+      <div class="tp-circle tp-c1">
+        <svg class="tp-icon tp-icon-1" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+          <circle cx="11" cy="11" r="7"/>
+          <line x1="11" y1="8" x2="11" y2="14"/>
+          <line x1="8" y1="11" x2="14" y2="11"/>
+          <line x1="16.5" y1="16.5" x2="21" y2="21"/>
+        </svg>
+        <h3>Assess &amp;<br>Diagnose</h3>
+        <div class="tp-when">Weeks 1 &ndash; 6</div>
+      </div>
+
+      <div class="tp-arrow" aria-hidden="true">
+        <svg viewBox="0 0 120 28" preserveAspectRatio="none">
+          <path class="tp-arrow-line" d="M 6 14 L 100 14"/>
+          <path class="tp-arrow-head" d="M 100 8 L 114 14 L 100 20 Z"/>
+        </svg>
+      </div>
+
+      <div class="tp-circle tp-c2">
+        <svg class="tp-icon tp-icon-2" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+          <path d="M21 12a9 9 0 1 1-2.64-6.36"/>
+          <polyline points="21 4 21 10 15 10"/>
+          <line x1="12" y1="8" x2="12" y2="12"/>
+          <line x1="12" y1="12" x2="15" y2="14"/>
+        </svg>
+        <h3>Transform &amp;<br>Sustain</h3>
+        <div class="tp-when">Months 2 &ndash; 18</div>
+      </div>
+
+    </div>
+
+    <!-- Quarter strip -->
+    <div class="tp-strip" aria-hidden="true">
+      <div class="tp-strip-cell">First Quarter</div>
+      <div class="tp-strip-cell is-second">Second Quarter Onwards</div>
+    </div>
+
+    <!-- Phase detail cards -->
+    <div class="tp-cards">
+      <div class="tp-card tp-card-1">
+        <div class="tp-card-eyebrow">Phase 01 &mdash; Assess</div>
+        <ul>
+          <li>Five-dimension maturity scoring across people, process, tooling, data, outcomes</li>
+          <li>Anonymised industry benchmark against peers of similar scale and sector</li>
+          <li>Target operating model design &mdash; RACI, headcount, reporting lines, tooling stack</li>
+          <li>Capability gap analysis with prioritised 4&ndash;6 high-leverage workstreams</li>
+        </ul>
+      </div>
+      <div class="tp-card tp-card-2">
+        <div class="tp-card-eyebrow">Phase 02 &mdash; Transform</div>
+        <ul>
+          <li>Sequenced 12&ndash;18 month transformation roadmap with monthly milestones</li>
+          <li>Quarterly steering committee &amp; monthly delivery reviews</li>
+          <li>Periodic dashboard reporting &mdash; capability uplift, savings, risk reduction</li>
+          <li>Independent maturity re-assessment at month 12 to confirm the next level</li>
+        </ul>
+      </div>
+    </div>
+
+    <!-- Running underneath strip -->
+    <div class="tp-underneath">
+      <span class="tp-u-label">Running underneath</span>
+      <span class="tp-u-item">Licensing specialist support</span>
+      <span class="tp-u-item">Procurement advisory</span>
+      <span class="tp-u-item">Audit defence integration</span>
+    </div>
+  </div>
+</section>
+
+<!-- STRATEGIC REMEDIATION EXAMPLES -->
+<section class="remediation">
+  <div class="container">
+    <div class="reveal" style="max-width: 760px;">
+      <div class="section-eyebrow">Strategic remediation</div>
+      <h2 class="section-title">From observation to <em>operating outcome</em>.</h2>
+      <p class="section-lede">A sample of remediation patterns we sequence into the transformation roadmap &mdash; chosen by maturity gap, business value and execution effort, not by what the tool happens to flag.</p>
+    </div>
+
+    <div class="rem-grid reveal-stagger">
+
+      <div class="rem-card">
+        <div class="rem-head">
+          <h4>Licence harvesting</h4>
+          <span class="rem-tag">Optimisation</span>
+        </div>
+        <div class="rem-flow">
+          <div class="rem-state">
+            <div class="rem-state-lbl">Before</div>
+            <div class="rem-state-val">Unused entitlements paid for, year on year</div>
+          </div>
+          <div class="rem-arrow"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 5l7 7-7 7"/></svg></div>
+          <div class="rem-state after">
+            <div class="rem-state-lbl">After</div>
+            <div class="rem-state-val">Reclaim cycle running every 60 days</div>
+          </div>
+        </div>
+        <div class="rem-impact"><span class="rem-impact-num">12&ndash;18%</span><span>reduction in renewal spend on the affected vendors.</span></div>
+      </div>
+
+      <div class="rem-card">
+        <div class="rem-head">
+          <h4>SaaS rationalisation</h4>
+          <span class="rem-tag">Estate</span>
+        </div>
+        <div class="rem-flow">
+          <div class="rem-state">
+            <div class="rem-state-lbl">Before</div>
+            <div class="rem-state-val">Overlapping tools across BUs, no central view</div>
+          </div>
+          <div class="rem-arrow"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 5l7 7-7 7"/></svg></div>
+          <div class="rem-state after">
+            <div class="rem-state-lbl">After</div>
+            <div class="rem-state-val">Consolidated portfolio with sunset plan</div>
+          </div>
+        </div>
+        <div class="rem-impact"><span class="rem-impact-num">30%</span><span>application footprint reduction over twelve months.</span></div>
+      </div>
+
+      <div class="rem-card">
+        <div class="rem-head">
+          <h4>Shadow IT discovery</h4>
+          <span class="rem-tag">Risk</span>
+        </div>
+        <div class="rem-flow">
+          <div class="rem-state">
+            <div class="rem-state-lbl">Before</div>
+            <div class="rem-state-val">Unsanctioned spend invisible to procurement</div>
+          </div>
+          <div class="rem-arrow"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 5l7 7-7 7"/></svg></div>
+          <div class="rem-state after">
+            <div class="rem-state-lbl">After</div>
+            <div class="rem-state-val">Discovery pipeline feeds procurement weekly</div>
+          </div>
+        </div>
+        <div class="rem-impact"><span class="rem-impact-num">90%+</span><span>of corporate-card software now visible at point of purchase.</span></div>
+      </div>
+
+      <div class="rem-card">
+        <div class="rem-head">
+          <h4>Contract consolidation</h4>
+          <span class="rem-tag">Commercial</span>
+        </div>
+        <div class="rem-flow">
+          <div class="rem-state">
+            <div class="rem-state-lbl">Before</div>
+            <div class="rem-state-val">Fragmented vendor contracts, no leverage</div>
+          </div>
+          <div class="rem-arrow"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 5l7 7-7 7"/></svg></div>
+          <div class="rem-state after">
+            <div class="rem-state-lbl">After</div>
+            <div class="rem-state-val">Master agreements with unified positions</div>
+          </div>
+        </div>
+        <div class="rem-impact"><span class="rem-impact-num">8&ndash;14%</span><span>uplift in negotiated discount at next renewal cycle.</span></div>
+      </div>
+
+      <div class="rem-card">
+        <div class="rem-head">
+          <h4>Audit defence readiness</h4>
+          <span class="rem-tag">Compliance</span>
+        </div>
+        <div class="rem-flow">
+          <div class="rem-state">
+            <div class="rem-state-lbl">Before</div>
+            <div class="rem-state-val">Audit response improvised, fire-drill</div>
+          </div>
+          <div class="rem-arrow"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 5l7 7-7 7"/></svg></div>
+          <div class="rem-state after">
+            <div class="rem-state-lbl">After</div>
+            <div class="rem-state-val">Defensible position pack always current</div>
+          </div>
+        </div>
+        <div class="rem-impact"><span class="rem-impact-num">&lt; 72h</span><span>to produce a defensible vendor position on request.</span></div>
+      </div>
+
+      <div class="rem-card">
+        <div class="rem-head">
+          <h4>FinOps + SAM alignment</h4>
+          <span class="rem-tag">Operating model</span>
+        </div>
+        <div class="rem-flow">
+          <div class="rem-state">
+            <div class="rem-state-lbl">Before</div>
+            <div class="rem-state-val">Cloud and on-prem reported in separate views</div>
+          </div>
+          <div class="rem-arrow"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 5l7 7-7 7"/></svg></div>
+          <div class="rem-state after">
+            <div class="rem-state-lbl">After</div>
+            <div class="rem-state-val">Single estate view across both</div>
+          </div>
+        </div>
+        <div class="rem-impact"><span class="rem-impact-num">Unified</span><span>BYOL economics, renewal timing and commitment strategy.</span></div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- TRANSFORMATION OUTCOMES — KPI dashboard -->
+<section class="outcomes">
+  <div class="container">
+    <div class="reveal" style="max-width: 760px;">
+      <div class="section-eyebrow">Transformation outcomes</div>
+      <h2 class="section-title">The signals that move <em>after the engagement</em>.</h2>
+      <p class="section-lede">Twelve months of compounding discipline. Each metric measured at the start, tracked monthly, and re-baselined at month 12 against an independent re-assessment.</p>
+    </div>
+
+    <div class="outcomes-grid reveal-stagger">
+      <div class="outcomes-cell">
+        <div class="oc-lbl">Compliance posture</div>
+        <div class="oc-val"><span class="count" data-to="42">0</span>%<span class="unit">↑</span></div>
+        <div class="oc-desc">Improvement in defensible licence-position score, vendor by vendor.</div>
+        <div class="oc-spark"><svg viewBox="0 0 100 24" preserveAspectRatio="none"><path d="M 0 18 L 14 16 L 28 14 L 42 12 L 56 10 L 70 8 L 84 5 L 100 3"/></svg></div>
+      </div>
+      <div class="outcomes-cell">
+        <div class="oc-lbl">Spend visibility</div>
+        <div class="oc-val"><span class="count" data-to="93">0</span>%</div>
+        <div class="oc-desc">Of total software spend traceable to a named owner and contract.</div>
+        <div class="oc-spark"><svg viewBox="0 0 100 24" preserveAspectRatio="none"><path d="M 0 20 L 14 17 L 28 18 L 42 13 L 56 11 L 70 8 L 84 6 L 100 5"/></svg></div>
+      </div>
+      <div class="outcomes-cell">
+        <div class="oc-lbl">Audit exposure</div>
+        <div class="oc-val">&minus;<span class="count" data-to="40">0</span>%</div>
+        <div class="oc-desc">Average reduction in residual audit risk after twelve months.</div>
+        <div class="oc-spark"><svg viewBox="0 0 100 24" preserveAspectRatio="none"><path d="M 0 4 L 14 6 L 28 8 L 42 10 L 56 13 L 70 15 L 84 18 L 100 20"/></svg></div>
+      </div>
+      <div class="outcomes-cell">
+        <div class="oc-lbl">Optimisation readiness</div>
+        <div class="oc-val"><span class="count" data-to="2">0</span>.<span class="count" data-to="3">0</span>x</div>
+        <div class="oc-desc">Increase in optimisation backlog actioned per quarter.</div>
+        <div class="oc-spark"><svg viewBox="0 0 100 24" preserveAspectRatio="none"><path d="M 0 20 L 14 18 L 28 15 L 42 17 L 56 12 L 70 10 L 84 7 L 100 4"/></svg></div>
+      </div>
+      <div class="outcomes-cell">
+        <div class="oc-lbl">Governance cadence</div>
+        <div class="oc-val">Monthly</div>
+        <div class="oc-desc">Steering and delivery cadence held without exception across the programme.</div>
+        <div class="oc-spark"><svg viewBox="0 0 100 24" preserveAspectRatio="none"><path d="M 0 12 L 14 12 L 28 12 L 42 12 L 56 12 L 70 12 L 84 12 L 100 12"/></svg></div>
+      </div>
+      <div class="outcomes-cell">
+        <div class="oc-lbl">Decision latency</div>
+        <div class="oc-val">&minus;<span class="count" data-to="55">0</span>%</div>
+        <div class="oc-desc">Time from renewal trigger to leadership-ready position pack.</div>
+        <div class="oc-spark"><svg viewBox="0 0 100 24" preserveAspectRatio="none"><path d="M 0 5 L 14 8 L 28 10 L 42 11 L 56 14 L 70 16 L 84 19 L 100 21"/></svg></div>
+      </div>
+      <div class="outcomes-cell">
+        <div class="oc-lbl">Tooling alignment</div>
+        <div class="oc-val"><span class="count" data-to="100">0</span>%</div>
+        <div class="oc-desc">Of in-scope tooling integrated into the target operating stack by month 12.</div>
+        <div class="oc-spark"><svg viewBox="0 0 100 24" preserveAspectRatio="none"><path d="M 0 22 L 14 18 L 28 14 L 42 12 L 56 9 L 70 6 L 84 4 L 100 2"/></svg></div>
+      </div>
+      <div class="outcomes-cell">
+        <div class="oc-lbl">Maturity level</div>
+        <div class="oc-val">+<span class="count" data-to="2">0</span></div>
+        <div class="oc-desc">Average level uplift on the five-step framework, independently re-assessed.</div>
+        <div class="oc-spark"><svg viewBox="0 0 100 24" preserveAspectRatio="none"><path d="M 0 20 L 25 20 L 25 14 L 50 14 L 50 8 L 75 8 L 75 4 L 100 4"/></svg></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ADJACENT SERVICES -->
+<section class="other-svc">
+  <div class="container">
+    <div class="reveal" style="max-width: 720px;">
+      <div class="section-eyebrow">Adjacent services</div>
+      <h2 class="section-title">The rest of the <em>SAM practice</em>.</h2>
+      <p class="section-lede">Maturity transformation pairs naturally with continuous baselining underneath and audit defence overlaid on top.</p>
+    </div>
+
+    <div class="other-svc-grid">
+      <a href="service-sam-baselining.html" class="other-svc-card reveal">
+        <div class="num">— Baselining</div>
+        <h4>SAM Baselining &amp; Cost Optimization</h4>
+        <p>AI-assisted, continuously baselined licence positions and ongoing optimisation watch-list. The discipline layer that compounds underneath the transformation.</p>
+        <span class="lnk">See page <svg width="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 5l7 7-7 7"/></svg></span>
+      </a>
+      <a href="service-audit-defence.html" class="other-svc-card reveal">
+        <div class="num">— Audit defence</div>
+        <h4>Audit Defense &amp; Negotiation Support</h4>
+        <p>Specialist audit response, vendor negotiation support and effective licence position preparation &mdash; for engagements already in flight or about to be.</p>
+        <span class="lnk">See page <svg width="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 5l7 7-7 7"/></svg></span>
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- FINAL CTA -->
+<section class="cta">
+  <div class="container">
+    <div class="cta-inner">
+      <div class="reveal">
+        <div class="section-eyebrow" style="color: var(--amber-bright);">Ready to talk</div>
+        <h2>An executive workshop to <em>benchmark where you actually sit</em>.</h2>
+        <p>Ninety minutes with a senior consultant. We walk through your current operating model, score against the five-dimension framework, place you on the maturity curve and outline the transformation arc &mdash; before any commercial conversation.</p>
+        <div class="cta-actions">
+          <a href="contact.html" class="btn-amber">Book the workshop</a>
+          <a href="service-sam-baselining.html" class="btn-line">See SAM Baselining</a>
+        </div>
+      </div>
+      <div class="cta-detail reveal">
+        <h4>What you'll get</h4>
+        <ul class="cta-list">
+          <li>Five-dimension maturity read against your current state.</li>
+          <li>Anonymised peer benchmark for your sector.</li>
+          <li>Indicative transformation arc &mdash; sequence, horizon, key dependencies.</li>
+          <li>Honest view on whether transformation is warranted, or whether baselining alone will do.</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="container">
+    <div class="foot-grid">
+      <div class="foot-brand">
+        <a href="index.html" class="logo" style="color: var(--cream);">
+          <span class="logo-lockup">
+            <span class="logo-text" style="color:var(--cream);"><span class="logo-cap">P</span>roTeam</span>
+            <span class="logo-advisory" style="color:rgba(240,242,245,0.7);">Advisory Solutions LLP</span>
+          </span>
+        </a>
+        <h3>SAM specialists. Nothing else.</h3>
+        <p>An independent Software Asset Management consultancy serving enterprises across India, the UK, the US, and the Middle East.</p>
+
+        <div class="foot-social">
+          <div class="foot-social-label">Follow us on</div>
+          <div class="foot-social-icons">
+            <a href="https://in.linkedin.com/company/proteam-advisory" aria-label="LinkedIn" target="_blank" rel="noopener">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"/><rect x="2" y="9" width="4" height="12"/><circle cx="4" cy="4" r="2"/></svg>
+            </a>
+            <a href="https://x.com/proteamadv" aria-label="X (Twitter)" target="_blank" rel="noopener">
+              <svg viewBox="0 0 24 24" fill="currentColor"><path d="M17.53 3H21l-7.39 8.45L22.5 21h-6.83l-5.34-6.99L3.5 21H0l7.91-9.04L0.5 3h7l4.83 6.4L17.53 3zm-2.39 16h2.06L7.05 4.85H4.83L15.14 19z"/></svg>
+            </a>
+            <a href="https://www.instagram.com/proteamadvisory/" aria-label="Instagram" target="_blank" rel="noopener">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="20" rx="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/></svg>
+            </a>
+            <a href="https://www.youtube.com/channel/UCaajUe2N_6AFw3dvPmH1b7A" aria-label="YouTube" target="_blank" rel="noopener">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M22.54 6.42a2.78 2.78 0 0 0-1.94-2C18.88 4 12 4 12 4s-6.88 0-8.6.46a2.78 2.78 0 0 0-1.94 2A29 29 0 0 0 1 11.75a29 29 0 0 0 .46 5.33A2.78 2.78 0 0 0 3.4 19c1.72.46 8.6.46 8.6.46s6.88 0 8.6-.46a2.78 2.78 0 0 0 1.94-2 29 29 0 0 0 .46-5.25 29 29 0 0 0-.46-5.33z"/><polygon points="9.75 15.02 15.5 11.75 9.75 8.48 9.75 15.02" fill="currentColor"/></svg>
+            </a>
+          </div>
+        </div>
+      </div>
+
+      <div class="foot-col">
+        <h5>Services</h5>
+        <ul>
+          <li><a href="services.html#itam">IT Asset Management</a></li>
+          <li><a href="services.html#finops">Cloud FinOps</a></li>
+          <li><a href="services.html#platform-strategy">Platform Strategy &amp; Advisory</a></li>
+          <li><a href="services.html#ai-transformation">AI Transformation Services</a></li>
+        </ul>
+      </div>
+
+      <div class="foot-col">
+        <h5>About</h5>
+        <ul>
+          <li><a href="our-story.html">Our Story</a></li>
+          <li><a href="our-story.html#team">Team &amp; Leaders</a></li>
+          <li><a href="achievements.html">Achievements &amp; Stats</a></li>
+          <li><a href="gallery.html">Culture &amp; Gallery</a></li>
+        </ul>
+      </div>
+
+      <div class="foot-col">
+        <h5>Company</h5>
+        <ul>
+          <li><a href="case-studies.html">Case Studies</a></li>
+          <li><a href="insights.html">Insights</a></li>
+          <li><a href="careers.html">Careers</a></li>
+          <li><a href="contact.html">Contact</a></li>
+        </ul>
+      </div>
+
+      <div class="foot-col">
+        <h5>Get in touch</h5>
+        <address>
+          Suite #309&ndash;312<br>
+          KTC Illumination Towers<br>
+          Madhapur, Hyderabad<br>
+          Telangana, India<br><br>
+          <a href="tel:+919676889797">+91 9676 889 797</a><br>
+          <a href="mailto:vpatel@proteamadvisory.com">vpatel@proteamadvisory.com</a>
+        </address>
+      </div>
+    </div>
+
+    <div class="foot-bot">
+      <div>&copy; 2026 Proteam Advisory. All rights reserved.</div>
+      <div style="display:flex; gap:24px; flex-wrap:wrap;">
+        <a href="privacy.html">Privacy</a>
+        <a href="terms.html">Terms of Use</a>
+        <a href="cookies.html">Cookies</a>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<script>
+  /* ---- Generic reveal-on-scroll ---- */
+  const obs = new IntersectionObserver((entries) => {
+    entries.forEach(e => {
+      if (e.isIntersecting) { e.target.classList.add("in"); obs.unobserve(e.target); }
+    });
+  }, { threshold: 0.1, rootMargin: "0px 0px -50px 0px" });
+  document.querySelectorAll(".reveal, .reveal-stagger, .maturity-ladder, .outcomes-cell, .twophases").forEach(el => obs.observe(el));
+
+  /* ---- Count-up animation ---- */
+  (function() {
+    const prefersReduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    function animate(el) {
+      const target = parseFloat(el.dataset.to);
+      const decimals = parseInt(el.dataset.decimals || '0', 10);
+      if (prefersReduced) { el.textContent = target.toFixed(decimals); return; }
+      const duration = 1400;
+      const start = performance.now();
+      function step(now) {
+        const t = Math.min(1, (now - start) / duration);
+        const eased = 1 - Math.pow(1 - t, 3);
+        const value = target * eased;
+        el.textContent = value.toFixed(decimals);
+        if (t < 1) requestAnimationFrame(step);
+        else el.textContent = target.toFixed(decimals);
+      }
+      requestAnimationFrame(step);
+    }
+    const countObs = new IntersectionObserver((entries) => {
+      entries.forEach(e => {
+        if (e.isIntersecting) { animate(e.target); countObs.unobserve(e.target); }
+      });
+    }, { threshold: 0.4 });
+    document.querySelectorAll('.count').forEach(el => countObs.observe(el));
+  })();
+
+  /* ---- Lifecycle sticky-scroll: activate nodes/links as steps enter view ---- */
+  (function() {
+    const steps = document.querySelectorAll('#lcSteps .lc-step');
+    const nodes = document.querySelectorAll('#lcDiagram .lc-node');
+    const links = document.querySelectorAll('#lcDiagram .lc-link');
+    const labels = document.querySelectorAll('#lcDiagram .lc-node-label');
+    const ringP1 = document.getElementById('lcRingP1');
+    const ringP2 = document.getElementById('lcRingP2');
+    if (!steps.length || !nodes.length) return;
+
+    const stepObs = new IntersectionObserver((entries) => {
+      entries.forEach(e => {
+        const stepIdx = e.target.dataset.step;
+        if (e.isIntersecting) {
+          e.target.classList.add('in-view');
+          // Activate matching node + label + link
+          nodes.forEach(n => { if (n.dataset.step === stepIdx) n.classList.add('active'); });
+          labels.forEach(l => { if (l.dataset.step === stepIdx) l.classList.add('active'); });
+          links.forEach(l => { if (l.dataset.step === stepIdx) l.classList.add('active'); });
+          // Phase ring colour: steps 1-4 = phase 1, 5-8 = phase 2
+          const idx = parseInt(stepIdx, 10);
+          if (ringP1 && idx >= 1) ringP1.classList.add('active-p1');
+          if (ringP2 && idx >= 5) ringP2.classList.add('active-p2');
+        } else {
+          // Keep activation persistent (don't remove on scroll-out) for a "lighting up" feel
+        }
+      });
+    }, { threshold: 0.55, rootMargin: "-20% 0px -30% 0px" });
+
+    steps.forEach(s => stepObs.observe(s));
+  })();
+
+  /* ---- Smooth scroll ---- */
+  document.querySelectorAll("a[href^='#']").forEach(link => {
+    link.addEventListener("click", e => {
+      const id = link.getAttribute("href");
+      if (id.length > 1) { const tgt = document.querySelector(id); if (tgt) { e.preventDefault(); tgt.scrollIntoView({ behavior: "smooth", block: "start" }); } }
+    });
+  });
+
+  /* ---- Mobile menu ---- */
+  (function() {
+    const toggle = document.getElementById('menuToggle');
+    const mobileNav = document.getElementById('mobileNav');
+    if (!toggle || !mobileNav) return;
+    const body = document.body;
+    function openMenu() {
+      mobileNav.classList.add('is-open');
+      toggle.classList.add('open');
+      toggle.setAttribute('aria-expanded', 'true');
+      body.style.overflow = 'hidden';
+    }
+    function closeMenu() {
+      mobileNav.classList.remove('is-open');
+      toggle.classList.remove('open');
+      toggle.setAttribute('aria-expanded', 'false');
+      body.style.overflow = '';
+    }
+    toggle.addEventListener('click', () => mobileNav.classList.contains('is-open') ? closeMenu() : openMenu());
+    mobileNav.querySelectorAll('a').forEach(link => link.addEventListener('click', closeMenu));
+    document.addEventListener('keydown', e => { if (e.key === 'Escape' && mobileNav.classList.contains('is-open')) closeMenu(); });
+    mobileNav.querySelectorAll('.sub-toggle, .sub-toggle-2').forEach(btn => {
+      btn.addEventListener('click', () => {
+        const id = btn.getAttribute('aria-controls');
+        const target = id ? document.getElementById(id) : btn.nextElementSibling;
+        if (!target) return;
+        const expanded = btn.getAttribute('aria-expanded') === 'true';
+        btn.setAttribute('aria-expanded', String(!expanded));
+        target.classList.toggle('is-open', !expanded);
+      });
+    });
+  })();
+</script>
+
+<script src="sammy-chatbot.js"></script>
+<script>
+/* Desktop mega-menu hover with close-delay */
+(function () {
+  var CLOSE_DELAY = 150;
+  document.querySelectorAll(".nav-links .has-mega").forEach(function (li) {
+    var timer = null;
+    function openMenu() { clearTimeout(timer); li.classList.add("mega-open"); }
+    function scheduleClose() { timer = setTimeout(function () { li.classList.remove("mega-open"); }, CLOSE_DELAY); }
+    li.addEventListener("mouseenter", openMenu);
+    li.addEventListener("mouseleave", scheduleClose);
+    var menu = li.querySelector(".mega-menu");
+    if (menu) {
+      menu.addEventListener("mouseenter", openMenu);
+      menu.addEventListener("mouseleave", scheduleClose);
+    }
+    document.addEventListener("keydown", function (e) { if (e.key === "Escape") li.classList.remove("mega-open"); });
+  });
+})();
+</script>
+</body>
+</html>

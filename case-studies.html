@@ -1,0 +1,937 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Case Studies — Proteam Advisory</title>
+<meta name="description" content="Real client outcomes. $48M on software divestiture, $25.5M on IBM ELA, $10M+ on SAP supply chain, $5M on AI-led rationalisation, $2M on SaaS lifecycle management. Anonymised for confidentiality." />
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300..900;1,9..144,300..900&family=Geist:wght@300..700&family=Geist+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="styles.css">
+
+<style>
+  /* ── SUMMARY STATS ── isolated section with its own surface & black numbers */
+  .cs-summary {
+    background: #FFFFFF;
+    padding: 72px 0 80px;
+    border-top: 3px solid var(--amber);
+    border-bottom: 1px solid var(--line);
+    position: relative;
+  }
+
+  /* Force black numbers — override styles.css gradient text trick */
+  .cs-summary .cs-stats .cs-stat .num {
+    background: none !important;
+    background-image: none !important;
+    -webkit-background-clip: unset !important;
+    background-clip: unset !important;
+    -webkit-text-fill-color: #08515e !important;
+    color: #000000 !important;
+  }
+
+  /* Subtle top-label eyebrow above the grid */
+  .cs-summary-eyebrow {
+    font-family: var(--mono);
+    font-size: 11px;
+    font-weight: 500;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--muted, #6B8A94);
+    margin-bottom: 32px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+  .cs-summary-eyebrow::before {
+    content: '';
+    width: 28px;
+    height: 1px;
+    background: var(--muted, #6B8A94);
+    flex-shrink: 0;
+  }
+
+  /* Stats grid */
+  .cs-stats {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 0;
+    border: 1px solid var(--line);
+    border-radius: var(--radius, 8px);
+    overflow: hidden;
+    background: #FFFFFF;
+  }
+  .cs-stat {
+    padding: 40px 32px;
+    border-right: 1px solid var(--line);
+    text-align: left;
+    background: #FFFFFF;
+    transition: background 0.2s ease;
+  }
+  .cs-stat:last-child { border-right: none; }
+  .cs-stat:hover { background: var(--paper); }
+
+  /* Numbers — explicitly black, no var(--rust) fallback */
+  .cs-stat .num {
+    font-family: var(--sans);
+    font-weight: 300;
+    font-size: 48px;
+    line-height: 1;
+    color: #000000;
+    margin-bottom: 8px;
+    letter-spacing: -0.03em;
+    font-variation-settings: "opsz" 144;
+  }
+  .cs-stat .lbl {
+    font-size: 13px;
+    color: var(--navy-soft);
+    line-height: 1.5;
+  }
+
+  @media (max-width: 768px) {
+    .cs-summary { padding: 48px 0 56px; }
+    .cs-stats {
+      grid-template-columns: 1fr 1fr;
+      border-radius: var(--radius-sm, 6px);
+    }
+    .cs-stat:nth-child(2) { border-right: none; }
+    .cs-stat:nth-child(1),
+    .cs-stat:nth-child(2) { border-bottom: 1px solid var(--line); }
+    .cs-stat .num { font-size: 36px; }
+  }
+  @media (max-width: 480px) {
+    .cs-stats { grid-template-columns: 1fr; }
+    .cs-stat { border-right: none !important; border-bottom: 1px solid var(--line) !important; }
+    .cs-stat:last-child { border-bottom: none !important; }
+  }
+
+  /* CASE STUDY CARDS */
+  .cs-list {
+    background: var(--paper);
+    padding: 100px 0;
+  }
+  .cs-list-head {
+    margin-bottom: 64px;
+    max-width: 760px;
+  }
+  .cs-grid {
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+  }
+  .cs-card {
+    background: var(--cream);
+    border: 1px solid var(--line);
+    border-radius: var(--radius);
+    overflow: hidden;
+    transition: all 0.3s ease;
+  }
+  .cs-card:hover {
+    border-color: var(--amber);
+    box-shadow: 0 24px 48px -16px rgba(11,31,58,0.18);
+    transform: translateY(-3px);
+  }
+  .cs-card-inner {
+    display: grid;
+    grid-template-columns: 280px 1fr;
+    gap: 0;
+  }
+  .cs-card-side {
+    background: var(--navy);
+    color: var(--cream);
+    padding: 40px 32px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    position: relative;
+    overflow: hidden;
+  }
+  .cs-card-side::before {
+    content: '';
+    position: absolute;
+    top: -30%;
+    right: -30%;
+    width: 250px; height: 250px;
+    background: radial-gradient(circle, var(--amber) 0%, transparent 65%);
+    opacity: 0.2;
+    border-radius: 50%;
+  }
+  .cs-card-tag {
+    display: inline-block;
+    font-size: 10px;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--amber-bright);
+    font-weight: 600;
+    margin-bottom: 24px;
+    padding: 4px 10px;
+    border: 1px solid var(--amber-bright);
+    border-radius: var(--radius-sm);
+    align-self: flex-start;
+    position: relative;
+  }
+  .cs-card-result {
+    position: relative;
+  }
+  .cs-card-result-label {
+    font-size: 11px;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: rgba(240,242,245,0.6);
+    margin-bottom: 12px;
+  }
+  .cs-card-result-num {
+    font-family: var(--sans);
+    font-weight: 300;
+    font-size: 56px;
+    line-height: 0.95;
+    color: var(--cream);
+    letter-spacing: -0.04em;
+    font-variation-settings: "opsz" 144;
+  }
+  .cs-card-result-num span { color: var(--amber-bright); }
+  .cs-card-result-desc {
+    font-size: 13px;
+    color: rgba(240,242,245,0.7);
+    margin-top: 16px;
+    line-height: 1.5;
+  }
+
+  .cs-card-body {
+    padding: 40px 44px;
+  }
+  .cs-card-vendor {
+    font-size: 11px;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--amber);
+    font-weight: 600;
+    margin-bottom: 16px;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+  }
+  .cs-card-vendor::before {
+    content: '';
+    width: 24px; height: 1px;
+    background: var(--amber);
+  }
+  .cs-card-body h3 {
+    font-family: var(--sans);
+    font-weight: 400;
+    font-size: clamp(24px, 2.6vw, 32px);
+    line-height: 1.15;
+    letter-spacing: -0.015em;
+    color: var(--navy);
+    margin-bottom: 8px;
+    font-variation-settings: "opsz" 144;
+  }
+  .cs-card-client {
+    font-size: 14px;
+    color: var(--muted);
+    margin-bottom: 24px;
+    font-style: italic;
+    font-family: var(--sans);
+    font-variation-settings: "opsz" 144;
+  }
+  .cs-narrative {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 24px;
+    margin-top: 24px;
+    padding-top: 24px;
+    border-top: 1px solid var(--line);
+  }
+  .cs-narrative-block h5 {
+    font-size: 11px;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--navy);
+    font-weight: 600;
+    margin-bottom: 10px;
+  }
+  .cs-narrative-block p {
+    font-size: 14px;
+    line-height: 1.6;
+    color: var(--navy-soft);
+  }
+  @media (max-width: 960px) {
+    .cs-card-inner { grid-template-columns: 1fr; }
+    .cs-card-side { padding: 32px 28px; }
+    .cs-card-body { padding: 32px 28px; }
+    .cs-narrative { grid-template-columns: 1fr; gap: 16px; }
+  }
+</style>
+</head>
+<body>
+
+<!-- HEADER -->
+<header>
+  <div class="container nav">
+    <a href="index.html" class="logo">
+      <span class="logo-lockup">
+        <span class="logo-text"><span class="logo-cap">P</span>roTeam</span>
+        <span class="logo-advisory">Advisory Solutions LLP</span>
+      </span>
+    </a>
+    <ul class="nav-links">
+      <li><a href="index.html">Home</a></li>
+      <li class="has-mega">
+        <a href="services.html">Services <svg class="caret" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 9l6 6 6-6"/></svg></a>
+        <div class="mega-menu" role="menu" aria-label="Services">
+          <div class="mega-grid">
+            <div class="mega-col">
+              <a href="services.html#itam" class="mega-head">IT Asset Management</a>
+              <ul>
+                <li><a href="service-sam-maturity.html">SAM Maturity Assessment</a></li>
+                <li><a href="service-sam-baselining.html">SAM Baselining &amp; Cost Optimization</a></li>
+                <li><a href="service-audit-defence.html">Audit Defense &amp; Negotiation Support</a></li>
+                <li><a href="service-ham-maturity.html">Hardware Asset Management</a></li>
+                <li><a href="service-itam-managed.html">Managed Services</a></li>
+              </ul>
+            </div>
+            <div class="mega-col">
+              <a href="services.html#finops" class="mega-head">Cloud FinOps</a>
+              <ul>
+                <li><a href="service-cloud-finops.html">FinOps Advisory &amp; Strategy</a></li>
+                <li><a href="service-finops-optimization.html">Cloud Spend Optimisation</a></li>
+                <li><a href="service-finops-managed.html">Managed FinOps Services</a></li>
+              </ul>
+            </div>
+            <div class="mega-col">
+              <a href="services.html#platform-strategy" class="mega-head">Platform Strategy &amp; Advisory</a>
+              <ul>
+                <li><a href="service-platform-strategy.html">Platform Strategy &amp; Advisory</a></li>
+                <li><a href="service-implementation-integration.html">Implementation &amp; Integration</a></li>
+              </ul>
+            </div>
+            <div class="mega-col">
+              <a href="services.html#ai-transformation" class="mega-head">AI Transformation Services</a>
+              <ul>
+                <li><a href="service-ai-spend.html">AI Spend Management</a></li>
+                <li><a href="service-ai-adoption.html">AI Adoption &amp; Value Delivery</a></li>
+                <li><a href="service-ai-usage-analytics.html">AI Usage Analytics</a></li>
+                <li><a href="service-ai-vendor-negotiation.html">AI Vendor Negotiation</a></li>
+                <li><a href="service-ai-governance-advisory.html">AI Governance Advisory</a></li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </li>
+
+      <li><a href="case-studies.html" class="active">Case Studies</a></li>
+            <li class="has-mega has-about-dropdown">
+        <a href="about.html">About <svg class="caret" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 9l6 6 6-6"/></svg></a>
+        <div class="mega-menu" role="menu" aria-label="About">
+          <div class="mega-grid mega-grid--about">
+            <div class="mega-col">
+              <a href="our-story.html" class="mega-head">Our Story</a>
+              <ul>
+                <li><a href="our-story.html">Who We Are</a></li>
+                <li><a href="our-story.html#team">Team / Leaders</a></li>
+              </ul>
+            </div>
+            <div class="mega-col">
+              <a href="achievements.html" class="mega-head">By the Numbers</a>
+              <ul>
+                <li><a href="achievements.html">Achievements &amp; Stats</a></li>
+              </ul>
+            </div>
+            <div class="mega-col">
+              <a href="gallery.html" class="mega-head">Gallery</a>
+              <ul>
+                <li><a href="gallery.html">Culture &amp; Events</a></li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </li>
+      <li><a href="insights.html">Insights</a></li>
+            <li><a href="careers.html">Careers</a></li>
+      <li><a href="contact.html">Contact</a></li>
+    </ul>
+    <a href="contact.html" class="nav-cta">Free Consultation</a>
+    <button class="menu-toggle" id="menuToggle" aria-label="Toggle menu" aria-expanded="false">
+      <span class="bar"></span>
+      <span class="bar"></span>
+      <span class="bar"></span>
+    </button>
+  </div>
+</header>
+
+<!-- MOBILE NAV -->
+<nav class="mobile-nav" id="mobileNav" aria-label="Mobile navigation">
+  <ul class="mobile-nav-links">
+    <li><a href="index.html">Home <span>&rarr;</span></a></li>
+    <li class="has-sub">
+      <button class="sub-toggle" type="button" aria-expanded="false" aria-controls="m-svc-sub">
+        Services
+        <svg class="caret" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 9l6 6 6-6"/></svg>
+      </button>
+      <ul id="m-svc-sub" class="sub-menu">
+        <li class="has-sub-2">
+          <button class="sub-toggle-2" type="button" aria-expanded="false" aria-controls="m-itam-sub">
+            IT Asset Management
+            <svg class="caret" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 9l6 6 6-6"/></svg>
+          </button>
+          <ul id="m-itam-sub" class="sub-menu-2">
+            <li><a href="service-sam-maturity.html">SAM Maturity Assessment</a></li>
+            <li><a href="service-sam-baselining.html">SAM Baselining &amp; Cost Optimization</a></li>
+            <li><a href="service-audit-defence.html">Audit Defense &amp; Negotiation Support</a></li>
+            <li><a href="service-ham-maturity.html">Hardware Asset Management</a></li>
+            <li><a href="service-itam-managed.html">Managed Services</a></li>
+          </ul>
+        </li>
+        <li class="has-sub-2">
+          <button class="sub-toggle-2" type="button" aria-expanded="false" aria-controls="m-finops-sub">
+            Cloud FinOps
+            <svg class="caret" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 9l6 6 6-6"/></svg>
+          </button>
+          <ul id="m-finops-sub" class="sub-menu-2">
+            <li><a href="service-cloud-finops.html">FinOps Advisory &amp; Strategy</a></li>
+            <li><a href="service-finops-optimization.html">Cloud Spend Optimisation</a></li>
+            <li><a href="service-finops-managed.html">Managed FinOps Services</a></li>
+          </ul>
+        </li>
+        <li class="has-sub-2">
+          <button class="sub-toggle-2" type="button" aria-expanded="false" aria-controls="m-platform-sub">
+            Platform Strategy &amp; Advisory
+            <svg class="caret" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 9l6 6 6-6"/></svg>
+          </button>
+          <ul id="m-platform-sub" class="sub-menu-2">
+            <li><a href="service-platform-strategy.html">Platform Strategy &amp; Advisory</a></li>
+            <li><a href="service-implementation-integration.html">Implementation &amp; Integration</a></li>
+          </ul>
+        </li>
+        <li class="has-sub-2">
+          <button class="sub-toggle-2" type="button" aria-expanded="false" aria-controls="m-ai-sub">
+            AI Transformation Services
+            <svg class="caret" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 9l6 6 6-6"/></svg>
+          </button>
+          <ul id="m-ai-sub" class="sub-menu-2">
+            <li><a href="service-ai-spend.html">AI Spend Management</a></li>
+            <li><a href="service-ai-adoption.html">AI Adoption &amp; Value Delivery</a></li>
+            <li><a href="service-ai-usage-analytics.html">AI Usage Analytics</a></li>
+            <li><a href="service-ai-vendor-negotiation.html">AI Vendor Negotiation</a></li>
+            <li><a href="service-ai-governance-advisory.html">AI Governance Advisory</a></li>
+          </ul>
+        </li>
+      </ul>
+    </li>
+
+    <li><a href="case-studies.html" class="active">Case Studies <span>&rarr;</span></a></li>
+        <li class="has-sub">
+      <button class="sub-toggle" type="button" aria-expanded="false" aria-controls="m-about-sub">
+        About
+        <svg class="caret" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 9l6 6 6-6"/></svg>
+      </button>
+      <ul id="m-about-sub" class="sub-menu">
+        <li><a href="our-story.html">Our Story</a></li>
+        <li><a href="achievements.html">By the Numbers</a></li>
+        <li><a href="our-story.html#team">Team / Leaders</a></li>
+        <li><a href="gallery.html">Gallery</a></li>
+      </ul>
+    </li>
+    <li><a href="insights.html">Insights <span>&rarr;</span></a></li>
+        <li><a href="careers.html">Careers <span>&rarr;</span></a></li>
+    <li><a href="contact.html">Contact <span>&rarr;</span></a></li>
+  </ul>
+  <a href="contact.html" class="mobile-nav-cta">Book Free Consultation &rarr;</a>
+  <div class="mobile-nav-contact">
+    <a href="tel:+919676889797">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07 19.5 19.5 0 01-6-6 19.79 19.79 0 01-3.07-8.67A2 2 0 014.11 2h3a2 2 0 012 1.72 12.84 12.84 0 00.7 2.81 2 2 0 01-.45 2.11L8.09 9.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45 12.84 12.84 0 002.81.7A2 2 0 0122 16.92z"/></svg>
+      +91 9676 889 797
+    </a>
+    <a href="mailto:vpatel@proteamadvisory.com">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+      vpatel@proteamadvisory.com
+    </a>
+  </div>
+</nav>
+
+<!-- PAGE HERO -->
+<section class="page-hero">
+  <div class="container">
+    <div class="breadcrumb">
+      <a href="index.html">Home</a>
+      <span class="sep">/</span>
+      <span class="current">Case Studies</span>
+    </div>
+    <div class="page-hero-grid">
+      <div>
+        <div class="page-hero-eyebrow">Selected client outcomes</div>
+        <h1>The work, <em>by the numbers</em>.</h1>
+      </div>
+      <p class="page-hero-lede">
+        Seven recent engagements across SAM, HAM, SaaS, AI-led rationalisation, supply chain optimisation, divestiture support, and licensing helpdesk operations. Real situations, real numbers — anonymised at our clients' request, one example per service line.
+      </p>
+    </div>
+  </div>
+</section>
+
+<!-- SUMMARY STATS -->
+<div class="cs-summary">
+  <div class="container">
+    <div class="cs-summary-eyebrow">Headline outcomes</div>
+    <div class="cs-stats">
+      <div class="cs-stat">
+        <div class="num">$48M</div>
+        <div class="lbl">Software licence divestiture, storage product manufacturer</div>
+      </div>
+      <div class="cs-stat">
+        <div class="num">$25.5M</div>
+        <div class="lbl">IBM ELA renewal, large enterprise banking environment</div>
+      </div>
+      <div class="cs-stat">
+        <div class="num">$10M+</div>
+        <div class="lbl">SAP supply chain licensing optimisation, global manufacturer</div>
+      </div>
+      <div class="cs-stat">
+        <div class="num">$5M</div>
+        <div class="lbl">AI-led rationalisation across a 10,000-app estate</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- CASE STUDIES -->
+<section class="cs-list">
+  <div class="container">
+    <div class="cs-list-head reveal">
+      <div class="section-eyebrow">Selected engagements</div>
+      <h2 class="section-title">Seven recent <em>client outcomes</em>.</h2>
+      <p class="section-lede">A selection from our managed-service and project-based work — one representative engagement per service line, chosen to show breadth across vendor, geography, and engagement type.</p>
+    </div>
+
+    <div class="cs-grid">
+
+      <!-- CASE 01 — IBM ECM optimisation $100M -->
+      <article class="cs-card reveal">
+        <div class="cs-card-inner">
+          <div class="cs-card-side">
+            <span class="cs-card-tag">Renewal Management</span>
+            <div class="cs-card-result">
+              <div class="cs-card-result-label">Total client savings</div>
+              <div class="cs-card-result-num"><span>$25.5M</span></div>
+              <div class="cs-card-result-desc">Delivered through commercial optimization, AI-assisted license analytics, governance-driven demand validation, and automation-led license reconciliation.</div>
+            </div>
+          </div>
+          <div class="cs-card-body">
+            <div class="cs-card-vendor">IBM Enterprise License Agreement Renewal</div>
+            <h3>From a $95M renewal proposal to $70M in final negotiated value.</h3>
+            <p class="cs-card-client">Large enterprise banking environment · Multi-year IBM software estate with complex licensing, compliance, and growth requirements</p>
+            <div class="cs-narrative">
+              <div class="cs-narrative-block">
+                <h5>Situation</h5>
+                <p>IBM represented one of the Bank’s largest software investment categories, with fragmented ownership and limited visibility across business units, infrastructure, and applications. The vendor’s renewal proposal of USD 95M–97M, driven by growth assumptions, compliance risks, and overprovisioning, threatened significant overspend and CAPEX exposure without a structured optimization and governance initiative..</p>
+              </div>
+              <div class="cs-narrative-block">
+                <h5>Action</h5>
+                <p>A structured multi-phase optimization and governance program launched in October 2024 validated actual software usage, optimized licensing demand, and strengthened the Bank’s negotiation position. Through ELP assessments, automated entitlement reconciliation, AI-driven analytics, and stakeholder governance, we eliminated redundant scope, rationalized demand, and built a defensible optimization baseline that reduced compliance gaps and accelerated commercial decision-making.</p>
+              </div>
+              <div class="cs-narrative-block">
+                <h5>Result</h5>
+                <p>Through structured optimization cycles and targeted negotiations, the Bank reduced renewal exposure and secured long-term scalability with compliance assurance. The final 3‑year IBM ELA closed at USD 70.2M, delivering USD 25.5+ in total financial benefit while strengthening governance, audit readiness, and future growth visibility.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </article>
+
+      <!-- CASE 2 — Licensing Helpdesk (European Airline) -->
+      <article class="cs-card reveal">
+        <div class="cs-card-inner">
+          <div class="cs-card-side">
+            <span class="cs-card-tag">Licensing Helpdesk</span>
+            <div class="cs-card-result">
+              <div class="cs-card-result-label">Urgent requests managed daily</div>
+              <div class="cs-card-result-num"><span>50+</span></div>
+              <div class="cs-card-result-desc">Critical licensing and operational support requests triaged, resolved, and tracked through an automation-driven service model — response SLAs under two hours.</div>
+            </div>
+          </div>
+          <div class="cs-card-body">
+            <div class="cs-card-vendor">Licensing Helpdesk · Aviation</div>
+            <h3>A struggling helpdesk turned into a high-speed, insight-driven support function.</h3>
+            <p class="cs-card-client">Major European airline · High-volume licensing support during critical flight management activities</p>
+
+            <div class="cs-narrative">
+              <div class="cs-narrative-block">
+                <h5>Situation</h5>
+                <p>The airline's licensing helpdesk was under growing pressure from rising request volumes, inconsistent service quality, and heavy dependency on manual processes — all during business-critical flight management activities. Service quality was hurting stakeholder confidence.</p>
+              </div>
+              <div class="cs-narrative-block">
+                <h5>Action</h5>
+                <p>Proteam stabilised the helpdesk operation, introduced automation-led workflows, and designed an executive dashboard that gave the CFO a real-time view of request flows, bottlenecks, realised savings, operational risks, and forward-looking recommendations.</p>
+              </div>
+              <div class="cs-narrative-block">
+                <h5>Result</h5>
+                <p>The helpdesk now manages 50+ urgent licensing and operational support requests daily with response SLAs under two hours, without disrupting flight operations. Stakeholder confidence was rebuilt and the CFO gained executive-level reporting visibility at scale.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </article>
+
+      <!-- CASE 3 — SAP Supply Chain optimisation $10M+ -->
+      <article class="cs-card reveal">
+        <div class="cs-card-inner">
+          <div class="cs-card-side">
+            <span class="cs-card-tag">SAM Baselining &amp; Cost Optimisation</span>
+            <div class="cs-card-result">
+              <div class="cs-card-result-label">Savings &amp; cost avoidance</div>
+              <div class="cs-card-result-num"><span>$10M+</span></div>
+              <div class="cs-card-result-desc">Delivered through SAP metric right-sizing, EWM warehouse-tier rationalisation, redundant-configuration removal, and a data-driven negotiation baseline that challenged the vendor's commercial assumptions.</div>
+            </div>
+          </div>
+          <div class="cs-card-body">
+            <div class="cs-card-vendor">SAP Supply Chain Licensing Optimisation</div>
+            <h3>From inflated SAP metrics to right-sized supply chain licensing.</h3>
+            <p class="cs-card-client">Global manufacturer · SAP Demand &amp; Supply Planning and Extended Warehouse Management (EWM) · Multi-site logistics estate</p>
+            <div class="cs-narrative">
+              <div class="cs-narrative-block">
+                <h5>Situation</h5>
+                <p>A complex SAP supply chain landscape leveraging Demand &amp; Supply Planning and Extended Warehouse Management was over-licensed, with inflated metrics across products, locations, and warehouse tiers. Limited visibility into actual usage led to a projected high-cost renewal exposure and rising compliance risk.</p>
+              </div>
+              <div class="cs-narrative-block">
+                <h5>Action</h5>
+                <p>Executed a targeted optimisation programme focused on licence right-sizing and metric alignment — rationalised product and logistics location counts for demand planning, right-sized small versus medium EWM warehouse classifications based on actual operations, eliminated redundant and inactive configurations, built a data-driven negotiation baseline to challenge SAP's commercial assumptions, and stood up governance for ongoing monitoring and audit readiness.</p>
+              </div>
+              <div class="cs-narrative-block">
+                <h5>Result</h5>
+                <p>Delivered $10M+ in savings and cost avoidance. Licensing now aligned with actual supply chain usage, compliance risk materially reduced, and a scalable, cost-efficient SAP agreement secured for future growth.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </article>
+
+      <!-- CASE 4 — SAM Divestiture $48M -->
+      <article class="cs-card reveal">
+        <div class="cs-card-inner">
+          <div class="cs-card-side">
+            <span class="cs-card-tag">SAM Divestiture &amp; M&amp;A Advisory</span>
+            <div class="cs-card-result">
+              <div class="cs-card-result-label">Total financial impact</div>
+              <div class="cs-card-result-num"><span>$48M</span></div>
+              <div class="cs-card-result-desc">Achieved through rationalisation, vendor drops, and optimised procurement across two newly separated entities — with a complete audit trail of TSA and assignment letters and zero divestiture delays.</div>
+            </div>
+          </div>
+          <div class="cs-card-body">
+            <div class="cs-card-vendor">Software Licence Divestiture · 150 publishers</div>
+            <h3>A storage manufacturer split cleanly across <em>two entities</em>.</h3>
+            <p class="cs-card-client">Storage product manufacturer · Publisher scope grew 30 → 150 during the engagement · ~1.5 years end-to-end</p>
+            <div class="cs-narrative">
+              <div class="cs-narrative-block">
+                <h5>Situation</h5>
+                <p>A storage manufacturer split into two entities driven by diverging product scope and strategy. Licences across 150 publishers (up from an initial scope of 30) needed splitting per assignment and transition rights buried inside each contract — with no existing governance framework to determine what could be split, shared under TSA, or re-procured.</p>
+              </div>
+              <div class="cs-narrative-block">
+                <h5>Action</h5>
+                <p>Built per-publisher split files and distributed them to functional owners for allocation decisions. Reviewed every contract to determine splittability versus TSA-governed shared use with deferred cutover. Flagged net-new licence requirements per entity beyond existing entitlements. Maintained a real-time tracker covering timelines, TSA and assignment letters, and licence quantities per publisher. Ran end-to-end financial delta analysis and drove software rationalisation across overlapping tools.</p>
+              </div>
+              <div class="cs-narrative-block">
+                <h5>Result</h5>
+                <p>$48M in financial impact through rationalisation, vendor drops, and optimised procurement across both entities. All licences cleanly split with an audit-ready folder structure per publisher and a complete trail of TSA and assignment letters. The SAM team was recognised as a critical enabler of the divestiture — daily updates and cross-functional coordination ensured zero delays.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </article>
+
+      <!-- CASE 5 — SaaS Management $2M -->
+      <article class="cs-card reveal">
+        <div class="cs-card-inner">
+          <div class="cs-card-side">
+            <span class="cs-card-tag">SaaS Management</span>
+            <div class="cs-card-result">
+              <div class="cs-card-result-label">Annualised savings</div>
+              <div class="cs-card-result-num"><span>$2M</span></div>
+              <div class="cs-card-result-desc">Delivered through SaaS lifecycle management, automated reclamation of dormant licences, and a monthly visibility report that put usage data directly in the hands of product owners.</div>
+            </div>
+          </div>
+          <div class="cs-card-body">
+            <div class="cs-card-vendor">SaaS Lifecycle Management &amp; Automation</div>
+            <h3>From SaaS sprawl to monthly visibility — and a sustainable savings curve.</h3>
+            <p class="cs-card-client">Enterprise SaaS estate · Lifecycle automation across joiner-mover-leaver · Monthly product-owner usage reporting</p>
+            <div class="cs-narrative">
+              <div class="cs-narrative-block">
+                <h5>Situation</h5>
+                <p>An enterprise SaaS estate had grown organically across business units with limited centralised visibility. Product owners had no monthly view of usage against spend, so over-provisioned licences accumulated, dormant accounts went unreclaimed, and renewals were signed off without consumption evidence — pushing cost up year on year.</p>
+              </div>
+              <div class="cs-narrative-block">
+                <h5>Action</h5>
+                <p>Stood up a SaaS lifecycle management practice covering joiner-mover-leaver automation, usage telemetry ingestion across the SaaS estate, and a monthly visibility report delivered to each product owner — showing active users, dormant licences, renewal exposure, and right-sizing recommendations. Automation reclaimed inactive licences continuously rather than only at annual renewal.</p>
+              </div>
+              <div class="cs-narrative-block">
+                <h5>Result</h5>
+                <p>$2M in annualised savings achieved by giving product owners the data they needed to right-size their own footprint. Renewal exposure cut at source, dormant accounts reclaimed monthly, and a sustainable SaaS governance operating model put in place — savings now compound continuously instead of surfacing once a year at renewal.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </article>
+
+      <!-- CASE 6 — AI-led Software Rationalisation $5M -->
+      <article class="cs-card reveal">
+        <div class="cs-card-inner">
+          <div class="cs-card-side">
+            <span class="cs-card-tag">AI-Powered Rationalisation</span>
+            <div class="cs-card-result">
+              <div class="cs-card-result-label">Annualised savings</div>
+              <div class="cs-card-result-num"><span>$5M</span></div>
+              <div class="cs-card-result-desc">Delivered through AI categorisation of 10,000+ apps into specific functional categories, surfacing 1,000 redundant tools and reducing audit and cyber risk in parallel with cost.</div>
+            </div>
+          </div>
+          <div class="cs-card-body">
+            <div class="cs-card-vendor">AI-Powered Software Rationalisation · Estate of 10,000+ apps</div>
+            <h3>Rationalising 10,000 apps — powered <em>by AI</em>.</h3>
+            <p class="cs-card-client">Enterprise application estate · AI-driven functional categorisation · Overlap discovery and continuous rationalisation</p>
+            <div class="cs-narrative">
+              <div class="cs-narrative-block">
+                <h5>Situation</h5>
+                <p>An enterprise application estate of 10,000+ apps had grown across business units with no consistent categorisation — making it impossible to identify functional overlap, surface redundant tools, or build a defensible rationalisation roadmap. Audit exposure and cyber risk scaled linearly with the unmanaged app count.</p>
+              </div>
+              <div class="cs-narrative-block">
+                <h5>Action</h5>
+                <p>Applied AI-driven categorisation to the full app inventory, classifying every app into a specific functional category — productivity, collaboration, design, analytics, security, and so on. The categorisation surfaced functional overlap clusters that manual review had repeatedly missed, and produced a prioritised rationalisation recommendation per category for review and sign-off.</p>
+              </div>
+              <div class="cs-narrative-block">
+                <h5>Result</h5>
+                <p>1,000 redundant apps identified across the 10,000-app estate. Rationalisation recommendations delivered $5M in annualised savings while materially reducing audit risk and cyber attack surface as the app count came down. AI categorisation now runs continuously, keeping the estate rationalised between formal reviews.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </article>
+
+      <!-- CASE 7 — HAM, global fast-food enterprise, $265K -->
+      <article class="cs-card reveal">
+        <div class="cs-card-inner">
+          <div class="cs-card-side">
+            <span class="cs-card-tag">Hardware Asset Management</span>
+            <div class="cs-card-result">
+              <div class="cs-card-result-label">Annualised savings</div>
+              <div class="cs-card-result-num"><span>$265K</span></div>
+              <div class="cs-card-result-desc">Delivered through ServiceNow CMDB integration, automated discovery and reconciliation, warranty-validation workflows, and AI-assisted procurement governance across a 5,000-location retail estate.</div>
+            </div>
+          </div>
+          <div class="cs-card-body">
+            <div class="cs-card-vendor">Hardware Asset Management · ServiceNow CMDB</div>
+            <h3>From fragmented asset tracking to standardised HAM across <em>5,000+ locations</em>.</h3>
+            <p class="cs-card-client">Global fast-food enterprise · Point-of-Sale and back-office endpoint estate · ServiceNow CMDB integration · Distributed franchise network</p>
+            <div class="cs-narrative">
+              <div class="cs-narrative-block">
+                <h5>Situation</h5>
+                <p>A global fast-food enterprise operating across 5,000+ restaurant locations managed hardware assets through multiple regional systems, spreadsheets, procurement records, and local inventories — producing inconsistent CMDB data and limited visibility into endpoint ownership, warranty status, and device lifecycle. The lack of standardised governance drove duplicate purchases, delayed refresh decisions, and avoidable replacement costs, while store-level teams struggled to track Point-of-Sale and back-office devices across franchise locations — impacting incident resolution and SLA performance.</p>
+              </div>
+              <div class="cs-narrative-block">
+                <h5>Action</h5>
+                <p>Implemented a centralised HAM framework integrated with ServiceNow CMDB. Automated discovery and asset normalisation eliminated duplicate records across repositories. Warranty validation workflows were embedded in service operations so hardware was assessed for manufacturer coverage before replacement approvals. AI-assisted validation logic flagged inactive devices, duplicate procurement requests, and underutilised assets before new purchases were approved. Standardised lifecycle management and reporting rolled out across regional IT and support teams, improving accountability and audit readiness.</p>
+              </div>
+              <div class="cs-narrative-block">
+                <h5>Result</h5>
+                <p>The client transitioned from fragmented asset tracking to a scalable enterprise-wide HAM operating model. ~$120K/year avoided in unnecessary hardware purchases by surfacing reusable assets before procurement approvals; ~$80K/year saved through automated warranty validation on POS and endpoint hardware; ~$65K/year operational savings from improved CMDB accuracy — faster incident response and fewer escalations on missing or inaccurate CI data. Total $265K annualised, with a mature, scalable HAM governance model aligned to long-term efficiency and compliance.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </article>
+
+    </div>
+  </div>
+</section>
+
+<!-- CTA -->
+<section class="cta">
+  <div class="container">
+    <div class="cta-inner">
+      <div class="reveal">
+        <div class="section-eyebrow" style="color: var(--amber-bright);">Want results like these?</div>
+        <h2>Let's see what's <em>hiding in your estate</em>.</h2>
+        <p>Every case study above started the same way — with a 30-minute conversation. Book your free SAM consultation. No obligation, no sales pitch. Just a senior consultant who's spent a career inside enterprises like yours.</p>
+        <div class="cta-actions">
+          <a href="contact.html" class="btn-amber">Book free consultation</a>
+          <a href="services.html" class="btn-line">Explore services</a>
+        </div>
+      </div>
+      <div class="cta-detail reveal">
+        <h4>Browse by service</h4>
+        <ul class="cta-list">
+          <li><a href="service-sam-baselining.html" style="color: inherit; border-bottom: 1px solid rgba(240,242,245,0.3);">SAM Baselining &amp; Cost Optimisation</a></li>
+          <li><a href="service-ham-maturity.html" style="color: inherit; border-bottom: 1px solid rgba(240,242,245,0.3);">Hardware Asset Management</a></li>
+          <li><a href="service-saas-management.html" style="color: inherit; border-bottom: 1px solid rgba(240,242,245,0.3);">SaaS Management</a></li>
+          <li><a href="service-ai-spend.html" style="color: inherit; border-bottom: 1px solid rgba(240,242,245,0.3);">AI Spend Management</a></li>
+          <li><a href="service-renewal-management.html" style="color: inherit; border-bottom: 1px solid rgba(240,242,245,0.3);">Renewal Management</a></li>
+          <li><a href="services.html" style="color: inherit; border-bottom: 1px solid rgba(240,242,245,0.3);">View all services</a></li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="container">
+    <div class="foot-grid">
+      <div class="foot-brand">
+        <a href="index.html" class="logo" style="color: var(--cream);">
+          <span class="logo-lockup">
+            <span class="logo-text" style="color:var(--cream);"><span class="logo-cap">P</span>roTeam</span>
+            <span class="logo-advisory" style="color:rgba(240,242,245,0.7);">Advisory Solutions LLP</span>
+          </span>
+        </a>
+        <h3>SAM specialists. Nothing else.</h3>
+        <p>An independent Software Asset Management consultancy serving enterprises across India, the UK, the US, and the Middle East.</p>
+
+        <div class="foot-social">
+          <div class="foot-social-label">Follow us on</div>
+          <div class="foot-social-icons">
+            <a href="https://in.linkedin.com/company/proteam-advisory" aria-label="LinkedIn" target="_blank" rel="noopener">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"/><rect x="2" y="9" width="4" height="12"/><circle cx="4" cy="4" r="2"/></svg>
+            </a>
+            <a href="https://x.com/proteamadv" aria-label="X (Twitter)" target="_blank" rel="noopener">
+              <svg viewBox="0 0 24 24" fill="currentColor"><path d="M17.53 3H21l-7.39 8.45L22.5 21h-6.83l-5.34-6.99L3.5 21H0l7.91-9.04L0.5 3h7l4.83 6.4L17.53 3zm-2.39 16h2.06L7.05 4.85H4.83L15.14 19z"/></svg>
+            </a>
+            <a href="https://www.instagram.com/proteamadvisory/" aria-label="Instagram" target="_blank" rel="noopener">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="20" rx="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/></svg>
+            </a>
+            <a href="https://www.youtube.com/channel/UCaajUe2N_6AFw3dvPmH1b7A" aria-label="YouTube" target="_blank" rel="noopener">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M22.54 6.42a2.78 2.78 0 0 0-1.94-2C18.88 4 12 4 12 4s-6.88 0-8.6.46a2.78 2.78 0 0 0-1.94 2A29 29 0 0 0 1 11.75a29 29 0 0 0 .46 5.33A2.78 2.78 0 0 0 3.4 19c1.72.46 8.6.46 8.6.46s6.88 0 8.6-.46a2.78 2.78 0 0 0 1.94-2 29 29 0 0 0 .46-5.25 29 29 0 0 0-.46-5.33z"/><polygon points="9.75 15.02 15.5 11.75 9.75 8.48 9.75 15.02" fill="currentColor"/></svg>
+            </a>
+          </div>
+        </div>
+      </div>
+
+      <div class="foot-col">
+        <h5>Services</h5>
+        <ul>
+          <li><a href="services.html#itam">IT Asset Management</a></li>
+          <li><a href="services.html#finops">Cloud FinOps</a></li>
+          <li><a href="services.html#platform-strategy">Platform Strategy &amp; Advisory</a></li>
+          <li><a href="services.html#ai-transformation">AI Transformation Services</a></li>
+        </ul>
+      </div>
+
+      <div class="foot-col">
+        <h5>About</h5>
+        <ul>
+          <li><a href="our-story.html">Our Story</a></li>
+          <li><a href="our-story.html#team">Team &amp; Leaders</a></li>
+          <li><a href="achievements.html">Achievements &amp; Stats</a></li>
+          <li><a href="gallery.html">Culture &amp; Gallery</a></li>
+        </ul>
+      </div>
+
+      <div class="foot-col">
+        <h5>Company</h5>
+        <ul>
+          <li><a href="case-studies.html">Case Studies</a></li>
+          <li><a href="insights.html">Insights</a></li>
+          <li><a href="careers.html">Careers</a></li>
+          <li><a href="contact.html">Contact</a></li>
+        </ul>
+      </div>
+
+      <div class="foot-col">
+        <h5>Get in touch</h5>
+        <address>
+          Suite #309&ndash;312<br>
+          KTC Illumination Towers<br>
+          Madhapur, Hyderabad<br>
+          Telangana, India<br><br>
+          <a href="tel:+919676889797">+91 9676 889 797</a><br>
+          <a href="mailto:vpatel@proteamadvisory.com">vpatel@proteamadvisory.com</a>
+        </address>
+      </div>
+    </div>
+
+    <div class="foot-bot">
+      <div>&copy; 2026 Proteam Advisory. All rights reserved.</div>
+      <div style="display:flex; gap:24px; flex-wrap:wrap;">
+        <a href="privacy.html">Privacy</a>
+        <a href="terms.html">Terms of Use</a>
+        <a href="cookies.html">Cookies</a>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<script>
+  // ---- Scroll reveal ----
+  const obs = new IntersectionObserver((entries) => {
+    entries.forEach(e => {
+      if (e.isIntersecting) { e.target.classList.add("in"); obs.unobserve(e.target); }
+    });
+  }, { threshold: 0.1, rootMargin: "0px 0px -50px 0px" });
+  document.querySelectorAll(".reveal, .reveal-stagger").forEach(el => obs.observe(el));
+
+  // ---- Smooth scroll ----
+  document.querySelectorAll("a[href^='#']").forEach(link => {
+    link.addEventListener("click", e => {
+      const id = link.getAttribute("href");
+      if (id.length > 1) { const tgt = document.querySelector(id); if (tgt) { e.preventDefault(); tgt.scrollIntoView({ behavior: "smooth", block: "start" }); } }
+    });
+  });
+
+    // ---- Mobile menu (with accordion sub-menus) ----
+  (function() {
+    const toggle = document.getElementById('menuToggle');
+    const mobileNav = document.getElementById('mobileNav');
+    if (!toggle || !mobileNav) return;
+    const body = document.body;
+
+    function openMenu() {
+      mobileNav.classList.add('is-open');
+      toggle.classList.add('open');
+      toggle.setAttribute('aria-expanded', 'true');
+      body.style.overflow = 'hidden';
+    }
+    function closeMenu() {
+      mobileNav.classList.remove('is-open');
+      toggle.classList.remove('open');
+      toggle.setAttribute('aria-expanded', 'false');
+      body.style.overflow = '';
+    }
+    toggle.addEventListener('click', () => mobileNav.classList.contains('is-open') ? closeMenu() : openMenu());
+
+    // Close on actual link clicks only (not on sub-menu toggle buttons)
+    mobileNav.querySelectorAll('a').forEach(link => link.addEventListener('click', closeMenu));
+    document.addEventListener('keydown', e => { if (e.key === 'Escape' && mobileNav.classList.contains('is-open')) closeMenu(); });
+
+    // Accordion behavior for nested sub-menus
+    mobileNav.querySelectorAll('.sub-toggle, .sub-toggle-2').forEach(btn => {
+      btn.addEventListener('click', () => {
+        const id = btn.getAttribute('aria-controls');
+        const target = id ? document.getElementById(id) : btn.nextElementSibling;
+        if (!target) return;
+        const expanded = btn.getAttribute('aria-expanded') === 'true';
+        btn.setAttribute('aria-expanded', String(!expanded));
+        target.classList.toggle('is-open', !expanded);
+      });
+    });
+  })();
+</script>
+
+<script src="sammy-chatbot.js"></script>
+<script>
+/* Desktop mega-menu: JS hover with close-delay */
+(function () {
+  var CLOSE_DELAY = 150;
+  document.querySelectorAll(".nav-links .has-mega").forEach(function (li) {
+    var timer = null;
+    function openMenu() { clearTimeout(timer); li.classList.add("mega-open"); }
+    function scheduleClose() { timer = setTimeout(function () { li.classList.remove("mega-open"); }, CLOSE_DELAY); }
+    li.addEventListener("mouseenter", openMenu);
+    li.addEventListener("mouseleave", scheduleClose);
+    var menu = li.querySelector(".mega-menu");
+    if (menu) {
+      menu.addEventListener("mouseenter", openMenu);
+      menu.addEventListener("mouseleave", scheduleClose);
+    }
+    document.addEventListener("keydown", function (e) { if (e.key === "Escape") li.classList.remove("mega-open"); });
+  });
+})();
+</script>
+</body>
+</html>

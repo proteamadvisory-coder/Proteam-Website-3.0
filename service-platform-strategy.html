@@ -1,0 +1,1490 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Platform Strategy &amp; Advisory — Proteam Advisory</title>
+<meta name="description" content="Advisory-led platform strategy for SAM and ITAM. Assess existing tooling — ServiceNow, Snow, Flexera, Xensam, USU, Zylo — evaluate estate complexity, and define the right architecture for long-term SAM operations. Platform-neutral, governance-led." />
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300..900;1,9..144,300..900&family=Geist:wght@300..700&family=Geist+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="styles.css">
+
+<style>
+  /* ─────────────────────────────────────────────────────────────
+     SERVICE DETAIL — PLATFORM STRATEGY & ADVISORY
+     Tone: enterprise · advisory-first · governance-led
+     Motion: ambient · slow · connective
+  ────────────────────────────────────────────────────────────── */
+
+  /* Hero stats */
+  .svc-detail-hero .stat-row {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 32px;
+    margin-top: 56px;
+    padding-top: 40px;
+    border-top: 1px solid var(--line);
+  }
+  .svc-detail-hero .stat-row .stat-num {
+    font-family: var(--sans);
+    font-weight: 300;
+    font-size: 44px;
+    line-height: 1;
+    color: var(--amber);
+    letter-spacing: -0.03em;
+    margin-bottom: 8px;
+    font-variation-settings: "opsz" 144;
+  }
+  .svc-detail-hero .stat-row .stat-lbl {
+    font-size: 13px;
+    line-height: 1.5;
+    color: var(--navy-soft);
+  }
+  @media (max-width: 768px) {
+    .svc-detail-hero .stat-row { grid-template-columns: 1fr; gap: 24px; }
+  }
+
+  /* ───── Positioning / problem ───── */
+  .svc-overview { background: var(--paper); padding: 110px 0; }
+  .svc-overview-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 80px;
+    align-items: start;
+  }
+  .svc-overview-grid h2 {
+    font-family: var(--sans);
+    font-weight: 400;
+    font-size: clamp(32px, 4vw, 48px);
+    line-height: 1.1;
+    letter-spacing: -0.02em;
+    color: var(--navy);
+    margin-bottom: 24px;
+    font-variation-settings: "opsz" 144;
+  }
+  .svc-overview-grid h2 em {
+    font-family: var(--serif);
+    font-variation-settings: "opsz" 144;
+    font-style: italic;
+    color: var(--amber);
+    font-weight: 300;
+  }
+  .svc-overview-grid p {
+    font-size: 17px;
+    line-height: 1.7;
+    color: var(--navy-soft);
+    margin-bottom: 18px;
+  }
+  .svc-overview-grid p strong { color: var(--navy); font-weight: 600; }
+  .key-line {
+    margin-top: 28px;
+    padding: 28px 32px;
+    border-left: 2px solid var(--amber);
+    background: var(--cream);
+    border-radius: 0 var(--radius) var(--radius) 0;
+    font-family: var(--serif);
+    font-size: 22px;
+    line-height: 1.35;
+    color: var(--navy);
+    font-weight: 400;
+    letter-spacing: -0.005em;
+    font-variation-settings: "opsz" 144;
+  }
+  .key-line em { font-style: italic; color: var(--amber); }
+  @media (max-width: 960px) {
+    .svc-overview-grid { grid-template-columns: 1fr; gap: 32px; }
+  }
+
+  /* ───── Capability Grid (left narrative + right interactive viz) ───── */
+  .cap-grid-section {
+    background: var(--navy);
+    color: var(--cream);
+    padding: 120px 0;
+    position: relative;
+    overflow: hidden;
+  }
+  .cap-grid-section::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background-image:
+      linear-gradient(rgba(255,255,255,0.025) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(255,255,255,0.025) 1px, transparent 1px);
+    background-size: 60px 60px;
+    pointer-events: none;
+  }
+  .cap-grid-section .container { position: relative; }
+  .cap-grid-section .section-eyebrow { color: var(--amber-bright); }
+  .cap-grid-section .section-eyebrow::before { background: var(--amber-bright); }
+  .cap-grid-section h2 {
+    font-family: var(--sans);
+    font-weight: 400;
+    font-size: clamp(32px, 4vw, 48px);
+    line-height: 1.1;
+    letter-spacing: -0.02em;
+    color: var(--cream);
+    margin-bottom: 24px;
+    font-variation-settings: "opsz" 144;
+  }
+  .cap-grid-section h2 em {
+    font-family: var(--serif);
+    font-variation-settings: "opsz" 144;
+    font-style: italic;
+    color: var(--amber-bright);
+    font-weight: 300;
+  }
+  .cap-grid-section .section-lede {
+    color: rgba(240,242,245,0.75);
+    font-size: 17px;
+    line-height: 1.65;
+    max-width: 520px;
+  }
+  .cap-grid-layout {
+    display: grid;
+    grid-template-columns: 1fr 1.05fr;
+    gap: 64px;
+    align-items: center;
+    margin-top: 64px;
+  }
+  .cap-narrative h3 {
+    font-family: var(--sans);
+    font-weight: 500;
+    font-size: 22px;
+    color: var(--cream);
+    margin: 28px 0 12px;
+    letter-spacing: -0.01em;
+    font-variation-settings: "opsz" 144;
+  }
+  .cap-narrative p {
+    font-size: 15.5px;
+    line-height: 1.7;
+    color: rgba(240,242,245,0.78);
+    margin-bottom: 8px;
+  }
+  .cap-narrative ul {
+    list-style: none;
+    margin-top: 14px;
+  }
+  .cap-narrative ul li {
+    font-size: 14.5px;
+    line-height: 1.6;
+    color: rgba(240,242,245,0.78);
+    padding: 6px 0 6px 22px;
+    position: relative;
+  }
+  .cap-narrative ul li::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 14px;
+    width: 10px;
+    height: 1px;
+    background: var(--amber-bright);
+  }
+
+  /* ───── Platform ecosystem diagram (the signature visual) ───── */
+  .plat-viz {
+    position: relative;
+    aspect-ratio: 1 / 1;
+    max-width: 560px;
+    margin: 0 auto;
+    width: 100%;
+  }
+  .plat-viz svg { width: 100%; height: 100%; display: block; overflow: visible; }
+  .plat-node-label {
+    font-family: var(--mono);
+    font-size: 10px;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    fill: var(--cream);
+    opacity: 0.75;
+  }
+  .plat-node-circle {
+    fill: rgba(255,255,255,0.04);
+    stroke: rgba(104,210,232,0.55);
+    stroke-width: 1;
+    transition: fill 0.4s ease, stroke 0.4s ease;
+  }
+  .plat-node:hover .plat-node-circle {
+    fill: rgba(104,210,232,0.18);
+    stroke: var(--amber-bright);
+  }
+  .plat-node:hover .plat-node-label {
+    opacity: 1;
+    fill: var(--amber-bright);
+  }
+  .plat-node-icon {
+    fill: var(--amber-bright);
+    opacity: 0.7;
+    transition: opacity 0.4s ease;
+  }
+  .plat-node:hover .plat-node-icon { opacity: 1; }
+
+  /* central hub */
+  .plat-hub-outer {
+    fill: rgba(3,174,210,0.06);
+    stroke: rgba(104,210,232,0.35);
+    stroke-width: 1;
+  }
+  .plat-hub-inner {
+    fill: rgba(104,210,232,0.18);
+    stroke: var(--amber-bright);
+    stroke-width: 1.4;
+  }
+  .plat-hub-label {
+    font-family: var(--sans);
+    font-weight: 500;
+    font-size: 14px;
+    fill: var(--cream);
+    letter-spacing: 0.02em;
+  }
+  .plat-hub-sub {
+    font-family: var(--mono);
+    font-size: 9px;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    fill: var(--amber-bright);
+    opacity: 0.8;
+  }
+
+  /* connector lines + flowing particles */
+  .plat-connector {
+    fill: none;
+    stroke: rgba(104,210,232,0.32);
+    stroke-width: 1;
+    stroke-dasharray: 4 8;
+    animation: plat-flow 12s linear infinite;
+  }
+  @keyframes plat-flow {
+    to { stroke-dashoffset: -120; }
+  }
+  .plat-connector.fast { animation-duration: 8s; }
+  .plat-connector.slow { animation-duration: 16s; }
+
+  /* hub pulse */
+  .plat-hub-pulse {
+    fill: none;
+    stroke: var(--amber-bright);
+    stroke-width: 1.2;
+    transform-origin: center;
+    transform-box: fill-box;
+    animation: plat-pulse 4s ease-out infinite;
+  }
+  @keyframes plat-pulse {
+    0%   { transform: scale(0.85); opacity: 0.7; }
+    100% { transform: scale(1.8); opacity: 0; }
+  }
+  .plat-hub-pulse.delay { animation-delay: 2s; }
+
+  /* ambient float on platform nodes */
+  .plat-node { transform-origin: center; transform-box: fill-box; }
+  .plat-node-1 { animation: plat-float 7.5s ease-in-out infinite; }
+  .plat-node-2 { animation: plat-float 8.2s ease-in-out infinite -1.2s; }
+  .plat-node-3 { animation: plat-float 7.8s ease-in-out infinite -2.5s; }
+  .plat-node-4 { animation: plat-float 8.6s ease-in-out infinite -3.5s; }
+  .plat-node-5 { animation: plat-float 7.2s ease-in-out infinite -4.4s; }
+  .plat-node-6 { animation: plat-float 8.0s ease-in-out infinite -5.6s; }
+  @keyframes plat-float {
+    0%, 100% { transform: translateY(0); }
+    50%      { transform: translateY(-6px); }
+  }
+
+  @media (max-width: 960px) {
+    .cap-grid-layout { grid-template-columns: 1fr; gap: 40px; }
+    .plat-viz { max-width: 460px; }
+  }
+  @media (prefers-reduced-motion: reduce) {
+    .plat-connector, .plat-hub-pulse,
+    .plat-node-1, .plat-node-2, .plat-node-3,
+    .plat-node-4, .plat-node-5, .plat-node-6 { animation: none; }
+  }
+
+  /* ───── Assessment / What We Evaluate ───── */
+  .assess { background: var(--paper); padding: 110px 0; }
+  .assess-head { max-width: 760px; margin-bottom: 56px; }
+  .assess-block-title {
+    font-family: var(--mono);
+    font-size: 11px;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--amber);
+    margin-bottom: 24px;
+    padding-bottom: 14px;
+    border-bottom: 1px solid var(--line);
+  }
+  .assess-block-title strong { color: var(--navy); font-weight: 600; letter-spacing: 0.04em; text-transform: none; font-family: var(--sans); font-size: 22px; display: block; margin-top: 8px; letter-spacing: -0.01em; font-variation-settings: "opsz" 144; }
+  .assess-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 56px;
+  }
+  .assess-list {
+    list-style: none;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1px;
+    background: var(--line);
+    border: 1px solid var(--line);
+    border-radius: var(--radius);
+    overflow: hidden;
+  }
+  .assess-list li {
+    background: var(--paper);
+    padding: 18px 22px;
+    font-size: 14.5px;
+    line-height: 1.45;
+    color: var(--navy);
+    transition: background 0.3s ease, color 0.3s ease;
+  }
+  .assess-list li:hover {
+    background: var(--cream);
+    color: var(--navy);
+  }
+  .platforms-row {
+    margin-top: 24px;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+  }
+  .platforms-row .pchip {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    padding: 8px 14px;
+    background: var(--cream-warm);
+    border: 1px solid var(--line);
+    border-radius: 999px;
+    font-family: var(--sans);
+    font-size: 12.5px;
+    font-weight: 500;
+    color: var(--navy);
+    letter-spacing: 0.01em;
+    transition: background 0.3s ease, transform 0.25s ease;
+  }
+  .platforms-row .pchip:hover {
+    background: var(--cream);
+    transform: translateY(-2px);
+  }
+  .platforms-row .pchip::before {
+    content: '';
+    width: 6px; height: 6px;
+    border-radius: 50%;
+    background: var(--amber);
+  }
+  @media (max-width: 960px) {
+    .assess-grid { grid-template-columns: 1fr; gap: 32px; }
+    .assess-list { grid-template-columns: 1fr; }
+  }
+
+  /* ───── Advisory approach: two-state side-by-side ───── */
+  .approach { background: var(--cream); padding: 110px 0; }
+  .approach-head { max-width: 760px; margin-bottom: 56px; }
+  .approach-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 28px;
+  }
+  .approach-card {
+    background: var(--paper);
+    border: 1px solid var(--line);
+    border-radius: var(--radius);
+    padding: 40px 36px;
+    position: relative;
+    overflow: hidden;
+    transition: transform 0.35s ease, box-shadow 0.35s ease;
+  }
+  .approach-card:hover {
+    transform: translateY(-3px);
+    box-shadow: var(--shadow-md);
+  }
+  .approach-card::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0;
+    width: 64px;
+    height: 2px;
+    background: var(--amber);
+  }
+  .approach-card .acard-eyebrow {
+    font-family: var(--mono);
+    font-size: 10.5px;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--amber);
+    margin-bottom: 10px;
+  }
+  .approach-card h3 {
+    font-family: var(--sans);
+    font-weight: 500;
+    font-size: 26px;
+    line-height: 1.15;
+    color: var(--navy);
+    letter-spacing: -0.015em;
+    margin-bottom: 20px;
+    font-variation-settings: "opsz" 144;
+  }
+  .approach-card ul {
+    list-style: none;
+    margin: 0;
+  }
+  .approach-card ul li {
+    font-size: 15px;
+    line-height: 1.55;
+    color: var(--navy-soft);
+    padding: 10px 0 10px 22px;
+    position: relative;
+    border-bottom: 1px solid var(--line);
+  }
+  .approach-card ul li:last-child { border-bottom: 0; }
+  .approach-card ul li::before {
+    content: '';
+    position: absolute;
+    left: 0; top: 19px;
+    width: 12px; height: 1px;
+    background: var(--amber);
+  }
+  @media (max-width: 768px) {
+    .approach-grid { grid-template-columns: 1fr; }
+  }
+
+  /* ───── Capability cards (4 cards) ───── */
+  .cards-section { background: var(--paper); padding: 110px 0; }
+  .cards-head { max-width: 760px; margin-bottom: 56px; }
+  .cards-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 1px;
+    background: var(--line);
+    border: 1px solid var(--line);
+    border-radius: var(--radius);
+    overflow: hidden;
+    box-shadow: var(--shadow-sm);
+  }
+  .cap-card {
+    background: var(--paper);
+    padding: 40px 32px;
+    display: flex;
+    flex-direction: column;
+    transition: background 0.4s ease;
+    position: relative;
+  }
+  .cap-card:hover { background: var(--cream); }
+  .cap-card .ccard-num {
+    font-family: var(--mono);
+    font-size: 11px;
+    letter-spacing: 0.18em;
+    color: var(--amber);
+    margin-bottom: 28px;
+    text-transform: uppercase;
+  }
+  .cap-card .ccard-icon {
+    width: 42px; height: 42px;
+    margin-bottom: 20px;
+    color: var(--amber);
+    transition: transform 0.35s ease, color 0.35s ease;
+  }
+  .cap-card:hover .ccard-icon {
+    transform: translateY(-2px) scale(1.04);
+    color: var(--navy);
+  }
+  .cap-card h4 {
+    font-family: var(--sans);
+    font-weight: 500;
+    font-size: 20px;
+    line-height: 1.2;
+    color: var(--navy);
+    letter-spacing: -0.01em;
+    margin-bottom: 14px;
+    font-variation-settings: "opsz" 144;
+  }
+  .cap-card p {
+    font-size: 14.5px;
+    line-height: 1.6;
+    color: var(--navy-soft);
+  }
+  @media (max-width: 960px) {
+    .cards-grid { grid-template-columns: repeat(2, 1fr); }
+  }
+  @media (max-width: 540px) {
+    .cards-grid { grid-template-columns: 1fr; }
+  }
+
+  /* ───── Outcomes (key result statements) ───── */
+  .outcomes { background: var(--navy); color: var(--cream); padding: 110px 0; position: relative; overflow: hidden; }
+  .outcomes::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background-image:
+      linear-gradient(rgba(255,255,255,0.022) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(255,255,255,0.022) 1px, transparent 1px);
+    background-size: 60px 60px;
+    pointer-events: none;
+  }
+  .outcomes .container { position: relative; }
+  .outcomes .section-eyebrow { color: var(--amber-bright); }
+  .outcomes .section-eyebrow::before { background: var(--amber-bright); }
+  .outcomes h2 {
+    font-family: var(--sans);
+    font-weight: 400;
+    font-size: clamp(32px, 4vw, 48px);
+    line-height: 1.1;
+    letter-spacing: -0.02em;
+    color: var(--cream);
+    margin-bottom: 16px;
+    font-variation-settings: "opsz" 144;
+  }
+  .outcomes h2 em {
+    font-family: var(--serif);
+    font-style: italic;
+    color: var(--amber-bright);
+    font-weight: 300;
+    font-variation-settings: "opsz" 144;
+  }
+  .outcomes .section-lede { color: rgba(240,242,245,0.7); }
+  .outcomes-grid {
+    margin-top: 56px;
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 0;
+    border-top: 1px solid rgba(255,255,255,0.12);
+  }
+  .outcome-item {
+    border-bottom: 1px solid rgba(255,255,255,0.12);
+    padding: 28px 0;
+    display: grid;
+    grid-template-columns: 60px 1fr;
+    gap: 24px;
+    align-items: baseline;
+  }
+  .outcome-item:nth-child(odd) { border-right: 1px solid rgba(255,255,255,0.12); padding-right: 32px; }
+  .outcome-item:nth-child(even) { padding-left: 32px; }
+  .outcome-num {
+    font-family: var(--mono);
+    font-size: 13px;
+    color: var(--amber-bright);
+    letter-spacing: 0.05em;
+  }
+  .outcome-text {
+    font-family: var(--sans);
+    font-size: 17.5px;
+    line-height: 1.4;
+    color: var(--cream);
+    font-weight: 400;
+    letter-spacing: -0.005em;
+  }
+  @media (max-width: 768px) {
+    .outcomes-grid { grid-template-columns: 1fr; }
+    .outcome-item:nth-child(odd) { border-right: 0; padding-right: 0; }
+    .outcome-item:nth-child(even) { padding-left: 0; }
+  }
+
+  /* ───── Adjacent services ───── */
+  .other-svc { background: var(--paper); padding: 110px 0; }
+  .other-svc-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 24px;
+    margin-top: 48px;
+  }
+  .other-svc-card {
+    background: var(--paper);
+    border: 1px solid var(--line);
+    padding: 40px 36px;
+    border-radius: var(--radius);
+    transition: all 0.35s ease;
+    display: flex;
+    flex-direction: column;
+    text-decoration: none;
+  }
+  .other-svc-card:hover {
+    background: var(--navy);
+    color: var(--cream);
+    transform: translateY(-4px);
+    box-shadow: var(--shadow-md);
+  }
+  .other-svc-card .num {
+    font-family: var(--sans);
+    font-style: italic;
+    color: var(--amber);
+    font-size: 14px;
+    margin-bottom: 16px;
+  }
+  .other-svc-card:hover .num { color: var(--amber-bright); }
+  .other-svc-card h4 {
+    font-family: var(--sans);
+    font-weight: 500;
+    font-size: 24px;
+    line-height: 1.15;
+    margin-bottom: 12px;
+    letter-spacing: -0.01em;
+    color: var(--navy);
+    transition: color 0.3s;
+    font-variation-settings: "opsz" 144;
+  }
+  .other-svc-card:hover h4 { color: var(--cream); }
+  .other-svc-card p {
+    font-size: 15px;
+    line-height: 1.6;
+    color: var(--navy-soft);
+    margin-bottom: 20px;
+    flex: 1;
+    transition: color 0.3s;
+  }
+  .other-svc-card:hover p { color: rgba(240,242,245,0.75); }
+  .other-svc-card .lnk {
+    font-size: 12px;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    font-weight: 600;
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    color: var(--navy);
+    transition: color 0.3s;
+  }
+  .other-svc-card:hover .lnk { color: var(--amber-bright); }
+  @media (max-width: 768px) { .other-svc-grid { grid-template-columns: 1fr; } }
+
+  /* slower, more deliberate reveal motion */
+  .reveal { opacity: 0; transform: translateY(18px); transition: opacity 0.9s ease, transform 0.9s cubic-bezier(.2,.7,.2,1); }
+  .reveal.in { opacity: 1; transform: translateY(0); }
+  .reveal-stagger > * { opacity: 0; transform: translateY(18px); transition: opacity 0.9s ease, transform 0.9s cubic-bezier(.2,.7,.2,1); }
+  .reveal-stagger.in > *:nth-child(1) { opacity:1; transform:none; transition-delay: 0.05s; }
+  .reveal-stagger.in > *:nth-child(2) { opacity:1; transform:none; transition-delay: 0.15s; }
+  .reveal-stagger.in > *:nth-child(3) { opacity:1; transform:none; transition-delay: 0.25s; }
+  .reveal-stagger.in > *:nth-child(4) { opacity:1; transform:none; transition-delay: 0.35s; }
+  .reveal-stagger.in > *:nth-child(5) { opacity:1; transform:none; transition-delay: 0.45s; }
+  .reveal-stagger.in > *:nth-child(6) { opacity:1; transform:none; transition-delay: 0.55s; }
+  .reveal-stagger.in > *:nth-child(7) { opacity:1; transform:none; transition-delay: 0.65s; }
+  .reveal-stagger.in > *:nth-child(8) { opacity:1; transform:none; transition-delay: 0.75s; }
+</style>
+<style>
+  /* --- logo lockup --- */
+  .logo-lockup { display:flex; flex-direction:column; line-height:1; gap:2px; }
+  .logo-advisory { font-family:var(--sans); font-size:11px; font-weight:300; letter-spacing:0.18em; text-transform:none; color:var(--muted); padding-left:1px; }
+  /* Ensure all content is visible regardless of scroll observer */
+.reveal, .reveal-stagger, .reveal-stagger > * { opacity: 1 !important; transform: none !important; }
+</style>
+</head>
+<body>
+
+<!-- HEADER -->
+<header>
+  <div class="container nav">
+    <a href="index.html" class="logo">
+      <span class="logo-lockup">
+        <span class="logo-text"><span class="logo-cap">P</span>roTeam</span>
+        <span class="logo-advisory">Advisory Solutions LLP</span>
+      </span>
+    </a>
+    <ul class="nav-links">
+      <li><a href="index.html">Home</a></li>
+      <li class="has-mega">
+        <a href="services.html" class="active">Services <svg class="caret" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 9l6 6 6-6"/></svg></a>
+        <div class="mega-menu" role="menu" aria-label="Services">
+          <div class="mega-grid">
+            <div class="mega-col">
+              <a href="services.html#itam" class="mega-head">IT Asset Management</a>
+              <ul>
+                <li><a href="service-sam-maturity.html">SAM Maturity Assessment</a></li>
+                <li><a href="service-sam-baselining.html">SAM Baselining &amp; Cost Optimization</a></li>
+                <li><a href="service-audit-defence.html">Audit Defense &amp; Negotiation Support</a></li>
+                <li><a href="service-ham-maturity.html">Hardware Asset Management</a></li>
+                <li><a href="service-itam-managed.html">Managed Services</a></li>
+              </ul>
+            </div>
+            <div class="mega-col">
+              <a href="services.html#finops" class="mega-head">Cloud FinOps</a>
+              <ul>
+                <li><a href="service-cloud-finops.html">FinOps Advisory &amp; Strategy</a></li>
+                <li><a href="service-finops-optimization.html">Cloud Spend Optimisation</a></li>
+                <li><a href="service-finops-managed.html">Managed FinOps Services</a></li>
+              </ul>
+            </div>
+            <div class="mega-col">
+              <a href="services.html#platform-strategy" class="mega-head">Platform Strategy &amp; Advisory</a>
+              <ul>
+                <li><a href="service-platform-strategy.html">Platform Strategy &amp; Advisory</a></li>
+                <li><a href="service-implementation-integration.html">Implementation &amp; Integration</a></li>
+              </ul>
+            </div>
+            <div class="mega-col">
+              <a href="services.html#ai-transformation" class="mega-head">AI Transformation Services</a>
+              <ul>
+                <li><a href="service-ai-spend.html">AI Spend Management</a></li>
+                <li><a href="service-ai-adoption.html">AI Adoption &amp; Value Delivery</a></li>
+                <li><a href="service-ai-usage-analytics.html">AI Usage Analytics</a></li>
+                <li><a href="service-ai-vendor-negotiation.html">AI Vendor Negotiation</a></li>
+                <li><a href="service-ai-governance-advisory.html">AI Governance Advisory</a></li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </li>
+
+      <li><a href="case-studies.html">Case Studies</a></li>
+            <li class="has-mega has-about-dropdown">
+        <a href="about.html">About <svg class="caret" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 9l6 6 6-6"/></svg></a>
+        <div class="mega-menu" role="menu" aria-label="About">
+          <div class="mega-grid mega-grid--about">
+            <div class="mega-col">
+              <a href="our-story.html" class="mega-head">Our Story</a>
+              <ul>
+                <li><a href="our-story.html">Who We Are</a></li>
+                <li><a href="our-story.html#team">Team / Leaders</a></li>
+              </ul>
+            </div>
+            <div class="mega-col">
+              <a href="achievements.html" class="mega-head">By the Numbers</a>
+              <ul>
+                <li><a href="achievements.html">Achievements &amp; Stats</a></li>
+              </ul>
+            </div>
+            <div class="mega-col">
+              <a href="gallery.html" class="mega-head">Gallery</a>
+              <ul>
+                <li><a href="gallery.html">Culture &amp; Events</a></li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </li>
+      <li><a href="insights.html">Insights</a></li>
+            <li><a href="careers.html">Careers</a></li>
+      <li><a href="contact.html">Contact</a></li>
+    </ul>
+    <a href="contact.html" class="nav-cta">Free Consultation</a>
+    <button class="menu-toggle" id="menuToggle" aria-label="Toggle menu" aria-expanded="false">
+      <span class="bar"></span>
+      <span class="bar"></span>
+      <span class="bar"></span>
+    </button>
+  </div>
+</header>
+
+<!-- MOBILE NAV -->
+<nav class="mobile-nav" id="mobileNav" aria-label="Mobile navigation">
+  <ul class="mobile-nav-links">
+    <li><a href="index.html">Home <span>&rarr;</span></a></li>
+    <li class="has-sub">
+      <button class="sub-toggle" type="button" aria-expanded="false" aria-controls="m-svc-sub">
+        Services
+        <svg class="caret" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 9l6 6 6-6"/></svg>
+      </button>
+      <ul id="m-svc-sub" class="sub-menu">
+        <li class="has-sub-2">
+          <button class="sub-toggle-2" type="button" aria-expanded="false" aria-controls="m-itam-sub">
+            IT Asset Management
+            <svg class="caret" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 9l6 6 6-6"/></svg>
+          </button>
+          <ul id="m-itam-sub" class="sub-menu-2">
+            <li><a href="service-sam-maturity.html">SAM Maturity Assessment</a></li>
+            <li><a href="service-sam-baselining.html">SAM Baselining &amp; Cost Optimization</a></li>
+            <li><a href="service-audit-defence.html">Audit Defense &amp; Negotiation Support</a></li>
+            <li><a href="service-ham-maturity.html">Hardware Asset Management</a></li>
+            <li><a href="service-itam-managed.html">Managed Services</a></li>
+          </ul>
+        </li>
+        <li class="has-sub-2">
+          <button class="sub-toggle-2" type="button" aria-expanded="false" aria-controls="m-finops-sub">
+            Cloud FinOps
+            <svg class="caret" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 9l6 6 6-6"/></svg>
+          </button>
+          <ul id="m-finops-sub" class="sub-menu-2">
+            <li><a href="service-cloud-finops.html">FinOps Advisory &amp; Strategy</a></li>
+            <li><a href="service-finops-optimization.html">Cloud Spend Optimisation</a></li>
+            <li><a href="service-finops-managed.html">Managed FinOps Services</a></li>
+          </ul>
+        </li>
+        <li class="has-sub-2">
+          <button class="sub-toggle-2" type="button" aria-expanded="false" aria-controls="m-platform-sub">
+            Platform Strategy &amp; Advisory
+            <svg class="caret" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 9l6 6 6-6"/></svg>
+          </button>
+          <ul id="m-platform-sub" class="sub-menu-2">
+            <li><a href="service-platform-strategy.html">Platform Strategy &amp; Advisory</a></li>
+            <li><a href="service-implementation-integration.html">Implementation &amp; Integration</a></li>
+          </ul>
+        </li>
+        <li class="has-sub-2">
+          <button class="sub-toggle-2" type="button" aria-expanded="false" aria-controls="m-ai-sub">
+            AI Transformation Services
+            <svg class="caret" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 9l6 6 6-6"/></svg>
+          </button>
+          <ul id="m-ai-sub" class="sub-menu-2">
+            <li><a href="service-ai-spend.html">AI Spend Management</a></li>
+            <li><a href="service-ai-adoption.html">AI Adoption &amp; Value Delivery</a></li>
+            <li><a href="service-ai-usage-analytics.html">AI Usage Analytics</a></li>
+            <li><a href="service-ai-vendor-negotiation.html">AI Vendor Negotiation</a></li>
+            <li><a href="service-ai-governance-advisory.html">AI Governance Advisory</a></li>
+          </ul>
+        </li>
+      </ul>
+    </li>
+
+    <li><a href="case-studies.html">Case Studies <span>&rarr;</span></a></li>
+        <li class="has-sub">
+      <button class="sub-toggle" type="button" aria-expanded="false" aria-controls="m-about-sub">
+        About
+        <svg class="caret" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 9l6 6 6-6"/></svg>
+      </button>
+      <ul id="m-about-sub" class="sub-menu">
+        <li><a href="our-story.html">Our Story</a></li>
+        <li><a href="achievements.html">By the Numbers</a></li>
+        <li><a href="our-story.html#team">Team / Leaders</a></li>
+        <li><a href="gallery.html">Gallery</a></li>
+      </ul>
+    </li>
+    <li><a href="insights.html">Insights <span>&rarr;</span></a></li>
+        <li><a href="careers.html">Careers <span>&rarr;</span></a></li>
+    <li><a href="contact.html">Contact <span>&rarr;</span></a></li>
+  </ul>
+  <a href="contact.html" class="mobile-nav-cta">Book Free Consultation &rarr;</a>
+  <div class="mobile-nav-contact">
+    <a href="tel:+919676889797">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07 19.5 19.5 0 01-6-6 19.79 19.79 0 01-3.07-8.67A2 2 0 014.11 2h3a2 2 0 012 1.72 12.84 12.84 0 00.7 2.81 2 2 0 01-.45 2.11L8.09 9.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45 12.84 12.84 0 002.81.7A2 2 0 0122 16.92z"/></svg>
+      +91 9676 889 797
+    </a>
+    <a href="mailto:vpatel@proteamadvisory.com">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+      vpatel@proteamadvisory.com
+    </a>
+  </div>
+</nav>
+
+<!-- PAGE HERO -->
+<section class="page-hero svc-detail-hero">
+  <div class="container">
+    <div class="breadcrumb">
+      <a href="index.html">Home</a>
+      <span class="sep">/</span>
+      <a href="services.html">Services</a>
+      <span class="sep">/</span>
+      <span class="current">Platform Strategy &amp; Advisory</span>
+    </div>
+    <div class="page-hero-grid">
+      <div>
+        <div class="page-hero-eyebrow">Platform Strategy · Advisory</div>
+        <h1>Platform strategy <em>&amp; advisory</em>.</h1>
+      </div>
+      <p class="page-hero-lede">
+        Enable the right platform strategy before scaling operations. We assess your current technology landscape, evaluate operational readiness, and define the platform architecture aligned to estate complexity, governance objectives, and optimisation goals &mdash; advisory-first, platform-neutral, governance-led.
+      </p>
+    </div>
+
+    <div class="stat-row reveal">
+      <div>
+        <div class="stat-num">Advisory-first</div>
+        <div class="stat-lbl">No implementation bias. The strategy comes before the tooling decision.</div>
+      </div>
+      <div>
+        <div class="stat-num">7+</div>
+        <div class="stat-lbl">Platforms evaluated &mdash; ServiceNow, Snow, Flexera, Xensam, USU, Zylo, custom estates.</div>
+      </div>
+      <div>
+        <div class="stat-num">4&ndash;6 wks</div>
+        <div class="stat-lbl">Typical assessment timeline before strategy recommendations are on the table.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- POSITIONING / PROBLEM -->
+<section class="svc-overview">
+  <div class="container">
+    <div class="svc-overview-grid">
+      <div class="reveal">
+        <div class="section-eyebrow">The problem we solve</div>
+        <h2>Tools alone don't fix fragmentation. <em>Strategy does.</em></h2>
+      </div>
+      <div class="reveal">
+        <p>Modern SAM and ITAM transformation depends on more than tool deployment. <strong>Many enterprises operate fragmented ecosystems</strong> &mdash; inconsistent discovery methods, overlapping tooling, weak normalisation standards, and limited governance visibility.</p>
+        <p>Our advisory-led engagement helps organisations evaluate their current technology landscape, assess operational readiness, and define the right platform strategy &mdash; aligned to estate complexity, governance objectives, and optimisation goals.</p>
+        <p>Whether platforms already exist or are still being evaluated, we help enterprises create a scalable, intelligence-driven foundation for long-term SAM operations.</p>
+        <div class="key-line">
+          The platform isn't the strategy. <em>The strategy decides the platform.</em>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ENTERPRISE CAPABILITY GRID: narrative + ecosystem viz -->
+<section class="cap-grid-section">
+  <div class="container">
+    <div class="reveal" style="max-width:720px;">
+      <div class="section-eyebrow">Enterprise capability grid</div>
+      <h2>Fragmented tools become a <em>connected intelligence layer</em>.</h2>
+      <p class="section-lede">Disconnected discovery sources, overlapping SAM platforms, isolated CMDB layers and unmanaged SaaS feeds rarely produce one trustworthy operational view. Strategy is what wires them together.</p>
+    </div>
+
+    <div class="cap-grid-layout">
+      <!-- Left: strategic narrative -->
+      <div class="cap-narrative reveal">
+        <h3>What we wire together</h3>
+        <p>Across SAM, HAM, SaaS, cloud, CMDB and procurement &mdash; six estate signals consolidate into one governance-ready intelligence layer:</p>
+        <ul>
+          <li>Unified discovery across endpoints, servers, cloud, and SaaS</li>
+          <li>Normalised application and entitlement data</li>
+          <li>CMDB-aligned operational records</li>
+          <li>Governance and approval workflows</li>
+          <li>Reporting model fit for executive and operational consumption</li>
+          <li>Automation hooks for renewal, reclamation and compliance triggers</li>
+        </ul>
+
+        <h3>What changes for the operating model</h3>
+        <p>Once the intelligence layer is defined, decisions stop being platform-specific and start being estate-specific. The tooling becomes a substrate, not a strategy.</p>
+      </div>
+
+      <!-- Right: the platform ecosystem visualisation -->
+      <div class="plat-viz reveal" aria-label="Diagram: six fragmented platform sources connecting into a unified governance intelligence layer">
+        <svg viewBox="0 0 560 560" xmlns="http://www.w3.org/2000/svg" role="img">
+          <!-- background subtle radial -->
+          <defs>
+            <radialGradient id="plat-hub-grad" cx="50%" cy="50%" r="50%">
+              <stop offset="0%" stop-color="#68D2E8" stop-opacity="0.35"/>
+              <stop offset="100%" stop-color="#68D2E8" stop-opacity="0"/>
+            </radialGradient>
+            <radialGradient id="plat-bg-grad" cx="50%" cy="50%" r="50%">
+              <stop offset="0%" stop-color="#03AED2" stop-opacity="0.08"/>
+              <stop offset="100%" stop-color="#03AED2" stop-opacity="0"/>
+            </radialGradient>
+          </defs>
+
+          <!-- soft halo -->
+          <circle cx="280" cy="280" r="240" fill="url(#plat-bg-grad)"/>
+
+          <!-- blueprint orbit rings -->
+          <circle cx="280" cy="280" r="200" fill="none" stroke="rgba(104,210,232,0.10)" stroke-width="1" stroke-dasharray="2 6"/>
+          <circle cx="280" cy="280" r="130" fill="none" stroke="rgba(104,210,232,0.13)" stroke-width="1" stroke-dasharray="2 6"/>
+
+          <!-- connectors (drawn first so nodes overlay them) -->
+          <!-- 6 connectors from each node to the hub -->
+          <!-- Node positions (6 around circle, radius 200) -->
+          <!-- angle 90° (top): (280, 80) -->
+          <!-- angle 30°: (280 + 200*cos(-60°), 280 + 200*sin(-60°)) approx (453, 99) but using 60° from horizontal we use a hexagon: -->
+          <!-- Hex positions: top, upper-right, lower-right, bottom, lower-left, upper-left -->
+          <!-- top (90°): (280, 80) -->
+          <!-- upper-right (30°): (280 + 200*0.866, 280 - 200*0.5) = (453, 180) -->
+          <!-- lower-right (-30°): (453, 380) -->
+          <!-- bottom (-90°): (280, 480) -->
+          <!-- lower-left (210°): (107, 380) -->
+          <!-- upper-left (150°): (107, 180) -->
+
+          <line class="plat-connector"      x1="280" y1="80"  x2="280" y2="280"/>
+          <line class="plat-connector fast" x1="453" y1="180" x2="280" y2="280"/>
+          <line class="plat-connector slow" x1="453" y1="380" x2="280" y2="280"/>
+          <line class="plat-connector"      x1="280" y1="480" x2="280" y2="280"/>
+          <line class="plat-connector fast" x1="107" y1="380" x2="280" y2="280"/>
+          <line class="plat-connector slow" x1="107" y1="180" x2="280" y2="280"/>
+
+          <!-- Central HUB -->
+          <circle class="plat-hub-pulse"       cx="280" cy="280" r="64"/>
+          <circle class="plat-hub-pulse delay" cx="280" cy="280" r="64"/>
+          <circle class="plat-hub-outer"       cx="280" cy="280" r="80"/>
+          <circle cx="280" cy="280" r="80" fill="url(#plat-hub-grad)"/>
+          <circle class="plat-hub-inner"       cx="280" cy="280" r="48"/>
+          <text class="plat-hub-sub"   x="280" y="266" text-anchor="middle">Intelligence</text>
+          <text class="plat-hub-label" x="280" y="290" text-anchor="middle">Unified Hub</text>
+          <text class="plat-hub-sub"   x="280" y="310" text-anchor="middle">Governance</text>
+
+          <!-- 6 PLATFORM NODES -->
+          <!-- Node 1: ServiceNow (top) -->
+          <g class="plat-node plat-node-1">
+            <circle class="plat-node-circle" cx="280" cy="80" r="42"/>
+            <!-- icon: stacked layers -->
+            <g transform="translate(263,63)" class="plat-node-icon">
+              <rect x="0"  y="0"  width="34" height="6" rx="1.5"/>
+              <rect x="0"  y="12" width="34" height="6" rx="1.5" opacity="0.7"/>
+              <rect x="0"  y="24" width="34" height="6" rx="1.5" opacity="0.45"/>
+            </g>
+            <text class="plat-node-label" x="280" y="142" text-anchor="middle">ServiceNow</text>
+          </g>
+
+          <!-- Node 2: Snow (upper-right) -->
+          <g class="plat-node plat-node-2">
+            <circle class="plat-node-circle" cx="453" cy="180" r="42"/>
+            <!-- icon: snowflake-ish star -->
+            <g transform="translate(453,180)" class="plat-node-icon" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" fill="none">
+              <line x1="-14" y1="0" x2="14"  y2="0"/>
+              <line x1="0"   y1="-14" x2="0" y2="14"/>
+              <line x1="-10" y1="-10" x2="10" y2="10"/>
+              <line x1="-10" y1="10"  x2="10" y2="-10"/>
+            </g>
+            <text class="plat-node-label" x="453" y="242" text-anchor="middle">Snow</text>
+          </g>
+
+          <!-- Node 3: Flexera (lower-right) -->
+          <g class="plat-node plat-node-3">
+            <circle class="plat-node-circle" cx="453" cy="380" r="42"/>
+            <!-- icon: license/key shape -->
+            <g transform="translate(437,365)" class="plat-node-icon">
+              <circle cx="10" cy="10" r="8" fill="none" stroke="currentColor" stroke-width="1.8"/>
+              <line x1="16" y1="14" x2="32" y2="22" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/>
+              <line x1="26" y1="20" x2="30" y2="16" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/>
+            </g>
+            <text class="plat-node-label" x="453" y="442" text-anchor="middle">Flexera</text>
+          </g>
+
+          <!-- Node 4: Discovery (bottom) -->
+          <g class="plat-node plat-node-4">
+            <circle class="plat-node-circle" cx="280" cy="480" r="42"/>
+            <!-- icon: magnifier -->
+            <g transform="translate(264,464)" class="plat-node-icon">
+              <circle cx="14" cy="14" r="11" fill="none" stroke="currentColor" stroke-width="1.8"/>
+              <line x1="22" y1="22" x2="32" y2="32" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"/>
+            </g>
+            <text class="plat-node-label" x="280" y="542" text-anchor="middle">Discovery</text>
+          </g>
+
+          <!-- Node 5: SaaS feeds (lower-left) -->
+          <g class="plat-node plat-node-5">
+            <circle class="plat-node-circle" cx="107" cy="380" r="42"/>
+            <!-- icon: cloud -->
+            <g transform="translate(86,367)" class="plat-node-icon">
+              <path d="M10 22 a8 8 0 0 1 0 -16 a10 10 0 0 1 19 0 a8 8 0 0 1 -2 16 z" fill="currentColor"/>
+            </g>
+            <text class="plat-node-label" x="107" y="442" text-anchor="middle">SaaS Feeds</text>
+          </g>
+
+          <!-- Node 6: CMDB (upper-left) -->
+          <g class="plat-node plat-node-6">
+            <circle class="plat-node-circle" cx="107" cy="180" r="42"/>
+            <!-- icon: database -->
+            <g transform="translate(91,163)" class="plat-node-icon">
+              <ellipse cx="16" cy="6"  rx="14" ry="4" fill="none" stroke="currentColor" stroke-width="1.6"/>
+              <path d="M2 6 v12 a14 4 0 0 0 28 0 v-12" fill="none" stroke="currentColor" stroke-width="1.6"/>
+              <path d="M2 14 a14 4 0 0 0 28 0" fill="none" stroke="currentColor" stroke-width="1.4" opacity="0.6"/>
+              <path d="M2 22 a14 4 0 0 0 28 0" fill="none" stroke="currentColor" stroke-width="1.4" opacity="0.4"/>
+            </g>
+            <text class="plat-node-label" x="107" y="242" text-anchor="middle">CMDB</text>
+          </g>
+
+        </svg>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- WHAT WE ASSESS -->
+<section class="assess">
+  <div class="container">
+    <div class="assess-head reveal">
+      <div class="section-eyebrow">What we assess</div>
+      <h2 class="section-title">Estate landscape. <em>Existing platforms.</em></h2>
+      <p class="section-lede">Two parallel diagnostics &mdash; one looking outward at your estate, one looking inward at the platforms already in flight. Together they make the right strategy obvious.</p>
+    </div>
+
+    <div class="assess-grid">
+      <div class="reveal">
+        <div class="assess-block-title">
+          Estate &amp; operational landscape
+          <strong>The estate shape</strong>
+        </div>
+        <ul class="assess-list">
+          <li>Device ecosystem analysis</li>
+          <li>Application estate complexity</li>
+          <li>SaaS visibility maturity</li>
+          <li>Cloud &amp; hybrid infrastructure mapping</li>
+          <li>User &amp; business unit segmentation</li>
+          <li>Discovery coverage evaluation</li>
+        </ul>
+      </div>
+
+      <div class="reveal">
+        <div class="assess-block-title">
+          Existing platform evaluation
+          <strong>The platforms in flight</strong>
+        </div>
+        <ul class="assess-list">
+          <li>Data quality maturity</li>
+          <li>CMDB alignment</li>
+          <li>Discovery effectiveness</li>
+          <li>Licence intelligence coverage</li>
+          <li>Operational workflows</li>
+          <li>Governance integration</li>
+          <li>Reporting capability</li>
+          <li>Automation readiness</li>
+        </ul>
+
+        <div class="platforms-row">
+          <span class="pchip">ServiceNow</span>
+          <span class="pchip">Snow Software</span>
+          <span class="pchip">Flexera</span>
+          <span class="pchip">Xensam</span>
+          <span class="pchip">USU</span>
+          <span class="pchip">Zylo</span>
+          <span class="pchip">Custom ITAM estates</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ADVISORY APPROACH -->
+<section class="approach">
+  <div class="container">
+    <div class="approach-head reveal">
+      <div class="section-eyebrow">Advisory-first approach</div>
+      <h2 class="section-title">Two starting points. <em>One discipline.</em></h2>
+      <p class="section-lede">Whether you are still deciding which platform to invest in, or already running multiple platforms that aren't delivering, the engagement model is the same: assess, recommend, sequence.</p>
+    </div>
+
+    <div class="approach-grid">
+      <div class="approach-card reveal">
+        <div class="acard-eyebrow">Starting state · 01</div>
+        <h3>If no platform exists.</h3>
+        <ul>
+          <li>Define the right SAM architecture for the estate ahead.</li>
+          <li>Select the appropriate platform ecosystem &mdash; vendor-neutral.</li>
+          <li>Standardise discovery and data-collection strategies.</li>
+          <li>Align tooling investment with estate complexity.</li>
+          <li>Build scalable governance models from day one.</li>
+          <li>Reduce future operational fragmentation before it forms.</li>
+        </ul>
+      </div>
+
+      <div class="approach-card reveal">
+        <div class="acard-eyebrow">Starting state · 02</div>
+        <h3>If platforms already exist.</h3>
+        <ul>
+          <li>Conduct platform-health assessments across deployments.</li>
+          <li>Identify optimisation opportunities and underused capability.</li>
+          <li>Improve data normalisation and signal quality.</li>
+          <li>Reduce operational inefficiencies and duplicate workflows.</li>
+          <li>Optimise integrations between ITSM, ITAM and procurement.</li>
+          <li>Enhance reporting and governance maturity.</li>
+          <li>Improve platform utilisation and recover ROI.</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CAPABILITY CARDS -->
+<section class="cards-section">
+  <div class="container">
+    <div class="cards-head reveal">
+      <div class="section-eyebrow">Capability dimensions</div>
+      <h2 class="section-title">Four lenses. <em>One strategy.</em></h2>
+      <p class="section-lede">The advisory engagement runs through four capability dimensions in sequence &mdash; each one informs the next.</p>
+    </div>
+
+    <div class="cards-grid reveal-stagger">
+      <div class="cap-card">
+        <div class="ccard-num">— 01</div>
+        <svg class="ccard-icon" viewBox="0 0 32 32" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">
+          <rect x="4"  y="4"  width="10" height="10" rx="1.5"/>
+          <rect x="18" y="4"  width="10" height="10" rx="1.5"/>
+          <rect x="4"  y="18" width="10" height="10" rx="1.5"/>
+          <rect x="18" y="18" width="10" height="10" rx="1.5"/>
+          <circle cx="23" cy="23" r="2" fill="currentColor" stroke="none"/>
+        </svg>
+        <h4>Platform Assessment</h4>
+        <p>Assess existing tooling maturity, operational fit, and governance alignment across deployed platforms.</p>
+      </div>
+
+      <div class="cap-card">
+        <div class="ccard-num">— 02</div>
+        <svg class="ccard-icon" viewBox="0 0 32 32" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">
+          <circle cx="16" cy="16" r="11"/>
+          <line x1="16" y1="5"  x2="16" y2="27"/>
+          <line x1="5"  y1="16" x2="27" y2="16"/>
+          <path d="M16 5 a16 11 0 0 1 0 22 a16 11 0 0 1 0 -22"/>
+        </svg>
+        <h4>Estate Intelligence</h4>
+        <p>Evaluate estate scale, application diversity, discovery coverage, and operational complexity across the technology landscape.</p>
+      </div>
+
+      <div class="cap-card">
+        <div class="ccard-num">— 03</div>
+        <svg class="ccard-icon" viewBox="0 0 32 32" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">
+          <circle cx="9" cy="9"   r="3.5"/>
+          <circle cx="23" cy="9"  r="3.5"/>
+          <circle cx="16" cy="23" r="3.5"/>
+          <line x1="9"  y1="12" x2="14" y2="20"/>
+          <line x1="23" y1="12" x2="18" y2="20"/>
+          <line x1="12" y1="9"  x2="20" y2="9"/>
+        </svg>
+        <h4>Platform Rationalisation</h4>
+        <p>Identify overlapping tooling, integration gaps, and optimisation opportunities across the deployed ecosystem.</p>
+      </div>
+
+      <div class="cap-card">
+        <div class="ccard-num">— 04</div>
+        <svg class="ccard-icon" viewBox="0 0 32 32" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M4 24 L12 16 L18 20 L28 8"/>
+          <polyline points="22,8 28,8 28,14"/>
+          <line x1="4" y1="28" x2="28" y2="28"/>
+        </svg>
+        <h4>Future-State Strategy</h4>
+        <p>Define scalable architecture, governance model, and the platform roadmap that sequences the next 12&ndash;18 months.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- STRATEGIC OUTCOMES -->
+<section class="outcomes">
+  <div class="container">
+    <div class="reveal" style="max-width:720px;">
+      <div class="section-eyebrow">Strategic outcomes</div>
+      <h2>What the model delivers <em>after the strategy lands</em>.</h2>
+      <p class="section-lede">Not savings stats &mdash; foundation outcomes. When the platform model is right, every downstream initiative gets cheaper, faster and more defensible.</p>
+    </div>
+
+    <div class="outcomes-grid reveal-stagger">
+      <div class="outcome-item">
+        <div class="outcome-num">01</div>
+        <div class="outcome-text">Better platform alignment across SAM, ITAM and procurement.</div>
+      </div>
+      <div class="outcome-item">
+        <div class="outcome-num">02</div>
+        <div class="outcome-text">Improved discovery standardisation across the estate.</div>
+      </div>
+      <div class="outcome-item">
+        <div class="outcome-num">03</div>
+        <div class="outcome-text">Cleaner operational data with normalised signals.</div>
+      </div>
+      <div class="outcome-item">
+        <div class="outcome-num">04</div>
+        <div class="outcome-text">Stronger governance foundations &mdash; the policy layer holds.</div>
+      </div>
+      <div class="outcome-item">
+        <div class="outcome-num">05</div>
+        <div class="outcome-text">Higher tooling ROI from the platforms already paid for.</div>
+      </div>
+      <div class="outcome-item">
+        <div class="outcome-num">06</div>
+        <div class="outcome-text">Reduced operational complexity in day-to-day SAM workflows.</div>
+      </div>
+      <div class="outcome-item">
+        <div class="outcome-num">07</div>
+        <div class="outcome-text">Scalable SAM operating model ready for new estate growth.</div>
+      </div>
+      <div class="outcome-item">
+        <div class="outcome-num">08</div>
+        <div class="outcome-text">Increased visibility across software and cloud estates.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ADJACENT SERVICES -->
+<section class="other-svc">
+  <div class="container">
+    <div class="reveal" style="max-width: 720px;">
+      <div class="section-eyebrow">Adjacent services</div>
+      <h2 class="section-title">Strategy first. <em>Then implementation.</em></h2>
+      <p class="section-lede">Once the platform strategy lands, the ITAM Technology practice handles vendor-specific implementation, tuning and remediation &mdash; against the architecture you just signed off.</p>
+    </div>
+
+    <div class="other-svc-grid">
+      <a href="service-itam-servicenow.html" class="other-svc-card reveal">
+        <div class="num">— ServiceNow</div>
+        <h4>ServiceNow SAM &amp; HAM Pro</h4>
+        <p>Implementation, tuning, and optimisation of ServiceNow SAM Pro and HAM Pro &mdash; aligned to the platform strategy.</p>
+        <span class="lnk">See page <svg width="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 5l7 7-7 7"/></svg></span>
+      </a>
+      <a href="service-itam-flexera.html" class="other-svc-card reveal">
+        <div class="num">— Flexera</div>
+        <h4>Flexera One &amp; FlexNet Manager</h4>
+        <p>Implementation, optimisation and remediation across Flexera One and FlexNet Manager deployments.</p>
+        <span class="lnk">See page <svg width="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 5l7 7-7 7"/></svg></span>
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- CTA -->
+<section class="cta">
+  <div class="container">
+    <div class="cta-inner">
+      <div class="reveal">
+        <div class="section-eyebrow" style="color: var(--amber-bright);">Ready to talk</div>
+        <h2>Want a candid read on <em>your current platform estate</em>?</h2>
+        <p>A senior consultant walks through your current tooling landscape, governance alignment, data quality and operational maturity &mdash; and tells you honestly whether you need rationalisation, optimisation, a new architecture, or a phased transition.</p>
+        <div class="cta-actions">
+          <a href="contact.html" class="btn-amber">Book a strategy call</a>
+          <a href="services.html#platform-strategy" class="btn-line">See all services</a>
+        </div>
+      </div>
+      <div class="cta-detail reveal">
+        <h4>What you'll get</h4>
+        <ul class="cta-list">
+          <li>45-minute call with a senior platform-strategy consultant.</li>
+          <li>Indicative read on your current platform maturity.</li>
+          <li>Honest view on whether external advisory is warranted.</li>
+          <li>If yes &mdash; assessment, rationalisation, architecture, or all three.</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="container">
+    <div class="foot-grid">
+      <div class="foot-brand">
+        <a href="index.html" class="logo" style="color: var(--cream);">
+          <span class="logo-lockup">
+            <span class="logo-text" style="color:var(--cream);"><span class="logo-cap">P</span>roTeam</span>
+            <span class="logo-advisory" style="color:rgba(240,242,245,0.7);">Advisory Solutions LLP</span>
+          </span>
+        </a>
+        <h3>SAM specialists. Nothing else.</h3>
+        <p>An independent Software Asset Management consultancy serving enterprises across India, the UK, the US, and the Middle East.</p>
+
+        <div class="foot-social">
+          <div class="foot-social-label">Follow us on</div>
+          <div class="foot-social-icons">
+            <a href="https://in.linkedin.com/company/proteam-advisory" aria-label="LinkedIn" target="_blank" rel="noopener">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"/><rect x="2" y="9" width="4" height="12"/><circle cx="4" cy="4" r="2"/></svg>
+            </a>
+            <a href="https://x.com/proteamadv" aria-label="X (Twitter)" target="_blank" rel="noopener">
+              <svg viewBox="0 0 24 24" fill="currentColor"><path d="M17.53 3H21l-7.39 8.45L22.5 21h-6.83l-5.34-6.99L3.5 21H0l7.91-9.04L0.5 3h7l4.83 6.4L17.53 3zm-2.39 16h2.06L7.05 4.85H4.83L15.14 19z"/></svg>
+            </a>
+            <a href="https://www.instagram.com/proteamadvisory/" aria-label="Instagram" target="_blank" rel="noopener">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="20" rx="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/></svg>
+            </a>
+            <a href="https://www.youtube.com/channel/UCaajUe2N_6AFw3dvPmH1b7A" aria-label="YouTube" target="_blank" rel="noopener">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M22.54 6.42a2.78 2.78 0 0 0-1.94-2C18.88 4 12 4 12 4s-6.88 0-8.6.46a2.78 2.78 0 0 0-1.94 2A29 29 0 0 0 1 11.75a29 29 0 0 0 .46 5.33A2.78 2.78 0 0 0 3.4 19c1.72.46 8.6.46 8.6.46s6.88 0 8.6-.46a2.78 2.78 0 0 0 1.94-2 29 29 0 0 0 .46-5.25 29 29 0 0 0-.46-5.33z"/><polygon points="9.75 15.02 15.5 11.75 9.75 8.48 9.75 15.02" fill="currentColor"/></svg>
+            </a>
+          </div>
+        </div>
+      </div>
+
+      <div class="foot-col">
+        <h5>Services</h5>
+        <ul>
+          <li><a href="services.html#itam">IT Asset Management</a></li>
+          <li><a href="services.html#finops">Cloud FinOps</a></li>
+          <li><a href="service-platform-strategy.html">Platform Strategy &amp; Advisory</a></li>
+          <li><a href="services.html#ai-transformation">AI Transformation Services</a></li>
+        </ul>
+      </div>
+
+      <div class="foot-col">
+        <h5>About</h5>
+        <ul>
+          <li><a href="our-story.html">Our Story</a></li>
+          <li><a href="our-story.html#team">Team &amp; Leaders</a></li>
+          <li><a href="achievements.html">Achievements &amp; Stats</a></li>
+          <li><a href="gallery.html">Culture &amp; Gallery</a></li>
+        </ul>
+      </div>
+
+      <div class="foot-col">
+        <h5>Company</h5>
+        <ul>
+          <li><a href="case-studies.html">Case Studies</a></li>
+          <li><a href="insights.html">Insights</a></li>
+          <li><a href="careers.html">Careers</a></li>
+          <li><a href="contact.html">Contact</a></li>
+        </ul>
+      </div>
+
+      <div class="foot-col">
+        <h5>Get in touch</h5>
+        <address>
+          Suite #309&ndash;312<br>
+          KTC Illumination Towers<br>
+          Madhapur, Hyderabad<br>
+          Telangana, India<br><br>
+          <a href="tel:+919676889797">+91 9676 889 797</a><br>
+          <a href="mailto:vpatel@proteamadvisory.com">vpatel@proteamadvisory.com</a>
+        </address>
+      </div>
+    </div>
+
+    <div class="foot-bot">
+      <div>&copy; 2026 Proteam Advisory. All rights reserved.</div>
+      <div style="display:flex; gap:24px; flex-wrap:wrap;">
+        <a href="privacy.html">Privacy</a>
+        <a href="terms.html">Terms of Use</a>
+        <a href="cookies.html">Cookies</a>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<script>
+  // ---- Scroll reveal ----
+  const obs = new IntersectionObserver((entries) => {
+    entries.forEach(e => {
+      if (e.isIntersecting) { e.target.classList.add("in"); obs.unobserve(e.target); }
+    });
+  }, { threshold: 0.1, rootMargin: "0px 0px -50px 0px" });
+  document.querySelectorAll(".reveal, .reveal-stagger").forEach(el => obs.observe(el));
+
+  // ---- Smooth scroll ----
+  document.querySelectorAll("a[href^='#']").forEach(link => {
+    link.addEventListener("click", e => {
+      const id = link.getAttribute("href");
+      if (id.length > 1) { const tgt = document.querySelector(id); if (tgt) { e.preventDefault(); tgt.scrollIntoView({ behavior: "smooth", block: "start" }); } }
+    });
+  });
+
+  // ---- Mobile menu (with accordion sub-menus) ----
+  (function() {
+    const toggle = document.getElementById('menuToggle');
+    const mobileNav = document.getElementById('mobileNav');
+    if (!toggle || !mobileNav) return;
+    const body = document.body;
+
+    function openMenu() {
+      mobileNav.classList.add('is-open');
+      toggle.classList.add('open');
+      toggle.setAttribute('aria-expanded', 'true');
+      body.style.overflow = 'hidden';
+    }
+    function closeMenu() {
+      mobileNav.classList.remove('is-open');
+      toggle.classList.remove('open');
+      toggle.setAttribute('aria-expanded', 'false');
+      body.style.overflow = '';
+    }
+    toggle.addEventListener('click', () => mobileNav.classList.contains('is-open') ? closeMenu() : openMenu());
+
+    mobileNav.querySelectorAll('a').forEach(link => link.addEventListener('click', closeMenu));
+    document.addEventListener('keydown', e => { if (e.key === 'Escape' && mobileNav.classList.contains('is-open')) closeMenu(); });
+
+    mobileNav.querySelectorAll('.sub-toggle, .sub-toggle-2').forEach(btn => {
+      btn.addEventListener('click', () => {
+        const id = btn.getAttribute('aria-controls');
+        const target = id ? document.getElementById(id) : btn.nextElementSibling;
+        if (!target) return;
+        const expanded = btn.getAttribute('aria-expanded') === 'true';
+        btn.setAttribute('aria-expanded', String(!expanded));
+        target.classList.toggle('is-open', !expanded);
+      });
+    });
+  })();
+</script>
+
+<script src="sammy-chatbot.js"></script>
+<script>
+/* Desktop mega-menu: JS hover with close-delay */
+(function () {
+  var CLOSE_DELAY = 150;
+  document.querySelectorAll(".nav-links .has-mega").forEach(function (li) {
+    var timer = null;
+    function openMenu() { clearTimeout(timer); li.classList.add("mega-open"); }
+    function scheduleClose() { timer = setTimeout(function () { li.classList.remove("mega-open"); }, CLOSE_DELAY); }
+    li.addEventListener("mouseenter", openMenu);
+    li.addEventListener("mouseleave", scheduleClose);
+    var menu = li.querySelector(".mega-menu");
+    if (menu) {
+      menu.addEventListener("mouseenter", openMenu);
+      menu.addEventListener("mouseleave", scheduleClose);
+    }
+    document.addEventListener("keydown", function (e) { if (e.key === "Escape") li.classList.remove("mega-open"); });
+  });
+})();
+</script>
+</body>
+</html>

@@ -1,0 +1,1203 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Implementation &amp; Integration — Proteam Advisory</title>
+<meta name="description" content="Expert implementation and integration of ITAM platforms — ServiceNow SAM Pro, Flexera One, Snow Software, Zylo, and USU SmartTrack (Aspera). Vendor-independent. Outcome-focused. From strategy to live, trusted licence positions." />
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300..900;1,9..144,300..900&family=Geist:wght@300..700&family=Geist+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="styles.css">
+
+<style>
+/* ═══════════════════════════════════════════════════════════════
+   IMPLEMENTATION & INTEGRATION — Platform Strategy design language
+   Mirrors service-platform-strategy.html exactly in structure/tone
+   ═══════════════════════════════════════════════════════════════ */
+
+/* Hero stats row */
+.svc-detail-hero .stat-row {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 32px;
+  margin-top: 56px;
+  padding-top: 40px;
+  border-top: 1px solid var(--line);
+}
+.svc-detail-hero .stat-row .stat-num {
+  font-family: var(--sans);
+  font-weight: 300;
+  font-size: 44px;
+  line-height: 1;
+  color: var(--amber);
+  letter-spacing: -0.03em;
+  margin-bottom: 8px;
+  font-variation-settings: "opsz" 144;
+}
+.svc-detail-hero .stat-row .stat-lbl {
+  font-size: 13px;
+  line-height: 1.5;
+  color: var(--navy-soft);
+}
+@media (max-width: 768px) {
+  .svc-detail-hero .stat-row { grid-template-columns: 1fr; gap: 24px; }
+}
+
+/* ── Overview / problem ── */
+.svc-overview { background: var(--paper); padding: 110px 0; }
+.svc-overview-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 80px;
+  align-items: start;
+}
+.svc-overview-grid h2 {
+  font-family: var(--sans);
+  font-weight: 400;
+  font-size: clamp(32px, 4vw, 48px);
+  line-height: 1.1;
+  letter-spacing: -0.02em;
+  color: var(--navy);
+  margin-bottom: 24px;
+  font-variation-settings: "opsz" 144;
+}
+.svc-overview-grid h2 em {
+  font-family: var(--serif);
+  font-variation-settings: "opsz" 144;
+  font-style: italic;
+  color: var(--amber);
+  font-weight: 300;
+}
+.svc-overview-grid p {
+  font-size: 17px;
+  line-height: 1.7;
+  color: var(--navy-soft);
+  margin-bottom: 18px;
+}
+.svc-overview-grid p strong { color: var(--navy); font-weight: 600; }
+.key-line {
+  margin-top: 28px;
+  padding: 28px 32px;
+  border-left: 2px solid var(--amber);
+  background: var(--cream);
+  border-radius: 0 var(--radius) var(--radius) 0;
+  font-family: var(--serif);
+  font-size: 22px;
+  line-height: 1.35;
+  color: var(--navy);
+  font-weight: 400;
+  letter-spacing: -0.005em;
+  font-variation-settings: "opsz" 144;
+}
+.key-line em { font-style: italic; color: var(--amber); }
+@media (max-width: 960px) {
+  .svc-overview-grid { grid-template-columns: 1fr; gap: 32px; }
+}
+
+/* ── Delivery phases (left narrative + right phase list) ── */
+.phases-section {
+  background: var(--navy);
+  color: var(--cream);
+  padding: 120px 0;
+  position: relative;
+  overflow: hidden;
+}
+.phases-section::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background-image:
+    linear-gradient(rgba(255,255,255,0.025) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255,255,255,0.025) 1px, transparent 1px);
+  background-size: 60px 60px;
+  pointer-events: none;
+}
+.phases-section .container { position: relative; }
+.phases-section .section-eyebrow { color: var(--amber-bright); }
+.phases-section .section-eyebrow::before { background: var(--amber-bright); }
+.phases-section h2 {
+  font-family: var(--sans);
+  font-weight: 400;
+  font-size: clamp(32px, 4vw, 48px);
+  line-height: 1.1;
+  letter-spacing: -0.02em;
+  color: var(--cream);
+  margin-bottom: 24px;
+  font-variation-settings: "opsz" 144;
+}
+.phases-section h2 em {
+  font-family: var(--serif);
+  font-variation-settings: "opsz" 144;
+  font-style: italic;
+  color: var(--amber-bright);
+  font-weight: 300;
+}
+.phases-section .section-lede {
+  color: rgba(240,242,245,0.75);
+  font-size: 17px;
+  line-height: 1.65;
+  max-width: 520px;
+}
+.phases-layout {
+  display: grid;
+  grid-template-columns: 1fr 1.05fr;
+  gap: 64px;
+  align-items: start;
+  margin-top: 64px;
+}
+.phases-narrative h3 {
+  font-family: var(--sans);
+  font-weight: 500;
+  font-size: 22px;
+  color: var(--cream);
+  margin: 28px 0 12px;
+  letter-spacing: -0.01em;
+  font-variation-settings: "opsz" 144;
+}
+.phases-narrative p {
+  font-size: 15.5px;
+  line-height: 1.7;
+  color: rgba(240,242,245,0.78);
+  margin-bottom: 8px;
+}
+.phases-narrative ul { list-style: none; margin-top: 14px; }
+.phases-narrative ul li {
+  font-size: 14.5px;
+  line-height: 1.6;
+  color: rgba(240,242,245,0.78);
+  padding: 6px 0 6px 22px;
+  position: relative;
+}
+.phases-narrative ul li::before {
+  content: '';
+  position: absolute;
+  left: 0; top: 14px;
+  width: 10px; height: 1px;
+  background: var(--amber-bright);
+}
+
+/* Phase timeline list */
+.phase-list { list-style: none; margin: 0; padding: 0; }
+.phase-item {
+  display: flex;
+  gap: 20px;
+  padding-bottom: 28px;
+  position: relative;
+}
+.phase-item:not(:last-child)::after {
+  content: '';
+  position: absolute;
+  left: 19px; top: 40px; bottom: 0;
+  width: 1px;
+  background: rgba(255,255,255,0.12);
+}
+.phase-num {
+  width: 40px; height: 40px;
+  border-radius: 50%;
+  border: 1.5px solid var(--amber-bright);
+  background: rgba(255,186,0,0.06);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: var(--mono);
+  font-size: 11px;
+  font-weight: 500;
+  color: var(--amber-bright);
+  flex-shrink: 0;
+  letter-spacing: 0.05em;
+  position: relative; z-index: 1;
+}
+.phase-body { padding-top: 8px; }
+.phase-body h4 {
+  font-family: var(--sans);
+  font-size: 17px;
+  font-weight: 600;
+  color: var(--cream);
+  margin-bottom: 6px;
+  letter-spacing: -0.01em;
+  font-variation-settings: "opsz" 144;
+}
+.phase-body p {
+  font-size: 14.5px;
+  line-height: 1.65;
+  color: rgba(240,242,245,0.65);
+  margin: 0;
+}
+@media (max-width: 960px) {
+  .phases-layout { grid-template-columns: 1fr; gap: 48px; }
+}
+
+/* ── Platform coverage (assessment two-col) ── */
+.assess { background: var(--paper); padding: 110px 0; }
+.assess-head { max-width: 760px; margin-bottom: 56px; }
+.assess-block-title {
+  font-family: var(--mono);
+  font-size: 11px;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--amber);
+  margin-bottom: 24px;
+  padding-bottom: 14px;
+  border-bottom: 1px solid var(--line);
+}
+.assess-block-title strong {
+  color: var(--navy);
+  font-weight: 600;
+  letter-spacing: 0.04em;
+  text-transform: none;
+  font-family: var(--sans);
+  font-size: 22px;
+  display: block;
+  margin-top: 8px;
+  letter-spacing: -0.01em;
+  font-variation-settings: "opsz" 144;
+}
+.assess-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 56px;
+}
+.assess-list {
+  list-style: none;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1px;
+  background: var(--line);
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  overflow: hidden;
+}
+.assess-list li {
+  background: var(--paper);
+  padding: 18px 22px;
+  font-size: 14.5px;
+  line-height: 1.45;
+  color: var(--navy);
+  transition: background 0.3s ease, color 0.3s ease;
+}
+.assess-list li:hover {
+  background: var(--cream);
+  color: var(--navy);
+}
+.platforms-row {
+  margin-top: 24px;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+.platforms-row .pchip {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 8px 14px;
+  background: var(--cream-warm);
+  border: 1px solid var(--line);
+  border-radius: 999px;
+  font-family: var(--sans);
+  font-size: 12.5px;
+  font-weight: 500;
+  color: var(--navy);
+  letter-spacing: 0.01em;
+  transition: background 0.3s ease, transform 0.25s ease;
+}
+.platforms-row .pchip:hover {
+  background: var(--cream);
+  transform: translateY(-2px);
+}
+.platforms-row .pchip::before {
+  content: '';
+  width: 6px; height: 6px;
+  border-radius: 50%;
+  background: var(--amber);
+}
+@media (max-width: 960px) {
+  .assess-grid { grid-template-columns: 1fr; gap: 32px; }
+  .assess-list { grid-template-columns: 1fr; }
+}
+
+/* ── Approach cards (two-col: net-new vs remediation) ── */
+.approach { background: var(--cream); padding: 110px 0; }
+.approach-head { max-width: 760px; margin-bottom: 56px; }
+.approach-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 28px;
+}
+.approach-card {
+  background: var(--paper);
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  padding: 40px 36px;
+  position: relative;
+  overflow: hidden;
+  transition: transform 0.35s ease, box-shadow 0.35s ease;
+}
+.approach-card:hover {
+  transform: translateY(-3px);
+  box-shadow: var(--shadow-md);
+}
+.approach-card::before {
+  content: '';
+  position: absolute;
+  top: 0; left: 0;
+  width: 64px; height: 2px;
+  background: var(--amber);
+}
+.approach-card .acard-eyebrow {
+  font-family: var(--mono);
+  font-size: 10.5px;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--amber);
+  margin-bottom: 10px;
+}
+.approach-card h3 {
+  font-family: var(--sans);
+  font-weight: 500;
+  font-size: 26px;
+  line-height: 1.15;
+  color: var(--navy);
+  letter-spacing: -0.015em;
+  margin-bottom: 20px;
+  font-variation-settings: "opsz" 144;
+}
+.approach-card ul { list-style: none; margin: 0; }
+.approach-card ul li {
+  font-size: 15px;
+  line-height: 1.55;
+  color: var(--navy-soft);
+  padding: 10px 0 10px 22px;
+  position: relative;
+  border-bottom: 1px solid var(--line);
+}
+.approach-card ul li:last-child { border-bottom: 0; }
+.approach-card ul li::before {
+  content: '';
+  position: absolute;
+  left: 0; top: 19px;
+  width: 12px; height: 1px;
+  background: var(--amber);
+}
+@media (max-width: 768px) {
+  .approach-grid { grid-template-columns: 1fr; }
+}
+
+/* ── Methodology capability cards (4) ── */
+.cards-section { background: var(--paper); padding: 110px 0; }
+.cards-head { max-width: 760px; margin-bottom: 56px; }
+.cards-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 1px;
+  background: var(--line);
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  overflow: hidden;
+  box-shadow: var(--shadow-sm);
+}
+.cap-card {
+  background: var(--paper);
+  padding: 40px 32px;
+  display: flex;
+  flex-direction: column;
+  transition: background 0.4s ease;
+  position: relative;
+}
+.cap-card:hover { background: var(--cream); }
+.cap-card .ccard-num {
+  font-family: var(--mono);
+  font-size: 11px;
+  letter-spacing: 0.18em;
+  color: var(--amber);
+  margin-bottom: 28px;
+  text-transform: uppercase;
+}
+.cap-card .ccard-icon {
+  width: 42px; height: 42px;
+  margin-bottom: 20px;
+  color: var(--amber);
+  transition: transform 0.35s ease, color 0.35s ease;
+}
+.cap-card:hover .ccard-icon {
+  transform: translateY(-2px) scale(1.04);
+  color: var(--navy);
+}
+.cap-card h4 {
+  font-family: var(--sans);
+  font-weight: 500;
+  font-size: 20px;
+  line-height: 1.2;
+  color: var(--navy);
+  letter-spacing: -0.01em;
+  margin-bottom: 14px;
+  font-variation-settings: "opsz" 144;
+}
+.cap-card p {
+  font-size: 14.5px;
+  line-height: 1.6;
+  color: var(--navy-soft);
+}
+@media (max-width: 960px) {
+  .cards-grid { grid-template-columns: repeat(2, 1fr); }
+}
+@media (max-width: 540px) {
+  .cards-grid { grid-template-columns: 1fr; }
+}
+
+/* ── Case Studies (navy dark section) ── */
+.outcomes {
+  background: var(--navy);
+  color: var(--cream);
+  padding: 110px 0;
+  position: relative;
+  overflow: hidden;
+}
+.outcomes::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background-image:
+    linear-gradient(rgba(255,255,255,0.022) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255,255,255,0.022) 1px, transparent 1px);
+  background-size: 60px 60px;
+  pointer-events: none;
+}
+.outcomes .container { position: relative; }
+.outcomes .section-eyebrow { color: var(--amber-bright); }
+.outcomes .section-eyebrow::before { background: var(--amber-bright); }
+.outcomes h2 {
+  font-family: var(--sans);
+  font-weight: 400;
+  font-size: clamp(32px, 4vw, 48px);
+  line-height: 1.1;
+  letter-spacing: -0.02em;
+  color: var(--cream);
+  margin-bottom: 16px;
+  font-variation-settings: "opsz" 144;
+}
+.outcomes h2 em {
+  font-family: var(--serif);
+  font-style: italic;
+  color: var(--amber-bright);
+  font-weight: 300;
+  font-variation-settings: "opsz" 144;
+}
+.outcomes .section-lede { color: rgba(240,242,245,0.7); }
+.outcomes-grid {
+  margin-top: 56px;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 20px;
+}
+.case-card {
+  background: rgba(255,255,255,0.04);
+  border: 1px solid rgba(255,255,255,0.08);
+  border-radius: 10px;
+  padding: 36px 28px;
+  display: flex;
+  flex-direction: column;
+  transition: border-color 0.3s, background 0.3s;
+}
+.case-card:hover {
+  border-color: rgba(255,186,0,0.3);
+  background: rgba(255,255,255,0.06);
+}
+.case-tag {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  font-family: var(--mono);
+  font-size: 9.5px;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--amber-bright);
+  margin-bottom: 20px;
+}
+.case-tag-dot {
+  width: 5px; height: 5px;
+  background: var(--amber-bright);
+  border-radius: 50%;
+}
+.case-card h4 {
+  font-family: var(--sans);
+  font-weight: 500;
+  font-size: 18px;
+  color: var(--cream);
+  margin-bottom: 12px;
+  line-height: 1.3;
+  letter-spacing: -0.01em;
+  font-variation-settings: "opsz" 144;
+}
+.case-card-body {
+  font-size: 13.5px;
+  line-height: 1.65;
+  color: rgba(240,242,245,0.55);
+  margin-bottom: 20px;
+  flex: 1;
+}
+.case-results {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  padding-top: 20px;
+  border-top: 1px solid rgba(255,255,255,0.07);
+}
+.case-result-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.case-result-label {
+  font-family: var(--mono);
+  font-size: 10px;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: rgba(240,242,245,0.4);
+}
+.case-result-value {
+  font-family: var(--sans);
+  font-weight: 600;
+  font-size: 16px;
+  color: var(--amber-bright);
+  letter-spacing: -0.01em;
+  font-variation-settings: "opsz" 144;
+}
+@media (max-width: 900px) {
+  .outcomes-grid { grid-template-columns: 1fr 1fr; }
+}
+@media (max-width: 560px) {
+  .outcomes-grid { grid-template-columns: 1fr; }
+}
+
+/* ── Adjacent / platform deep-dives ── */
+.other-svc { background: var(--paper); padding: 110px 0; }
+.other-svc-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 24px;
+  margin-top: 48px;
+}
+.other-svc-card {
+  background: var(--paper);
+  border: 1px solid var(--line);
+  padding: 40px 36px;
+  border-radius: var(--radius);
+  transition: all 0.35s ease;
+  display: flex;
+  flex-direction: column;
+  text-decoration: none;
+}
+.other-svc-card:hover {
+  background: var(--navy);
+  color: var(--cream);
+  transform: translateY(-4px);
+  box-shadow: var(--shadow-md);
+}
+.other-svc-card .num {
+  font-family: var(--sans);
+  font-style: italic;
+  color: var(--amber);
+  font-size: 14px;
+  margin-bottom: 16px;
+}
+.other-svc-card:hover .num { color: var(--amber-bright); }
+.other-svc-card h4 {
+  font-family: var(--sans);
+  font-weight: 500;
+  font-size: 22px;
+  line-height: 1.15;
+  margin-bottom: 12px;
+  letter-spacing: -0.01em;
+  color: var(--navy);
+  transition: color 0.3s;
+  font-variation-settings: "opsz" 144;
+}
+.other-svc-card:hover h4 { color: var(--cream); }
+.other-svc-card p {
+  font-size: 14.5px;
+  line-height: 1.6;
+  color: var(--navy-soft);
+  margin-bottom: 20px;
+  flex: 1;
+  transition: color 0.3s;
+}
+.other-svc-card:hover p { color: rgba(240,242,245,0.75); }
+.other-svc-card .lnk {
+  font-size: 12px;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  font-weight: 600;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  color: var(--navy);
+  transition: color 0.3s;
+}
+.other-svc-card:hover .lnk { color: var(--amber-bright); }
+@media (max-width: 900px) {
+  .other-svc-grid { grid-template-columns: 1fr 1fr; }
+}
+@media (max-width: 560px) {
+  .other-svc-grid { grid-template-columns: 1fr; }
+}
+
+/* ── Slower, deliberate reveal (matching Platform Strategy) ── */
+.reveal { opacity: 0; transform: translateY(18px); transition: opacity 0.9s ease, transform 0.9s cubic-bezier(.2,.7,.2,1); }
+.reveal.in { opacity: 1; transform: translateY(0); }
+.reveal-stagger > * { opacity: 0; transform: translateY(18px); transition: opacity 0.9s ease, transform 0.9s cubic-bezier(.2,.7,.2,1); }
+.reveal-stagger.in > *:nth-child(1) { opacity:1; transform:none; transition-delay: 0.05s; }
+.reveal-stagger.in > *:nth-child(2) { opacity:1; transform:none; transition-delay: 0.15s; }
+.reveal-stagger.in > *:nth-child(3) { opacity:1; transform:none; transition-delay: 0.25s; }
+.reveal-stagger.in > *:nth-child(4) { opacity:1; transform:none; transition-delay: 0.35s; }
+.reveal-stagger.in > *:nth-child(5) { opacity:1; transform:none; transition-delay: 0.45s; }
+.reveal-stagger.in > *:nth-child(6) { opacity:1; transform:none; transition-delay: 0.55s; }
+</style>
+<style>
+  /* --- logo lockup --- */
+  .logo-lockup { display:flex; flex-direction:column; line-height:1; gap:2px; }
+  .logo-advisory { font-family:var(--sans); font-size:11px; font-weight:300; letter-spacing:0.18em; text-transform:none; color:var(--muted); padding-left:1px; }
+  /* Ensure all content is visible regardless of scroll observer */
+.reveal, .reveal-stagger, .reveal-stagger > * { opacity: 1 !important; transform: none !important; }
+</style>
+</head>
+<body>
+
+<!-- HEADER -->
+<header>
+  <div class="container nav">
+    <a href="index.html" class="logo">
+      <span class="logo-lockup">
+        <span class="logo-text"><span class="logo-cap">P</span>roteam</span>
+        <span class="logo-advisory">Advisory Solutions LLP</span>
+      </span>
+    </a>
+    <ul class="nav-links">
+      <li><a href="index.html">Home</a></li>
+      <li class="has-mega">
+        <a href="services.html" class="active">Services <svg class="caret" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 9l6 6 6-6"/></svg></a>
+        <div class="mega-menu" role="menu" aria-label="Services">
+          <div class="mega-grid">
+            <div class="mega-col">
+              <a href="services.html#itam" class="mega-head">IT Asset Management</a>
+              <ul>
+                <li><a href="service-sam-maturity.html">SAM Maturity Assessment</a></li>
+                <li><a href="service-sam-baselining.html">SAM Baselining &amp; Cost Optimization</a></li>
+                <li><a href="service-audit-defence.html">Audit Defense &amp; Negotiation Support</a></li>
+                <li><a href="service-ham-maturity.html">Hardware Asset Management</a></li>
+                <li><a href="service-itam-managed.html">Managed Services</a></li>
+              </ul>
+            </div>
+            <div class="mega-col">
+              <a href="services.html#finops" class="mega-head">Cloud FinOps</a>
+              <ul>
+                <li><a href="service-cloud-finops.html">FinOps Advisory &amp; Strategy</a></li>
+                <li><a href="service-finops-optimization.html">Cloud Spend Optimisation</a></li>
+                <li><a href="service-finops-managed.html">Managed FinOps Services</a></li>
+              </ul>
+            </div>
+            <div class="mega-col">
+              <a href="services.html#platform-strategy" class="mega-head">Platform Strategy &amp; Advisory</a>
+              <ul>
+                <li><a href="service-platform-strategy.html">Platform Strategy &amp; Advisory</a></li>
+                <li><a href="service-implementation-integration.html">Implementation &amp; Integration</a></li>
+              </ul>
+            </div>
+            <div class="mega-col">
+              <a href="services.html#ai-transformation" class="mega-head">AI Transformation Services</a>
+              <ul>
+                <li><a href="service-ai-spend.html">AI Spend Management</a></li>
+                <li><a href="service-ai-adoption.html">AI Adoption &amp; Value Delivery</a></li>
+                <li><a href="service-ai-usage-analytics.html">AI Usage Analytics</a></li>
+                <li><a href="service-ai-vendor-negotiation.html">AI Vendor Negotiation</a></li>
+                <li><a href="service-ai-governance-advisory.html">AI Governance Advisory</a></li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </li>
+      <li><a href="case-studies.html">Case Studies</a></li>
+            <li class="has-mega has-about-dropdown">
+        <a href="about.html">About <svg class="caret" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 9l6 6 6-6"/></svg></a>
+        <div class="mega-menu" role="menu" aria-label="About">
+          <div class="mega-grid mega-grid--about">
+            <div class="mega-col">
+              <a href="our-story.html" class="mega-head">Our Story</a>
+              <ul>
+                <li><a href="our-story.html">Who We Are</a></li>
+                <li><a href="our-story.html#team">Team / Leaders</a></li>
+              </ul>
+            </div>
+            <div class="mega-col">
+              <a href="achievements.html" class="mega-head">By the Numbers</a>
+              <ul>
+                <li><a href="achievements.html">Achievements &amp; Stats</a></li>
+              </ul>
+            </div>
+            <div class="mega-col">
+              <a href="gallery.html" class="mega-head">Gallery</a>
+              <ul>
+                <li><a href="gallery.html">Culture &amp; Events</a></li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </li>
+      <li><a href="insights.html">Insights</a></li>
+            <li><a href="careers.html">Careers</a></li>
+      <li><a href="contact.html">Contact</a></li>
+    </ul>
+    <a href="contact.html" class="nav-cta">Free Consultation</a>
+    <button class="menu-toggle" id="menuToggle" aria-label="Toggle menu" aria-expanded="false">
+      <span class="bar"></span>
+      <span class="bar"></span>
+      <span class="bar"></span>
+    </button>
+  </div>
+</header>
+
+<!-- MOBILE NAV -->
+<nav class="mobile-nav" id="mobileNav" aria-label="Mobile navigation">
+  <ul class="mobile-nav-links">
+    <li><a href="index.html">Home <span>&rarr;</span></a></li>
+    <li class="has-sub">
+      <button class="sub-toggle" type="button" aria-expanded="false" aria-controls="m-svc-sub">
+        Services
+        <svg class="caret" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 9l6 6 6-6"/></svg>
+      </button>
+      <ul id="m-svc-sub" class="sub-menu">
+        <li class="has-sub-2">
+          <button class="sub-toggle-2" type="button" aria-expanded="false" aria-controls="m-itam-sub">
+            IT Asset Management
+            <svg class="caret" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 9l6 6 6-6"/></svg>
+          </button>
+          <ul id="m-itam-sub" class="sub-menu-2">
+            <li><a href="service-sam-maturity.html">SAM Maturity Assessment</a></li>
+            <li><a href="service-sam-baselining.html">SAM Baselining &amp; Cost Optimization</a></li>
+            <li><a href="service-audit-defence.html">Audit Defense &amp; Negotiation Support</a></li>
+            <li><a href="service-ham-maturity.html">Hardware Asset Management</a></li>
+            <li><a href="service-itam-managed.html">Managed Services</a></li>
+          </ul>
+        </li>
+        <li class="has-sub-2">
+          <button class="sub-toggle-2" type="button" aria-expanded="false" aria-controls="m-finops-sub">
+            Cloud FinOps
+            <svg class="caret" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 9l6 6 6-6"/></svg>
+          </button>
+          <ul id="m-finops-sub" class="sub-menu-2">
+            <li><a href="service-cloud-finops.html">FinOps Advisory &amp; Strategy</a></li>
+            <li><a href="service-finops-optimization.html">Cloud Spend Optimisation</a></li>
+            <li><a href="service-finops-managed.html">Managed FinOps Services</a></li>
+          </ul>
+        </li>
+        <li class="has-sub-2">
+          <button class="sub-toggle-2" type="button" aria-expanded="false" aria-controls="m-platform-sub">
+            Platform Strategy &amp; Advisory
+            <svg class="caret" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 9l6 6 6-6"/></svg>
+          </button>
+          <ul id="m-platform-sub" class="sub-menu-2">
+            <li><a href="service-platform-strategy.html">Platform Strategy &amp; Advisory</a></li>
+            <li><a href="service-implementation-integration.html">Implementation &amp; Integration</a></li>
+          </ul>
+        </li>
+        <li class="has-sub-2">
+          <button class="sub-toggle-2" type="button" aria-expanded="false" aria-controls="m-ai-sub">
+            AI Transformation Services
+            <svg class="caret" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 9l6 6 6-6"/></svg>
+          </button>
+          <ul id="m-ai-sub" class="sub-menu-2">
+            <li><a href="service-ai-spend.html">AI Spend Management</a></li>
+            <li><a href="service-ai-adoption.html">AI Adoption &amp; Value Delivery</a></li>
+            <li><a href="service-ai-usage-analytics.html">AI Usage Analytics</a></li>
+            <li><a href="service-ai-vendor-negotiation.html">AI Vendor Negotiation</a></li>
+            <li><a href="service-ai-governance-advisory.html">AI Governance Advisory</a></li>
+          </ul>
+        </li>
+      </ul>
+    </li>
+    <li><a href="case-studies.html">Case Studies <span>&rarr;</span></a></li>
+        <li class="has-sub">
+      <button class="sub-toggle" type="button" aria-expanded="false" aria-controls="m-about-sub">
+        About
+        <svg class="caret" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 9l6 6 6-6"/></svg>
+      </button>
+      <ul id="m-about-sub" class="sub-menu">
+        <li><a href="our-story.html">Our Story</a></li>
+        <li><a href="achievements.html">By the Numbers</a></li>
+        <li><a href="our-story.html#team">Team / Leaders</a></li>
+        <li><a href="gallery.html">Gallery</a></li>
+      </ul>
+    </li>
+    <li><a href="insights.html">Insights <span>&rarr;</span></a></li>
+        <li><a href="careers.html">Careers <span>&rarr;</span></a></li>
+    <li><a href="contact.html">Contact <span>&rarr;</span></a></li>
+  </ul>
+  <a href="contact.html" class="mobile-nav-cta">Book Free Consultation &rarr;</a>
+  <div class="mobile-nav-contact">
+    <a href="tel:+919676889797">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07 19.5 19.5 0 01-6-6 19.79 19.79 0 01-3.07-8.67A2 2 0 014.11 2h3a2 2 0 012 1.72 12.84 12.84 0 00.7 2.81 2 2 0 01-.45 2.11L8.09 9.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45 12.84 12.84 0 002.81.7A2 2 0 0122 16.92z"/></svg>
+      +91 9676 889 797
+    </a>
+    <a href="mailto:vpatel@proteamadvisory.com">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+      vpatel@proteamadvisory.com
+    </a>
+  </div>
+</nav>
+
+<!-- PAGE HERO -->
+<section class="page-hero svc-detail-hero">
+  <div class="container">
+    <div class="breadcrumb">
+      <a href="index.html">Home</a>
+      <span class="sep">/</span>
+      <a href="services.html">Services</a>
+      <span class="sep">/</span>
+      <a href="service-platform-strategy.html">Platform Strategy &amp; Advisory</a>
+      <span class="sep">/</span>
+      <span class="current">Implementation &amp; Integration</span>
+    </div>
+    <div class="page-hero-grid">
+      <div>
+        <div class="page-hero-eyebrow">Platform Strategy · Implementation</div>
+        <h1>Implementation <em>&amp; integration</em>.</h1>
+      </div>
+      <p class="page-hero-lede">
+        Strategy decides the platform. We make it produce. Expert deployment, tuning, and remediation of ServiceNow SAM Pro, Flexera One, Snow Software, Zylo, and USU SmartTrack — vendor-independent, sprint-delivered, and handed back with a governance model your team can actually run.
+      </p>
+    </div>
+
+    <div class="stat-row reveal">
+      <div>
+        <div class="stat-num">5</div>
+        <div class="stat-lbl">Major ITAM platforms covered — ServiceNow, Flexera, Snow, Zylo, and USU SmartTrack.</div>
+      </div>
+      <div>
+        <div class="stat-num">2-wk sprints</div>
+        <div class="stat-lbl">Structured sprint delivery with clear acceptance criteria at every stage. No black-box projects.</div>
+      </div>
+      <div>
+        <div class="stat-num">Vendor-neutral</div>
+        <div class="stat-lbl">No reseller agreements. Every recommendation is based on your estate, not our margins.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- POSITIONING / PROBLEM -->
+<section class="svc-overview">
+  <div class="container">
+    <div class="svc-overview-grid">
+      <div class="reveal">
+        <div class="section-eyebrow">The problem we solve</div>
+        <h2>Most platforms don't fail at selection. <em>They fail at execution.</em></h2>
+      </div>
+      <div class="reveal">
+        <p>Enterprise ITAM platforms — ServiceNow, Flexera, Snow, Zylo, SmartTrack — are capable tools. <strong>The gap between capability and output is almost never the platform.</strong> It's the configuration, the data architecture, the publisher tuning, and the governance model that determine whether the platform produces a trusted, defensible licence position.</p>
+        <p>We've inherited dozens of deployments that cost seven figures and still can't produce a clean compliance position three years in. The platform isn't the problem. The implementation was.</p>
+        <p>Our implementation practice is built around one discipline: getting from deployment to trusted output as directly as possible — and then ensuring your internal team can sustain it.</p>
+        <div class="key-line">
+          The platform is already selected. <em>Now make it produce.</em>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- DELIVERY PHASES -->
+<section class="phases-section">
+  <div class="container">
+    <div class="reveal" style="max-width:720px;">
+      <div class="section-eyebrow">How we deliver</div>
+      <h2>Sprint-delivered. <em>Governance from day one.</em></h2>
+      <p class="section-lede">Every engagement follows a structured methodology — two-week sprints, weekly progress reporting, clear acceptance criteria at each milestone. We don't disappear for three months and surface with a report.</p>
+    </div>
+
+    <div class="phases-layout">
+      <!-- Left: narrative -->
+      <div class="phases-narrative reveal">
+        <h3>What we focus on first</h3>
+        <p>Most failed deployments fail at the data layer — not the platform configuration. Before writing a single recognition rule or publisher pack, we design the inventory architecture:</p>
+        <ul>
+          <li>Discovery source mapping and coverage gaps</li>
+          <li>Inventory normalisation and deduplication logic</li>
+          <li>Application recognition rate benchmarking</li>
+          <li>Publisher-specific metering and measurement design</li>
+          <li>Entitlement model at the granularity the platform needs</li>
+        </ul>
+
+        <h3>What changes at hand-back</h3>
+        <p>We design for sustainability, not dependency. Every engagement ends with a clear operating model, trained internal team, and governance cadence your people can run without us.</p>
+      </div>
+
+      <!-- Right: phase steps -->
+      <div class="reveal">
+        <ul class="phase-list">
+          <li class="phase-item">
+            <div class="phase-num">01</div>
+            <div class="phase-body">
+              <h4>Vendor-independent assessment</h4>
+              <p>We hold no reseller agreements with any platform vendor. Every recommendation is grounded in your estate, your publishers, and your operating model — not anyone's renewal calendar.</p>
+            </div>
+          </li>
+          <li class="phase-item">
+            <div class="phase-num">02</div>
+            <div class="phase-body">
+              <h4>Data-first architecture design</h4>
+              <p>We design the inventory and data architecture before writing a single rule. The quality of every downstream answer depends entirely on the quality of the input data.</p>
+            </div>
+          </li>
+          <li class="phase-item">
+            <div class="phase-num">03</div>
+            <div class="phase-body">
+              <h4>Sprint delivery with clear acceptance criteria</h4>
+              <p>Two-week delivery sprints. Weekly progress reporting. Clear acceptance criteria — inventory coverage, recognition rate, compliance accuracy — before we move to the next phase.</p>
+            </div>
+          </li>
+          <li class="phase-item">
+            <div class="phase-num">04</div>
+            <div class="phase-body">
+              <h4>Publisher tuning and compliance positions</h4>
+              <p>Publisher packs, metering logic, and licence entitlement models configured to produce defensible compliance positions for every in-scope vendor.</p>
+            </div>
+          </li>
+          <li class="phase-item">
+            <div class="phase-num">05</div>
+            <div class="phase-body">
+              <h4>Operating model hand-back</h4>
+              <p>Trained internal team, documented governance cadence, and a sustainable operating model. We hand back. Your platform runs without us in the room.</p>
+            </div>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PLATFORM DEEP-DIVES -->
+<section class="other-svc">
+  <div class="container">
+    <div class="reveal" style="max-width: 720px;">
+      <div class="section-eyebrow">Platform deep-dives</div>
+      <h2 class="section-title">Each platform. <em>Deep specialism.</em></h2>
+      <p class="section-lede">Full capability pages for each platform we implement — covering net-new deployment, remediation, and platform-specific publisher tuning.</p>
+    </div>
+
+    <div class="other-svc-grid reveal-stagger">
+      <a href="service-itam-servicenow.html" class="other-svc-card">
+        <div class="num">— ServiceNow</div>
+        <h4>ServiceNow SAM &amp; HAM Pro</h4>
+        <p>Implementation, tuning, and remediation of ServiceNow SAM Pro and HAM Pro — publisher packs, CMDB alignment, and inventory completeness.</p>
+        <span class="lnk">See page <svg width="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 5l7 7-7 7"/></svg></span>
+      </a>
+      <a href="service-itam-flexera.html" class="other-svc-card">
+        <div class="num">— Flexera</div>
+        <h4>Flexera One &amp; FlexNet Manager</h4>
+        <p>Implementation, optimisation, and remediation across Flexera One and FlexNet Manager deployments — including complex migration programmes.</p>
+        <span class="lnk">See page <svg width="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 5l7 7-7 7"/></svg></span>
+      </a>
+      <a href="service-itam-snow.html" class="other-svc-card">
+        <div class="num">— Snow Software</div>
+        <h4>Snow Software</h4>
+        <p>Snow Application Recognition tuning, inventory normalisation, and compliance position delivery across on-premise and cloud deployments.</p>
+        <span class="lnk">See page <svg width="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 5l7 7-7 7"/></svg></span>
+      </a>
+      <a href="service-itam-zylo.html" class="other-svc-card">
+        <div class="num">— Zylo</div>
+        <h4>Zylo SaaS Management</h4>
+        <p>Full Zylo implementation — SSO, expense feeds, direct integrations — plus structured savings programmes targeting dormant and over-provisioned SaaS licences.</p>
+        <span class="lnk">See page <svg width="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 5l7 7-7 7"/></svg></span>
+      </a>
+      <a href="service-itam-aspera.html" class="other-svc-card">
+        <div class="num">— USU SmartTrack</div>
+        <h4>USU SmartTrack (Aspera)</h4>
+        <p>Publisher-specific engine tuning for SAP, Oracle, and IBM — including SAP indirect access analysis, LAW &amp; USMM measurement flows, and remediation of drifted deployments.</p>
+        <span class="lnk">See page <svg width="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 5l7 7-7 7"/></svg></span>
+      </a>
+      <a href="service-platform-strategy.html" class="other-svc-card">
+        <div class="num">— Platform Strategy</div>
+        <h4>Platform Strategy &amp; Advisory</h4>
+        <p>The strategy that precedes implementation — platform assessment, rationalisation, architecture, and the roadmap that sequences your next 12–18 months.</p>
+        <span class="lnk">See page <svg width="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 5l7 7-7 7"/></svg></span>
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- CTA -->
+<section class="cta">
+  <div class="container">
+    <div class="cta-inner">
+      <div class="reveal">
+        <div class="section-eyebrow" style="color: var(--amber-bright);">Ready to talk</div>
+        <h2>Your platform is already selected.<br>Let's make it <em>produce.</em></h2>
+        <p>Free consultation. A senior consultant assesses where you are — net-new deployment, optimisation, or remediation — and agrees what a successful engagement looks like before any work begins.</p>
+        <div class="cta-actions">
+          <a href="contact.html" class="btn-amber">Book free consultation</a>
+          <a href="service-platform-strategy.html" class="btn-line">← Platform Strategy &amp; Advisory</a>
+        </div>
+      </div>
+      <div class="cta-detail reveal">
+        <h4>What you'll get</h4>
+        <ul class="cta-list">
+          <li>45-minute call with a senior implementation consultant.</li>
+          <li>Honest assessment of your current platform maturity.</li>
+          <li>Clear view of what's causing the output gap.</li>
+          <li>Proposed sprint plan before any engagement begins.</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="container">
+    <div class="foot-grid">
+      <div class="foot-brand">
+        <a href="index.html" class="logo" style="color: var(--cream);">
+          <span class="logo-lockup">
+            <span class="logo-text" style="color:var(--cream);"><span class="logo-cap">P</span>roteam</span>
+            <span class="logo-advisory" style="color:rgba(240,242,245,0.7);">Advisory Solutions LLP</span>
+          </span>
+        </a>
+        <h3>SAM specialists. Nothing else.</h3>
+        <p>An independent Software Asset Management consultancy serving enterprises across India, the UK, the US, and the Middle East.</p>
+        <div class="foot-social">
+          <div class="foot-social-label">Follow us on</div>
+          <div class="foot-social-icons">
+            <a href="https://in.linkedin.com/company/proteam-advisory" aria-label="LinkedIn" target="_blank" rel="noopener">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"/><rect x="2" y="9" width="4" height="12"/><circle cx="4" cy="4" r="2"/></svg>
+            </a>
+            <a href="https://x.com/proteamadv" aria-label="X (Twitter)" target="_blank" rel="noopener">
+              <svg viewBox="0 0 24 24" fill="currentColor"><path d="M17.53 3H21l-7.39 8.45L22.5 21h-6.83l-5.34-6.99L3.5 21H0l7.91-9.04L0.5 3h7l4.83 6.4L17.53 3zm-2.39 16h2.06L7.05 4.85H4.83L15.14 19z"/></svg>
+            </a>
+            <a href="https://www.instagram.com/proteamadvisory/" aria-label="Instagram" target="_blank" rel="noopener">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="20" rx="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/></svg>
+            </a>
+            <a href="https://www.youtube.com/channel/UCaajUe2N_6AFw3dvPmH1b7A" aria-label="YouTube" target="_blank" rel="noopener">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M22.54 6.42a2.78 2.78 0 0 0-1.94-2C18.88 4 12 4 12 4s-6.88 0-8.6.46a2.78 2.78 0 0 0-1.94 2A29 29 0 0 0 1 11.75a29 29 0 0 0 .46 5.33A2.78 2.78 0 0 0 3.4 19c1.72.46 8.6.46 8.6.46s6.88 0 8.6-.46a2.78 2.78 0 0 0 1.94-2 29 29 0 0 0 .46-5.25 29 29 0 0 0-.46-5.33z"/><polygon points="9.75 15.02 15.5 11.75 9.75 8.48 9.75 15.02" fill="currentColor"/></svg>
+            </a>
+          </div>
+        </div>
+      </div>
+
+      <div class="foot-col">
+        <h5>Services</h5>
+        <ul>
+          <li><a href="services.html#itam">IT Asset Management</a></li>
+          <li><a href="services.html#finops">Cloud FinOps</a></li>
+          <li><a href="service-platform-strategy.html">Platform Strategy &amp; Advisory</a></li>
+          <li><a href="services.html#ai-transformation">AI Transformation Services</a></li>
+        </ul>
+      </div>
+
+      <div class="foot-col">
+        <h5>About</h5>
+        <ul>
+          <li><a href="our-story.html">Our Story</a></li>
+          <li><a href="our-story.html#team">Team &amp; Leaders</a></li>
+          <li><a href="achievements.html">Achievements &amp; Stats</a></li>
+          <li><a href="gallery.html">Culture &amp; Gallery</a></li>
+        </ul>
+      </div>
+
+      <div class="foot-col">
+        <h5>Company</h5>
+        <ul>
+          <li><a href="case-studies.html">Case Studies</a></li>
+          <li><a href="insights.html">Insights</a></li>
+          <li><a href="careers.html">Careers</a></li>
+          <li><a href="contact.html">Contact</a></li>
+        </ul>
+      </div>
+
+      <div class="foot-col">
+        <h5>Get in touch</h5>
+        <address>
+          Suite #309&ndash;312<br>
+          KTC Illumination Towers<br>
+          Madhapur, Hyderabad<br>
+          Telangana, India<br><br>
+          <a href="tel:+919676889797">+91 9676 889 797</a><br>
+          <a href="mailto:vpatel@proteamadvisory.com">vpatel@proteamadvisory.com</a>
+        </address>
+      </div>
+    </div>
+
+    <div class="foot-bot">
+      <div>&copy; 2026 Proteam Advisory. All rights reserved.</div>
+      <div style="display:flex; gap:24px; flex-wrap:wrap;">
+        <a href="privacy.html">Privacy</a>
+        <a href="terms.html">Terms of Use</a>
+        <a href="cookies.html">Cookies</a>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<script>
+  // ---- Scroll reveal ----
+  const obs = new IntersectionObserver((entries) => {
+    entries.forEach(e => {
+      if (e.isIntersecting) { e.target.classList.add("in"); obs.unobserve(e.target); }
+    });
+  }, { threshold: 0.1, rootMargin: "0px 0px -50px 0px" });
+  document.querySelectorAll(".reveal, .reveal-stagger").forEach(el => obs.observe(el));
+
+  // ---- Smooth scroll ----
+  document.querySelectorAll("a[href^='#']").forEach(link => {
+    link.addEventListener("click", e => {
+      const id = link.getAttribute("href");
+      if (id.length > 1) { const tgt = document.querySelector(id); if (tgt) { e.preventDefault(); tgt.scrollIntoView({ behavior: "smooth", block: "start" }); } }
+    });
+  });
+
+  // ---- Mobile menu ----
+  (function() {
+    const toggle = document.getElementById('menuToggle');
+    const mobileNav = document.getElementById('mobileNav');
+    if (!toggle || !mobileNav) return;
+    const body = document.body;
+    function openMenu() { mobileNav.classList.add('is-open'); toggle.classList.add('open'); toggle.setAttribute('aria-expanded','true'); body.style.overflow='hidden'; }
+    function closeMenu() { mobileNav.classList.remove('is-open'); toggle.classList.remove('open'); toggle.setAttribute('aria-expanded','false'); body.style.overflow=''; }
+    toggle.addEventListener('click', () => mobileNav.classList.contains('is-open') ? closeMenu() : openMenu());
+    mobileNav.querySelectorAll('a').forEach(link => link.addEventListener('click', closeMenu));
+    document.addEventListener('keydown', e => { if (e.key === 'Escape' && mobileNav.classList.contains('is-open')) closeMenu(); });
+    mobileNav.querySelectorAll('.sub-toggle, .sub-toggle-2').forEach(btn => {
+      btn.addEventListener('click', () => {
+        const id = btn.getAttribute('aria-controls');
+        const target = id ? document.getElementById(id) : btn.nextElementSibling;
+        if (!target) return;
+        const expanded = btn.getAttribute('aria-expanded') === 'true';
+        btn.setAttribute('aria-expanded', String(!expanded));
+        target.classList.toggle('is-open', !expanded);
+      });
+    });
+  })();
+</script>
+
+<script src="sammy-chatbot.js"></script>
+<script>
+/* Desktop mega-menu */
+(function () {
+  var CLOSE_DELAY = 150;
+  document.querySelectorAll(".nav-links .has-mega").forEach(function (li) {
+    var timer = null;
+    function openMenu() { clearTimeout(timer); li.classList.add("mega-open"); }
+    function scheduleClose() { timer = setTimeout(function () { li.classList.remove("mega-open"); }, CLOSE_DELAY); }
+    li.addEventListener("mouseenter", openMenu);
+    li.addEventListener("mouseleave", scheduleClose);
+    var menu = li.querySelector(".mega-menu");
+    if (menu) {
+      menu.addEventListener("mouseenter", openMenu);
+      menu.addEventListener("mouseleave", scheduleClose);
+    }
+    document.addEventListener("keydown", function (e) { if (e.key === "Escape") li.classList.remove("mega-open"); });
+  });
+})();
+</script>
+
+</body>
+</html>
